@@ -1,9 +1,9 @@
 @if(\Auth::user()->rol == 1)
 
 <a href="{{route('home')}}" class="brand-link">
-<img src="logo.jpeg" class="img-circle elevation-2" alt="User Image" width="40">
+<img src="logo.png" class="img-circle elevation-2" alt="User Image" width="40">
       
-      <span class="brand-text font-weight-light">ADMIN MadreTeresa</span>
+      <span class="brand-text font-weight-light" style="margin-left:10px;">Admin Fertivida</span>
     </a>
 
 <div class="sidebar">
@@ -695,7 +695,7 @@
 <a href="{{route('home')}}" class="brand-link">
 <img src="logo.jpeg" class="img-circle elevation-2" alt="User Image" width="40">
       
-      <span class="brand-text font-weight-light">ADMIN MadreTeresa</span>
+      <span class="brand-text font-weight-light">Fertivida</span>
     </a>
 
 <div class="sidebar">
@@ -1158,7 +1158,7 @@
 <a href="{{route('home')}}" class="brand-link">
 <img src="logo.jpeg" class="img-circle elevation-2" alt="User Image" width="40">
       
-      <span class="brand-text font-weight-light">ADMIN MadreTeresa</span>
+      <span class="brand-text font-weight-light">Fertivida</span>
     </a>
 
 <div class="sidebar">
@@ -1500,7 +1500,7 @@
 <a href="{{route('home')}}" class="brand-link">
 <img src="logo.jpeg" class="img-circle elevation-2" alt="User Image" width="40">
       
-      <span class="brand-text font-weight-light">ADMIN MadreTeresa</span>
+      <span class="brand-text font-weight-light">Fertivida</span>
     </a>
 
 <div class="sidebar">
@@ -1731,7 +1731,7 @@
 <a href="{{route('home')}}" class="brand-link">
 <img src="logo.jpeg" class="img-circle elevation-2" alt="User Image" width="40">
       
-      <span class="brand-text font-weight-light">ADMIN MadreTeresa</span>
+      <span class="brand-text font-weight-light">Fertivida</span>
     </a>
 
 <div class="sidebar">
@@ -1860,7 +1860,7 @@
 <a href="{{route('home')}}" class="brand-link">
 <img src="logo.jpeg" class="img-circle elevation-2" alt="User Image" width="40">
       
-      <span class="brand-text font-weight-light">ADMIN MadreTeresa</span>
+      <span class="brand-text font-weight-light">Fertivida</span>
     </a>
 
 <div class="sidebar">
@@ -1992,17 +1992,13 @@
     </div>
     @endif
 
-<<<<<<< HEAD
-    @if(\Auth::user()->rol == 13)
-=======
              @if(\Auth::user()->rol == 13)
->>>>>>> 1f91ec6f970bb92d51ea12eb40c28eb7d80f7d80
 
     
 <a href="{{route('home')}}" class="brand-link">
 <img src="logo.jpeg" class="img-circle elevation-2" alt="User Image" width="40">
       
-      <span class="brand-text font-weight-light">ADMIN MadreTeresa</span>
+      <span class="brand-text font-weight-light">Fertivida</span>
     </a>
 
 <div class="sidebar">

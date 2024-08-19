@@ -48,7 +48,7 @@
 
 <div>
 	<div class="text-center title-header col-12">
-	   <center><strong>HOTEL MadreTeresa</strong> </center>
+	   <center><strong>HOTEL Fertivida</strong> </center>
 		<center><strong>REPORTE CONSOLIDADO</strong> </center>
 		<center><strong>DESDE: </strong>- {{ $f1 }} <strong>DESDE: </strong>{{ $f2 }}</center>
 

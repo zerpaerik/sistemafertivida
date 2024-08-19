@@ -48,7 +48,7 @@
 
 <div>
 	<div class="text-center title-header col-12">
-	   <center><strong>HOTEL MadreTeresa</strong> </center>
+	   <center><strong>HOTEL Fertivida</strong> </center>
 		<center><strong>REPORTE DE CIERRE DE CAJA</strong> </center>
 		<center><strong>INICIO: {{ $caja->fecha_init }}</strong>- <strong>FIN: {{ $caja->fecha_fin }}</strong></center>
 

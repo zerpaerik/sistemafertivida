@@ -49,7 +49,7 @@
 <div>
 	<div class="text-center title-header col-12">
     <center><img src="hotel.jpeg" class="img-circle elevation-2" alt="User Image" width="150"></center>
-	<center><strong>HOTEL MadreTeresa</strong> </center>
+	<center><strong>HOTEL Fertivida</strong> </center>
 		<center><strong>LISTADO DE PRODUCTOS</strong> </center>
 
 	</div>
