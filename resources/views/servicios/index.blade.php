@@ -90,9 +90,7 @@
                     <th>Nombre</th>
                     <th>Tipo</th>
                     <th>Precio</th>
-                    <th>Porcentaje Pers</th>
-                    <th>Porcentaje Prof</th>
-                    <th>Porcentaje Tecn</th>
+                 
                     <th>Acciones</th>
                   </tr>
                   </thead>
@@ -103,9 +101,7 @@
                     <td>{{$an->nombre}}</td>
                     <td>{{$an->tipo}}</td>
                     <td>{{$an->precio}}</td>
-                    <td>{{$an->porcentaje}}</td>
-                    <td>{{$an->porcentaje1}}</td>
-                    <td>{{$an->porcentaje2}}</td>
+                  
                     <td>
                     @if(Auth::user()->rol == 1)
 
@@ -135,9 +131,7 @@
                   <th>Nombre</th>
                     <th>Tipo</th>
                     <th>Precio</th>
-                    <th>Porcentaje Pers</th>
-                    <th>Porcentaje Prof</th>
-                    <th>Porcentaje Tecn</th>
+                
                     <th>Acciones</th>
                   </tr>
                   </tfoot>

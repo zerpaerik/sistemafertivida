@@ -101,23 +101,8 @@
                     <label for="exampleInputEmail1">Precio</label>
                     <input type="float" class="form-control" id="email" name="precio" placeholder="Precio" required>
                   </div>
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Porcentaje Pers</label>
-                    <input type="float" class="form-control" id="name" name="porcentaje" placeholder="Porcentaje Personal" required>
-                  </div>
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Porcentaje Prof</label>
-                    <input type="float" class="form-control" id="email" name="porcentaje1" placeholder="Porcentaje Profesional" required>
-                  </div>
-                 
-                  </div>
-                  <div class="row">
-                  
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Porcentaje Tecn</label>
-                    <input type="float" class="form-control" id="email" name="porcentaje2" placeholder="Porcentaje Tecnólogo" required>
-                  </div>
-                  <div class="col-md-3">
+
+                  <div class="col-md-4">
                     <label for="exampleInputEmail1">Tipo de Servicio</label>
                     <select class="form-control" name="tipo" id="el2">
 						              	<option value="ECOGRAFIA">ECOGRAFIA</option>
@@ -126,11 +111,10 @@
                             <option value="OTROS">OTROS</option>
                         </select>
                   </div>
-                  <div class="col-md-4" id="sesiones">
-                  </div>
-
+          
                  
                   </div>
+               
                   <br>
                   
                   

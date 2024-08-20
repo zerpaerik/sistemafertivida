@@ -26,7 +26,7 @@ class PacientesController extends Controller
 
 
         
-      if(!is_null($request->filtro)){
+     /* if(!is_null($request->filtro)){
         $pacientes = DB::table('pacientes as a')
         ->select('a.id','a.nombres','a.dni','a.apellidos','a.usuario','a.fechanac','a.email','a.sexo','a.telefono','a.empresa','a.estatus')
         ->where('a.estatus', '=', 1)
@@ -39,7 +39,14 @@ class PacientesController extends Controller
           ->select('a.id','a.nombres','a.dni','a.apellidos','a.fechanac','a.email','a.sexo','a.telefono','a.empresa','a.estatus')
           ->where('a.estatus', '=', 999999999)
           ->get(); 
-        }
+        }*/
+
+        $pacientes = DB::table('pacientes as a')
+        ->select('a.id','a.nombres','a.dni','a.apellidos','apellidos1','a.usuario','a.fechanac','a.tipo_doc','a.email','a.sexo','a.telefono','a.empresa','a.estatus')
+        ->where('a.estatus', '=', 1)
+        //->where('a.apellidos','like','%'.$request->filtro.'%')
+        ->orderby('a.apellidos','asc')
+        ->get(); 
 
       
 
@@ -90,9 +97,29 @@ class PacientesController extends Controller
            // Toastr::error('Error Registrando.', 'Paciente- DNI YA REGISTRADO!', ['progressBar' => true]);
             return redirect()->action('PacientesController@create', ['errors' => $validator->errors()]);
           } else {
+
+
+            if($request->tipo_doc == 'DNI' && strlen($request->dni) != 8 ){
+              $request->session()->flash('error', 'El dni debe contener 8 caracteres.');
+              return redirect()->action('PacientesController@create', ['errors' => $validator->errors()]);
+
+
+            } else if($request->tipo_doc == 'CE' || $request->tipo_doc == 'PTP' || $request->tipo_doc == 'PASAPORTE'){
+              if(strlen($request->dni) != 9){
+                $request->session()->flash('error', 'El documento debe contener 9 caracteres.');
+                return redirect()->action('PacientesController@create', ['errors' => $validator->errors()]);
+
+              }
+              
+            } else {
+
+            }
+
               $pacientes = new Pacientes();
               $pacientes->nombres =$request->nombres;
               $pacientes->apellidos =$request->apellidos;
+              $pacientes->apellidos1 =$request->apellidos1;
+              $pacientes->religion =$request->religion;
               $pacientes->tipo_doc =$request->tipo_doc;
               $pacientes->dni =$request->dni;
               $pacientes->telefono =$request->telefono;
@@ -122,6 +149,8 @@ class PacientesController extends Controller
           $pacientes->ocupacion =$request->ocupacion;
           $pacientes->fechanac =$request->fechanac;
           $pacientes->sexo =$request->sexo;
+          $pacientes->apellidos1 =$request->apellidos1;
+          $pacientes->religion =$request->religion;
           $pacientes->usuario =Auth::user()->id;
           $pacientes->save();
 
@@ -156,6 +185,8 @@ class PacientesController extends Controller
               $pacientes->nombres =$request->nombres;
               $pacientes->apellidos =$request->apellidos;
               $pacientes->tipo_doc =$request->tipo_doc;
+              $pacientes->apellidos1 =$request->apellidos1;
+              $pacientes->religion =$request->religion;
               $pacientes->dni =$request->dni;
               $pacientes->telefono =$request->telefono;
               $pacientes->email =$request->email;

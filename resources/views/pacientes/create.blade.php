@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Laboratorio | Admin</title>
+  <title>Admin | Fertivida</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -78,21 +78,27 @@
               <div class="card-header">
                 <h3 class="card-title">Agregar</h3>
               </div>
+              @include('flash-message')
+
               <!-- /.card-header -->
               <!-- form start -->
               <form role="form" method="post" action="pacientes/create">
 					{{ csrf_field() }}                
                     <div class="card-body">
                     <div class="row">
-                    <div class="col-md-4">
-                    <label for="exampleInputEmail1">Apellidos</label>
+                    <div class="col-md-3">
+                    <label for="exampleInputEmail1">Apellidos Paternos</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="apellidos" placeholder="Apellidos">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Apellidos Maternos</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="apellidos1" placeholder="Apellidos">
+                  </div>
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Nombres</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="nombres" placeholder="Nombres">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Tipo de Documento</label>
                     <select class="form-control" name="tipo_doc">
                     <option value="DNI">DNI</option>
@@ -111,42 +117,39 @@
                   </div>
                   <br>
                   <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Número de Documento</label>
                     <input type="text" class="form-control" id="nombre" name="dni" placeholder="Número de Documento">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Direccion</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="direccion" placeholder="Dirección de contacto">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Teléfono</label>
                     <input type="text" class="form-control" id="nombre" name="telefono" placeholder="Telefono de contacto">
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Religiòn</label>
+                    <input type="text" class="form-control" id="nombre" name="religion" placeholder="Religiòn">
                   </div>
                 
                   
                   </div>
                   <br>
                   <div class="row">
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="nombre" name="email" placeholder="Email de contacto">
-                  </div>
-                  <div class="col-md-4">
+              
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Ocupación</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="ocupacion" placeholder="Ocupación">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Fecha de Nac</label>
                     <input type="date" class="form-control" id="nombre" name="fechanac" placeholder="Nacimiento">
                   </div>
-               
-                  </div>
-                                                      
 
-                  <br>
-                  <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Edo Civil</label>
                     <select class="form-control" name="edocivil">
                     <option value="Soltero">Soltero</option>
@@ -155,8 +158,8 @@
                     <option value="Concubinato">Concubinato</option>
                         </select>
                   </div>
-                 
-                  <div class="col-md-4">
+
+                  <div class="col-md-3">
                     <label>Sexo</label>
                     <select class="form-control" name="sexo">
                     <option value="F">Femenino</option>
@@ -164,8 +167,12 @@
                   
                         </select>
                   </div>
-                  
+               
                   </div>
+                                                      
+
+                  <br>
+              
 
                   
 

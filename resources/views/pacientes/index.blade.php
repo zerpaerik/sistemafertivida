@@ -77,20 +77,7 @@
                               </i>
                               Agregar
                           </a>
-                          <form method="get" action="pacientes">					
-                  <label for="exampleInputEmail1">Filtros de Busqueda</label>
-
-                    <div class="row">
-                    <form method="get" action="pacientes">					
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Buscar por Apellidos</label>
-                    <input type="text" class="form-control"  name="filtro">
-                  </div>
-
-                  <div class="col-md-2" style="margin-top: 30px;">
-                  <button type="submit" class="btn btn-primary">Buscar</button>
-                  </div>
-                  </form>
+                     
 
               </div>
               <!-- /.card-header -->
@@ -100,8 +87,8 @@
                   <tr>
                     <th>Nombres</th>
                     <th>Apellidos</th>
-                    <th>DNI</th>
-                    <th>Email</th>
+                    <th>Tipo Doc</th>
+                    <th>Documento</th>
                     <th>Sexo</th>
                     <th>Telefono</th>
                     <th>Acciones</th>
@@ -113,8 +100,8 @@
                   <tr>
                     <td>{{$p->nombres}}</td>
                     <td>{{$p->apellidos}}</td>
+                    <td>{{$p->tipo_doc}}</td>
                     <td>{{$p->dni}}</td>
-                    <td>{{$p->email}}</td>
                     <td>{{$p->sexo}}</td>
                     <td>{{$p->telefono}}</td>
 
@@ -127,7 +114,7 @@
                           <a class="btn btn-info btn-sm" href="pacientes-edit-{{$p->id}}">
                               <i class="fas fa-pencil-alt">
                               </i>
-                              Edit
+                              Editar
                           </a>
                           @endif
                           @if(Auth::user()->rol == 1)

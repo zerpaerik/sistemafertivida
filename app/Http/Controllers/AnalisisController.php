@@ -60,11 +60,9 @@ class AnalisisController extends Controller
         
             $analisis = new Analisis();
             $analisis->nombre =$request->nombre;
-            $analisis->costo =$request->costo;
             $analisis->precio =$request->precio;
             $analisis->material =$request->material;
             $analisis->tiempo =$request->tiempo;
-            $analisis->porcentaje =$request->porcentaje;
             $analisis->usuario =Auth::user()->id;
             $analisis->save();
                
@@ -130,11 +128,9 @@ class AnalisisController extends Controller
 
       $p = Analisis::find($request->id);
       $p->nombre =$request->nombre;
-      $p->costo =$request->costo;
       $p->precio =$request->precio;
       $p->material =$request->material;
       $p->tiempo =$request->tiempo;
-      $p->porcentaje =$request->porcentaje;
       $res = $p->update();
     
     

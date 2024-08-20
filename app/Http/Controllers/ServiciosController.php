@@ -63,10 +63,6 @@ class ServiciosController extends Controller
             $analisis->nombre =$request->nombre;
             $analisis->tipo =$request->tipo;
             $analisis->precio =$request->precio;
-            $analisis->porcentaje1 =$request->porcentaje1;
-            $analisis->porcentaje =$request->porcentaje;
-            $analisis->porcentaje2 =$request->porcentaje2;
-            $analisis->sesiones =$request->sesiones;
             $analisis->usuario =Auth::user()->id;
             $analisis->save();
                
@@ -134,9 +130,7 @@ class ServiciosController extends Controller
       $p->nombre =$request->nombre;
       $p->tipo =$request->tipo;
       $p->precio =$request->precio;
-      $p->porcentaje1 =$request->porcentaje1;
-      $p->porcentaje2 =$request->porcentaje2;
-      $p->porcentaje =$request->porcentaje;
+    
       $res = $p->update();
     
     

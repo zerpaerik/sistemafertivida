@@ -91,8 +91,7 @@
                     <th>Precio</th>
                     <th>Tiempo</th>
                     <th>Material</th>
-                    <th>Costo</th>
-                    <th>Porcentaje</th>
+                   
                     <th>Acciones</th>
                   </tr>
                   </thead>
@@ -104,8 +103,7 @@
                     <td>{{$an->precio}}</td>
                     <td>{{$an->tiempo}}</td>
                     <td>{{$an->material}}</td>
-                    <td>{{$an->costo}}</td>
-                    <td>{{$an->porcentaje}}</td>
+                
                     <td>
                     @if(Auth::user()->rol == 1)
 
@@ -135,8 +133,7 @@
                   <th>Nombre</th>
                     <th>Precio</th>
                     <th>Tiempo</th>
-                    <th>Costo</th>
-                    <th>Porcentaje</th>
+                
                     <th>Acciones</th>
                   </tr>
                   </tfoot>

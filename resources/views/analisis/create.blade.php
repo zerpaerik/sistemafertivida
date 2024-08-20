@@ -93,38 +93,27 @@
               {{ csrf_field() }}                
                     <div class="card-body">
                     <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Nombre</label>
                     <input type="text" class="form-control" id="name" value=""  onkeyup="javascript:this.value=this.value.toUpperCase();" name="nombre" placeholder="Nombre de Analisis">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Precio</label>
                     <input type="float" class="form-control" id="email" name="precio" placeholder="Precio">
                   </div>
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Costo</label>
-                    <input type="float" class="form-control" id="email" name="costo" placeholder="Costo">
-                  </div>
-
-                 
-                  </div>
-                  <div class="row">
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Porcentaje</label>
-                    <input type="float" class="form-control" id="name" name="porcentaje" placeholder="Porcentaje">
-                  </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Tiempo</label>
                     <input type="text" class="form-control" id="email" name="tiempo" placeholder="Tiempo" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Material</label>
                     <input type="text" class="form-control" id="email" name="material" placeholder="Material" onkeyup="javascript:this.value=this.value.toUpperCase();">
                   </div>
 
+
                  
                   </div>
-                  <br>
+             
                   
                   
             

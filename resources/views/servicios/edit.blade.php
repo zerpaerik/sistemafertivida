@@ -93,10 +93,7 @@
                     <label for="exampleInputEmail1">Nombre</label>
                     <input type="text" class="form-control" id="name" name="nombre" value="{{$servicio->nombre}}" placeholder="Nombre de Analisis">
                   </div>
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Descripcion</label>
-                    <input type="text" class="form-control" id="email" name="tipo" value="{{$servicio->tipo}}" placeholder="Descripción">
-                  </div>
+               
                   <div class="col-md-4">
                     <label for="exampleInputEmail1">Precio</label>
                     <input type="float" class="form-control" id="email" name="precio" value="{{$servicio->precio}}" placeholder="Precio">
@@ -105,24 +102,7 @@
 
                   </div>
 
-                  <div class="row">
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Porcentaje Pers</label>
-                    <input type="text" class="form-control" id="name" name="porcentaje" value="{{$servicio->porcentaje}}" placeholder="Nombre de Analisis">
-                  </div>
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Porcentaje Prof</label>
-                    <input type="text" class="form-control" id="email" name="porcentaje1" value="{{$servicio->porcentaje1}}" placeholder="Descripción">
-                  </div>
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Porcentaje Tecn</label>
-                    <input type="float" class="form-control" id="email" name="porcentaje2" value="{{$servicio->porcentaje2}}" placeholder="Precio">
-                  </div>
-
-                  
-                
-                 
-                  </div>
+               
                   <br>
                 
 

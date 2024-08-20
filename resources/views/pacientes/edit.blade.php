@@ -84,16 +84,20 @@
 					{{ csrf_field() }}                
                     <div class="card-body">
                     <div class="row">
-                    <div class="col-md-4">
-                    <label for="exampleInputEmail1">Apellidos</label>
+                    <div class="col-md-3">
+                    <label for="exampleInputEmail1">Apellidos Paternos</label>
                     <input type="text" class="form-control" id="nombre" name="apellidos" value="{{$pacientes->apellidos}}" placeholder="Apellidos">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Apellidos Maternos</label>
+                    <input type="text" class="form-control" id="nombre" name="apellidos1" value="{{$pacientes->apellidos1}}" placeholder="Apellidos">
+                  </div>
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Nombres</label>
                     <input type="text" class="form-control" id="nombre" name="nombres" value="{{$pacientes->nombres}}" placeholder="Nombres">
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Tipo de Documento</label>
                     <select class="form-control" name="tipo_doc">
                     @if($pacientes->tipo_doc == 'DNI')
@@ -162,36 +166,37 @@
                   </div>
                   <br>
                   <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Número de Documento</label>
                     <input type="text" class="form-control" id="nombre" name="dni" value="{{$pacientes->dni}}" placeholder="DNI">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Direccion</label>
                     <input type="text" class="form-control" id="nombre" name="direccion" value="{{$pacientes->direccion}}" placeholder="Dirección de contacto">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Teléfono</label>
                     <input type="text" class="form-control" id="nombre" name="telefono" value="{{$pacientes->telefono}}" placeholder="Telefono de contacto">
+                  </div>
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Religiòn</label>
+                    <input type="email" class="form-control" id="nombre" name="religion" value="{{$pacientes->religion}}" placeholder="Email de contacto">
                   </div>
               
                   
                   </div>
                   <br>
                   <div class="row">
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Email</label>
-                    <input type="email" class="form-control" id="nombre" name="email" value="{{$pacientes->email}}" placeholder="Email de contacto">
-                  </div>
-                  <div class="col-md-4">
+                
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Ocupación</label>
                     <input type="text" class="form-control" id="nombre" name="ocupacion" value="{{$pacientes->ocupacion}}" placeholder="Ocupación">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Fecha de Nac</label>
                     <input type="date" class="form-control" id="nombre" name="fechanac" value="{{$pacientes->fechanac}}" placeholder="Nacimiento">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Edo Civil</label>
                     <select class="form-control" name="edocivil">
                     <option value="Soltero">Soltero</option>

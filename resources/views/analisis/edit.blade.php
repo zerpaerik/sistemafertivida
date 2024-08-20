@@ -89,40 +89,27 @@
               {{ csrf_field() }}                
                     <div class="card-body">
                     <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Nombre</label>
                     <input type="text" class="form-control" id="name" name="nombre" value="{{$analisis->nombre}}" placeholder="Nombre de Analisis">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Precio</label>
                     <input type="text" class="form-control" id="email" name="precio" value="{{$analisis->precio}}" placeholder="Descripción">
                   </div>
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Costo</label>
-                    <input type="float" class="form-control" id="email" name="costo" value="{{$analisis->costo}}" placeholder="Precio">
-                  </div>
-
-
-                  </div>
-
-                  <div class="row">
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Porcentaje</label>
-                    <input type="text" class="form-control" id="name" name="porcentaje" value="{{$analisis->porcentaje}}" placeholder="Nombre de Analisis">
-                  </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Tiempo</label>
                     <input type="text" class="form-control" id="email" name="tiempo" value="{{$analisis->tiempo}}" placeholder="Descripción">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Material</label>
                     <input type="float" class="form-control" id="email" name="material" value="{{$analisis->material}}" placeholder="Precio">
                   </div>
 
-                  
-                
-                 
+
                   </div>
+
+                
                   <br>
                 
 
