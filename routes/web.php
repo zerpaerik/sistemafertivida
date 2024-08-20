@@ -44,6 +44,14 @@ Route::get('centros-delete-{id}', 'CentrosController@delete')->middleware('auth'
 Route::get('centros-edit-{id}', 'CentrosController@edit')->name('centros.edit');
 Route::post('centros/edit', 'CentrosController@update');
 
+
+Route::get('medicamentos', 'MedicamentosController@index')->name('medicamentos.index');
+Route::get('medicamentos-create', 'MedicamentosController@create')->name('medicamentos.create')->middleware('auth');
+Route::post('medicamentos/create', 'MedicamentosController@store')->middleware('auth');
+Route::get('medicamentos-delete-{id}', 'MedicamentosController@delete')->middleware('auth');
+Route::get('medicamentos-edit-{id}', 'MedicamentosController@edit')->name('medicamentos.edit');
+Route::post('medicamentos/edit', 'MedicamentosController@update');
+
 Route::get('profesionales', 'ProfesionalesController@index')->name('profesionales.index');
 Route::get('profesionales-create', 'ProfesionalesController@create')->name('profesionales.create')->middleware('auth');
 Route::post('profesionales/create', 'ProfesionalesController@store')->middleware('auth');
