@@ -103,27 +103,9 @@
                   </div>
                   <br>
                   <div class="row">
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Teléfono</label>
-                    <input type="text" class="form-control" id="nombre" name="telefono" value="{{$prof->telefono}}" placeholder="Dirección de contacto">
-                  </div>
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Centro</label>
-                    <select class="form-control" name="centro"  data-toggle="tooltip" data-placement="bottom">
-                      @foreach($centros as $cent)
-                      @if($prof->centro == $cent->id)
-                      <option value="{{$prof->especialidad}}" selected="selected">
-                        {{$prof->nomcen}} 
-                      </option>
-                      @else
-                      <option value="{{$cent->id}}">
-                        {{$cent->nombre}} 
-                      </option>
-                      @endif
-                      @endforeach
-                    </select>                  </div>
+                
 
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Especialidad</label>
                     <select class="form-control" name="especialidad"  data-toggle="tooltip" data-placement="bottom">
                       @foreach($especialidades as $esp)

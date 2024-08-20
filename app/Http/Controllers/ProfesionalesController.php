@@ -24,9 +24,8 @@ class ProfesionalesController extends Controller
         $prof = User::where('estatus','=',1)->where('tipo','=',2)->get();
 
         $prof = DB::table('users as a')
-        ->select('a.id','a.name','a.lastname','a.telefono','a.nacimiento','a.especialidad','a.estatus','a.tipo','a.centro','a.email','b.nombre as especialidad','c.nombre as centro')
+        ->select('a.id','a.name','a.lastname','a.telefono','a.nacimiento','a.especialidad','a.estatus','a.tipo','a.centro','a.email','b.nombre as especialidad')
         ->join('especialidades as b','b.id','a.especialidad')
-        ->join('centros as c','c.id','a.centro')
         ->where('a.estatus','=',1)
         ->where('a.tipo','=',2)
         ->distinct('a.id')
@@ -97,9 +96,8 @@ class ProfesionalesController extends Controller
     {
 
         $prof = DB::table('users as a')
-        ->select('a.id','a.name','a.lastname','a.telefono','a.cmp','a.nacimiento','a.cargo','a.cuenta','a.especialidad','a.estatus','a.tipo','a.centro','a.email','b.nombre as nomesp','c.nombre as nomcen')
+        ->select('a.id','a.name','a.lastname','a.telefono','a.cmp','a.nacimiento','a.cargo','a.cuenta','a.especialidad','a.estatus','a.tipo','a.centro','a.email','b.nombre as nomesp')
         ->join('especialidades as b','b.id','a.especialidad')
-        ->join('centros as c','c.id','a.centro')
         ->where('a.estatus','=',1)
         ->where('a.tipo','=',2)
         ->where('a.id','=',$id)
@@ -119,17 +117,12 @@ class ProfesionalesController extends Controller
     public function update(Request $request, User $personal)
     {
 
-
-
-
-    
       $personal = User::find($request->id);
       $personal->name =$request->nombres;
       $personal->lastname =$request->apellidos;
       $personal->cmp =$request->cmp;
       $personal->telefono =$request->telefono;
       $personal->nacimiento =$request->nacimiento;
-      $personal->centro =$request->centro;
       $personal->especialidad =$request->especialidad;
       $res = $personal->update();
 

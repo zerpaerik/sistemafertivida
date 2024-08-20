@@ -111,11 +111,11 @@
                 
                   </div>
                   <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Teléfono</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="telefono" placeholder="Teléfono">
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Especialidad</label>
                     <select class="form-control" name="especialidad">
                     @foreach($especialidades as $esp)
@@ -126,20 +126,6 @@
                         </div>
                  
 
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Centro</label>
-                    <select class="form-control" name="centro">
-                    @foreach($centros as $c)
-                    <option value="{{$c->id}}">{{$c->nombre}}</option>
-                    @endforeach
-                  
-                        </select>                    
-                        </div>
-
-                      
-                  
-                 
-                  </div>
                  
 
 
@@ -157,7 +143,8 @@
                   
 
         
-                 
+                  </div>
+
                 </div>
                 <!-- /.card-body -->
 

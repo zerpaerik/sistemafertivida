@@ -87,7 +87,6 @@
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Nacimiento</th>
-                    <th>Centro</th>
                     <th>Especialidad</th>
                     <th>Telefono</th>
                     <th>Acciones</th>
@@ -105,7 +104,6 @@
                     @else
                     <td></td>
                     @endif
-                    <td>{{$p->centro}}</td>
                     <td>{{$p->especialidad}}</td>
                     <td>{{$p->telefono}}</td>
                     <td><a class="btn btn-primary btn-sm" href="#">
@@ -137,7 +135,6 @@
                     <th>Nombres</th>
                     <th>Apellidos</th>
                     <th>Nacimiento</th>
-                    <th>Centro</th>
                     <th>Especialidad</th>
                     <th>Telefono</th>
                     <th>Acciones</th>
