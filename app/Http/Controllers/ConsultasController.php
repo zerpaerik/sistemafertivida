@@ -43,14 +43,14 @@ class ConsultasController extends Controller
         $f1 = $request->inicio;
         $f2 = $request->fin;
 
+     
         $consultas = DB::table('consultas as a')
-        ->select('a.id','a.id_paciente','a.id_atencion','a.usuario','a.historia','a.id_especialista','a.tipo','a.sede','a.created_at','a.estatus','a.monto','b.nombres','b.apellidos','c.name as nameo','c.lastname as lasto','e.name as namee','e.lastname as laste','at.created_at as fecha')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.usuario')
-        ->join('users as e','e.id','a.id_especialista')
-        ->join('atenciones as at','at.id','a.id_atencion')
-        ->where('a.estatus', '=', 1)
-        ->where('a.sede', '=', $request->session()->get('sede'))
+        ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','c.nombres as nombresh','c.apellidos as apellidosh', 'u.name','u.lastname','s.nombre as servicio')
+        ->join('pacientes as b','b.id','a.id_paciente_mujer')
+        ->join('pacientes as c','c.id','a.id_paciente_hombre')
+        ->join('users as u','u.id','a.id_especialista')
+        ->join('servicios as s','s.id','a.tipo')
+        ->where('a.estatus', '=', 0)
         ->whereBetween('a.created_at', [$f1, $f2])
         ->orderBy('a.id','DESC')
         ->get(); 
@@ -61,25 +61,22 @@ class ConsultasController extends Controller
         $f2 = date('Y-m-d');
 
         $consultas = DB::table('consultas as a')
-        ->select('a.id','a.id_paciente','a.id_atencion','a.usuario','a.historia','a.id_especialista','a.tipo','a.sede','a.created_at','a.estatus','a.monto','b.nombres','b.apellidos','c.name as nameo','c.lastname as lasto','e.name as namee','e.lastname as laste','at.created_at as fecha')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.usuario')
-        ->join('users as e','e.id','a.id_especialista')
-        ->join('atenciones as at','at.id','a.id_atencion')
-        ->where('a.estatus', '=', 1)
-        ->where('a.sede', '=', $request->session()->get('sede'))
+        ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','c.nombres as nombresh','c.apellidos as apellidosh', 'u.name','u.lastname','s.nombre as servicio')
+        ->join('pacientes as b','b.id','a.id_paciente_mujer')
+        ->join('pacientes as c','c.id','a.id_paciente_hombre')
+        ->join('users as u','u.id','a.id_especialista')
+        ->join('servicios as s','s.id','a.tipo')
+        ->where('a.estatus', '=', 0)
         ->where('a.created_at', '=', date('Y-m-d'))
         ->orderBy('a.id','DESC')
         ->get(); 
 
       }
 
-        $ant = AntecedentesObstetricos::all();
-
-        $histb = HistoriaBase::all();
+      
 
 
-        return view('consultas.index', compact('consultas','f1','f2','ant','histb'));
+        return view('consultas.index', compact('consultas','f1','f2'));
         //
     }
 
@@ -92,20 +89,19 @@ class ConsultasController extends Controller
      */
     public function create(Request $request)
     {
-        $ecografias = Servicios::where('estatus','=',1)->where('tipo','=','ECOGRAFIA')->get();
-        $rayos = Servicios::where('estatus','=',1)->where('tipo','=','RAYOS')->get();
-        $otros = Servicios::where('estatus','=',1)->where('tipo','=','OTROS')->get();
-        $analisis = Analisis::where('estatus','=',1)->get();
+        $servicios = Servicios::where('estatus','=',1)->get();
+        $pacientesm = Pacientes::where('sexo','=','F')->orderby('apellidos','asc')->get();
+        $pacientesh = Pacientes::where('sexo','=','M')->orderby('apellidos','asc')->get();
+        $prof = DB::table('users as a')
+        ->select('a.id','a.name','a.lastname','a.telefono','a.nacimiento','a.especialidad','a.estatus','a.tipo','a.centro','a.email','b.nombre as especialidad')
+        ->join('especialidades as b','b.id','a.especialidad')
+        ->where('a.estatus','=',1)
+        ->where('a.tipo','=',2)
+        ->distinct('a.id')
+        ->get(); 
+     
 
-        if(!is_null($request->pac)){
-            $paciente = Pacientes::where('dni','=',$request->pac)->first();
-            $res = 'SI';
-            } else {
-            $paciente = Pacientes::where('dni','=','LABORATORIO')->first();
-            $res = 'NO';
-            }
-
-        return view('atenciones.create', compact('ecografias','rayos','otros','analisis','paciente','res'));
+        return view('consultas.create', compact('servicios','pacientesm','pacientesh','prof'));
     }
 
     public function historia_crear($consulta)
@@ -132,6 +128,22 @@ class ConsultasController extends Controller
 
 
         return view('consultas.historia',compact('cie','cie1','consulta','hist','historias','paciente'));
+    }
+
+    public function admision($consulta)
+
+    {
+
+      $consulta = DB::table('consultas as a')
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','c.nombres as nombresh','c.apellidos as apellidosh', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->join('pacientes as b','b.id','a.id_paciente_mujer')
+      ->join('pacientes as c','c.id','a.id_paciente_hombre')
+      ->join('users as u','u.id','a.id_especialista')
+      ->join('servicios as s','s.id','a.tipo')
+      ->where('a.id', '=', $consulta)
+      ->first(); 
+
+      return view('consultas.admision',compact('consulta'));
     }
 
     public function historiap_crear($consulta)
@@ -648,6 +660,23 @@ class ConsultasController extends Controller
       ->with('success','Creado Exitosamente!');
 
     }
+
+    public function store(Request $request){
+
+
+      $con = new Consultas();
+      $con->tipo =  $request->servicio;
+      $con->id_especialista = $request->especialista;
+      $con->id_paciente_mujer = $request->pacientem;
+      $con->id_paciente_hombre = $request->pacienteh;
+      $con->save();
+
+
+      return redirect()->action('ConsultasController@index')
+      ->with('success','Creado Exitosamente!');
+
+    }
+
 
   
 

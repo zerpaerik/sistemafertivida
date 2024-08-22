@@ -94,15 +94,18 @@
                     <label for="exampleInputEmail1">Apellidos</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="apellidos" placeholder="Apellidos">
                   </div>
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">CMP</label>
-                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="cmp" placeholder="CMP">
-                  </div>
 
                   <div class="col-md-3">
-                    <label for="exampleInputEmail1">Nacimiento</label>
-                    <input type="date" class="form-control" id="nombre" name="nacimiento" placeholder="Telefono de contacto">
+                    <label for="exampleInputEmail1">Teléfono</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="telefono" placeholder="Teléfono">
                   </div>
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Especialidad</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="especialidad" placeholder="Especialidad">
+                
+                        </div>
+                 
+                  
 
                  
                   </div>
@@ -111,20 +114,7 @@
                 
                   </div>
                   <div class="row">
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Teléfono</label>
-                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="telefono" placeholder="Teléfono">
-                  </div>
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Especialidad</label>
-                    <select class="form-control" name="especialidad">
-                    @foreach($especialidades as $esp)
-                    <option value="{{$esp->id}}">{{$esp->nombre}}</option>
-                    @endforeach
-                    
-                        </select>                  
-                        </div>
-                 
+                  
 
                  
 

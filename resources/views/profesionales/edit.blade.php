@@ -92,35 +92,26 @@
                     <label for="exampleInputEmail1">Apellidos</label>
                     <input type="text" class="form-control" id="nombre" name="apellidos" value="{{$prof->lastname}}" placeholder="Apellidos">
                   </div>
+
+                  
                   <div class="col-md-3">
-                    <label for="exampleInputEmail1">CMP</label>
-                    <input type="text" class="form-control" id="nombre" name="cmp" value="{{$prof->cmp}}" placeholder="Telefono de contacto">
+                    <label for="exampleInputEmail1">Telefono</label>
+                    <input type="text" class="form-control" id="nombre" name="telefono" value="{{$prof->telefono}}" placeholder="Telefono de contacto">
+
                   </div>
+
                   <div class="col-md-3">
-                    <label for="exampleInputEmail1">Nacimiento</label>
-                    <input type="date" class="form-control" id="nombre" name="nacimiento" value="{{$prof->nacimiento}}" placeholder="Telefono de contacto">
+                    <label for="exampleInputEmail1">Especialidad</label>
+                    <input type="text" class="form-control" id="nombre" name="especialidad" value="{{$prof->especialidad}}" placeholder="Telefono de contacto">
+
                   </div>
+                
                   </div>
                   <br>
                   <div class="row">
                 
 
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Especialidad</label>
-                    <select class="form-control" name="especialidad"  data-toggle="tooltip" data-placement="bottom">
-                      @foreach($especialidades as $esp)
-                      @if($prof->especialidad == $esp->id)
-                      <option value="{{$prof->especialidad}}" selected="selected">
-                        {{$prof->nomesp}} 
-                      </option>
-                      @else
-                      <option value="{{$esp->id}}">
-                        {{$esp->nombre}} 
-                      </option>
-                      @endif
-                      @endforeach
-                    </select>
-                  </div>
+                  
                   
                 
                   

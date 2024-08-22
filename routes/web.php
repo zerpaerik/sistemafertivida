@@ -350,6 +350,7 @@ Route::get('comisionese-reversar-{id}', 'VisitadorController@reversar');
 
 Route::get('consultas', 'ConsultasController@index')->name('consultas.index');
 Route::get('consultas-create', 'ConsultasController@create')->name('consultas.create')->middleware('auth');
+Route::get('consultas-admision-{id}', 'ConsultasController@admision')->name('consultas.admision')->middleware('auth');
 Route::post('consultas/create', 'ConsultasController@store')->middleware('auth');
 Route::get('consultas-delete-{id}', 'ConsultasController@delete')->middleware('auth');
 Route::get('cobrconsultasar-edit-{id}', 'ConsultasController@edit')->name('ingresos.edit');

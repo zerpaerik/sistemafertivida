@@ -76,6 +76,11 @@
       <div class="container-fluid">
       <div class="card">
               <div class="card-header">
+              <a class="btn btn-primary btn-sm" href="{{route('consultas.create')}}">
+                              <i class="fas fa-folder">
+                              </i>
+                              Agregar
+                          </a>
               <form method="get" action="consultas">					
                   <label for="exampleInputEmail1">Filtros de Busqueda</label>
 
@@ -106,10 +111,10 @@
                   <tr>
                     <th>Id</th>
                     <th>Fecha</th>
-                    <th>Paciente</th>
+                    <th>Paciente Mujer</th>
+                    <th>Paciente Hombre</th>
                     <th>Especialista</th>
                     <th>Tipo</th>
-                    <th>RP</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
@@ -118,114 +123,19 @@
                   @foreach($consultas as $an)
                   <tr>
                     <td>{{$an->id}}</td>
-                    <td>{{date('d-M-y H:i', strtotime($an->fecha))}}</td>
+                    <td>{{date('d-M-y H:i', strtotime($an->created_at))}}</td>
                     <td>{{$an->nombres}} {{$an->apellidos}}</td>
-                    <td>{{$an->namee}} {{$an->laste}}</td>
-                    @if($an->tipo == 1)
-                    <td><span class="badge bg-success">CONSULTA</span></td>
-                    @elseif($an->tipo == 3)
-                    <td><span class="badge bg-success">PEDIATRICA</span></td> 
-                    @elseif($an->tipo == 4)
-                    <td><span class="badge bg-success">MEDICINA GENERAL</span></td>
-                    @else
-                    <td><span class="badge bg-success">CONTROL</span></td>
-                    @endif
-                    <td>{{$an->nameo}} {{$an->lasto}}</td>
+                    <td>{{$an->nombresh}} {{$an->apellidosh}}</td>
+                    <td>{{$an->name}} {{$an->lastname}}</td>
+                    <td><span class="badge bg-success">{{$an->servicio}}</span></td>
 
                     <td>
-                    @if(Auth::user()->rol == 7)
-
-                    @if($an->historia == 0)
-                    <p>No ha sido atendido</p>
-
-                    @else
-                    <p>Ya fue atendido</p>
-
-                    @endif
-
-
-                    @endif
-
-                    @if(Auth::user()->rol != 7)
-
-                    <a class="btn btn-primary btn-sm" id="{{$an->id_atencion}}" onclick="viewh(this)">
-                                    <i class="fas fa-eye">
-                                    </i>
-                                    Anotaciòn
-                                </a>
-                    @if($an->historia == 0)
-                    @if($an->tipo == 1)
-
-                    <a class="btn btn-danger btn-sm" href="historia-crear-{{$an->id}}">
+                    <a class="btn btn-info btn-sm" href="consultas-admision-{{$an->id}}">
                               <i class="fas fa-pencil-alt">
                               </i>
-                              Historia
-                          </a>
-                      @foreach($histb as $historialbase)
-                      @if($historialbase->id_paciente == $an->id_paciente && $historialbase->estatus == 0)
-                      <a class="btn btn-primary btn-sm" href="historia-ant-reversar-{{$historialbase->id}}" onclick="return confirm('¿Desea resetear este registro?')">
-                                    <i class="fas fa-eye">
-                                    </i>
-                                    Reset HistorialB
-                                </a>
-                      @else
-                      @endif
-                    @endforeach
-
-                    @elseif($an->tipo == 3)
-                    <a class="btn btn-danger btn-sm" href="historiap-crear-{{$an->id}}">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              HistoriaP
-                          </a>
-                      @foreach($histb as $historialbase)
-                      @if($historialbase->id_paciente == $an->id_paciente && $historialbase->estatus == 0)
-                      <a class="btn btn-primary btn-sm" href="historia-ant-reversar-{{$historialbase->id}}" onclick="return confirm('¿Desea resetear este registro?')">
-                                    <i class="fas fa-eye">
-                                    </i>
-                                    Reset HistorialB
-                                </a>
-                      @else
-                      @endif
-                      @endforeach
-
-                    @elseif($an->tipo == 4)
-                    <a class="btn btn-danger btn-sm" href="historiam-crear-{{$an->id}}">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              HistoriaM
-                          </a>
-                      @foreach($histb as $historialbase)
-                      @if($historialbase->id_paciente == $an->id_paciente && $historialbase->estatus == 0)
-                      <a class="btn btn-primary btn-sm" href="historia-ant-reversar-{{$historialbase->id}}" onclick="return confirm('¿Desea resetear este registro?')">
-                                    <i class="fas fa-eye">
-                                    </i>
-                                    Reset HistorialB
-                                </a>
-                      @else
-                      @endif
-                      @endforeach
-
-                    @else
-                    <a class="btn btn-danger btn-sm" href="control-crear-{{$an->id}}">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Control
-                    </a>
-                    @foreach($ant as $antecedentes)
-                      @if($antecedentes->id_paciente == $an->id_paciente && $antecedentes->estatus == 0)
-                      <a class="btn btn-primary btn-sm" href="controles-ant-reversar-{{$antecedentes->id}}" onclick="return confirm('¿Desea resetear este registro?')">
-                                    <i class="fas fa-eye">
-                                    </i>
-                                    Reset Antecedentes
-                                </a>
-                      @else
-                      @endif
-                    @endforeach
-                    @endif
-
-                    @endif
-                    @endif
+                              Admisión
+                        </a>
+                
 
                     </td>
                   </tr>
@@ -234,12 +144,12 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                  <th>Id</th>
+                    <th>Id</th>
                     <th>Fecha</th>
-                    <th>Paciente</th>
+                    <th>Paciente Mujer</th>
+                    <th>Paciente Hombre</th>
                     <th>Especialista</th>
                     <th>Tipo</th>
-                    <th>RP</th>
                     <th>Acciones</th>
                   </tr>
                   </tfoot>
