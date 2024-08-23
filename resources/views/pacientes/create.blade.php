@@ -87,11 +87,11 @@
                     <div class="card-body">
                     <div class="row">
                     <div class="col-md-3">
-                    <label for="exampleInputEmail1">Apellidos Paternos</label>
+                    <label for="exampleInputEmail1">Apellidos Paterno</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="apellidos" placeholder="Apellidos">
                   </div>
                   <div class="col-md-3">
-                    <label for="exampleInputEmail1">Apellidos Maternos</label>
+                    <label for="exampleInputEmail1">Apellidos Materno</label>
                     <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="apellidos1" placeholder="Apellidos">
                   </div>
                   <div class="col-md-3">
@@ -121,10 +121,7 @@
                     <label for="exampleInputEmail1">Número de Documento</label>
                     <input type="text" class="form-control" id="nombre" name="dni" placeholder="Número de Documento">
                   </div>
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Direccion</label>
-                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="direccion" placeholder="Dirección de contacto">
-                  </div>
+               
                   <div class="col-md-3">
                     <label for="exampleInputEmail1">Teléfono</label>
                     <input type="text" class="form-control" id="nombre" name="telefono" placeholder="Telefono de contacto">
@@ -134,16 +131,17 @@
                     <label for="exampleInputEmail1">Religiòn</label>
                     <input type="text" class="form-control" id="nombre" name="religion" placeholder="Religiòn">
                   </div>
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Ocupación</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="ocupacion" placeholder="Ocupación">
+                  </div>
                 
                   
                   </div>
                   <br>
                   <div class="row">
               
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Ocupación</label>
-                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="ocupacion" placeholder="Ocupación">
-                  </div>
+               
                   <div class="col-md-3">
                     <label for="exampleInputEmail1">Fecha de Nac</label>
                     <input type="date" class="form-control" id="nombre" name="fechanac" placeholder="Nacimiento">
@@ -164,11 +162,24 @@
                     <select class="form-control" name="sexo">
                     <option value="F">Femenino</option>
                     <option value="M">Masculino</option>
+                    <option value="L">LGBTI</option>
+                    <option value="0">Otro</option>
+
+
                   
                         </select>
                   </div>
                
                   </div>
+
+                  <div class="row">
+                  <div class="col-md-12">
+                    <label for="exampleInputEmail1">Direccion</label>
+                    <input type="text" onkeyup="javascript:this.value=this.value.toUpperCase();" class="form-control" id="nombre" name="direccion" placeholder="Dirección de contacto">
+                  </div>
+                  </div>
+
+                
                                                       
 
                   <br>

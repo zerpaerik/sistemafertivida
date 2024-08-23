@@ -19,7 +19,7 @@
                   </div>
                     <div class="col-md-4">
                     <label for="exampleInputEmail1">Apellidos</label>
-                    <input type="text" class="form-control" disabled  name="cant" value="{{$pacientes->apellidos}}">
+                    <input type="text" class="form-control" disabled  name="cant" value="{{$pacientes->apellidos}} {{$pacientes->apellidos1}}">
                   </div>
                   <div class="col-md-4">
                     <label for="exampleInputEmail1">TipoDoc</label>

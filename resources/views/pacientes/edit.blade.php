@@ -85,11 +85,11 @@
                     <div class="card-body">
                     <div class="row">
                     <div class="col-md-3">
-                    <label for="exampleInputEmail1">Apellidos Paternos</label>
+                    <label for="exampleInputEmail1">Apellidos Paterno</label>
                     <input type="text" class="form-control" id="nombre" name="apellidos" value="{{$pacientes->apellidos}}" placeholder="Apellidos">
                   </div>
                   <div class="col-md-3">
-                    <label for="exampleInputEmail1">Apellidos Maternos</label>
+                    <label for="exampleInputEmail1">Apellidos Materno</label>
                     <input type="text" class="form-control" id="nombre" name="apellidos1" value="{{$pacientes->apellidos1}}" placeholder="Apellidos">
                   </div>
                   <div class="col-md-3">

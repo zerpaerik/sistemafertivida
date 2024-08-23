@@ -99,7 +99,7 @@
                   @foreach($pacientes as $p)
                   <tr>
                     <td>{{$p->nombres}}</td>
-                    <td>{{$p->apellidos}}</td>
+                    <td>{{$p->apellidos}} {{$p->apellidos1}}</td>
                     <td>{{$p->tipo_doc}}</td>
                     <td>{{$p->dni}}</td>
                     <td>{{$p->sexo}}</td>

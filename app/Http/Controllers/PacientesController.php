@@ -231,7 +231,7 @@ class PacientesController extends Controller
     {
 
       $pacientes = DB::table('pacientes as a')
-      ->select('a.id','a.nombres','a.dni','a.apellidos','a.ocupacion','a.tipo_doc','a.usuario','a.fechanac','a.email','a.sexo','a.telefono','a.empresa','a.estatus','u.name','u.lastname')
+      ->select('a.id','a.nombres','a.dni','a.apellidos','a.apellidos1','a.ocupacion','a.tipo_doc','a.usuario','a.fechanac','a.email','a.sexo','a.telefono','a.empresa','a.estatus','u.name','u.lastname')
       ->join('users as u', 'u.id', 'a.usuario')
       ->where('a.id', '=', $id)
       ->first(); 
