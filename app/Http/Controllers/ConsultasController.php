@@ -93,11 +93,9 @@ class ConsultasController extends Controller
         $pacientesm = Pacientes::where('sexo','=','F')->orderby('apellidos','asc')->get();
         $pacientesh = Pacientes::where('sexo','=','M')->orderby('apellidos','asc')->get();
         $prof = DB::table('users as a')
-        ->select('a.id','a.name','a.lastname','a.telefono','a.nacimiento','a.especialidad','a.estatus','a.tipo','a.centro','a.email','b.nombre as especialidad')
-        ->join('especialidades as b','b.id','a.especialidad')
+        ->select('a.id','a.name','a.lastname','a.telefono','a.nacimiento','a.especialidad','a.estatus','a.tipo','a.centro','a.email')
         ->where('a.estatus','=',1)
         ->where('a.tipo','=',2)
-        ->distinct('a.id')
         ->get(); 
      
 
