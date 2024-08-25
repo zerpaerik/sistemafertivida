@@ -67,7 +67,7 @@ class ConsultasController extends Controller
         ->join('users as u','u.id','a.id_especialista')
         ->join('servicios as s','s.id','a.tipo')
         ->where('a.estatus', '=', 0)
-        ->where('a.created_at', '=', date('Y-m-d'))
+        ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f1))])
         ->orderBy('a.id','DESC')
         ->get(); 
 
@@ -133,7 +133,7 @@ class ConsultasController extends Controller
     {
 
       $consulta = DB::table('consultas as a')
-      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','c.nombres as nombresh','c.apellidos as apellidosh', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
       ->join('pacientes as b','b.id','a.id_paciente_mujer')
       ->join('pacientes as c','c.id','a.id_paciente_hombre')
       ->join('users as u','u.id','a.id_especialista')
@@ -141,7 +141,12 @@ class ConsultasController extends Controller
       ->where('a.id', '=', $consulta)
       ->first(); 
 
-      return view('consultas.admision',compact('consulta'));
+      $edad = Carbon::parse($consulta->fechanac)->age;
+      $edad1 = Carbon::parse($consulta->fechanach)->age;
+
+
+
+      return view('consultas.admision',compact('consulta','edad','edad1'));
     }
 
     public function historiap_crear($consulta)

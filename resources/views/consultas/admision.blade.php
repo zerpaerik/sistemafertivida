@@ -70,6 +70,13 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+
+      
+
+
+
+
+
         <div class="row">
           <!-- left column -->
           <div class="col-md-12">
@@ -101,257 +108,430 @@
                    </div>
 
                    <div class="row">
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Nombres</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->nombres}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Apellidos</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->apellidos}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Nombres</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->nombresh}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Apellidos</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->apellidosh}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                   </div>
 
-                   
-                   <div class="row">
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Documento</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->dni}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Fecha Nacimiento</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->fechanac}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Documento</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->dnih}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Fecha Nacimiento</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->fechanach}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                   </div>
+                    <div class="col-md-6">
+                            <!-- USERS LIST -->
+                            <div class="card">
+                                <div class="card-header">
+                                <h3 class="card-title">Datos personales Mujer</h3>
 
-                   <div class="row">
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Teléfono</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->telefono}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Ocupación</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->ocupacion}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Teléfono</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->telefonoh}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Ocupación</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->ocupacionh}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                   </div>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                    </button>
+                                    
+                                </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                    <div class="row" style="margin-left:5px;margin-right:5px;">
+                                        
+                                            <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Nombres</label>
+                                                <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->nombres}}" placeholder="Persona Contacto" disabled>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                            <label for="exampleInputEmail1">Apellidos</label>
+                                                <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->apellidos}} {{$consulta->apellidos1}}" placeholder="Persona Contacto" disabled>
+                                            </div>
+                                    </div>
 
-                   <div class="row">
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">Direccion</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->direccion}}" placeholder="Persona Contacto" disabled>
+                                    <div class="row" style="margin-left:5px;margin-right:5px;">
+                                        
+                                        <div class="col-md-6">
+                                        <label for="exampleInputEmail1">Documento</label>
+                                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->dni}}" placeholder="Persona Contacto" disabled>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                        <label for="exampleInputEmail1">Edad</label>
+                                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$edad}}" placeholder="Persona Contacto" disabled>
+                                        </div>
+                                    </div>
+
+                                    
+                                    <div class="row" style="margin-left:5px;margin-right:5px;">
+                                        
+                                        <div class="col-md-6">
+                                        <label for="exampleInputEmail1">Telèfono</label>
+                                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->telefono}}" placeholder="Persona Contacto" disabled>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                        <label for="exampleInputEmail1">Ocupación</label>
+                                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->ocupacion}}" placeholder="Persona Contacto" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-left:5px;margin-right:5px;">
+                                        
+                                        <div class="col-md-12">
+                                        <label for="exampleInputEmail1">Dirección</label>
+                                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->direccion}}" placeholder="Persona Contacto" disabled>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                
+                                <!-- /.users-list -->
+                                </div>
+                            
+                                <!-- /.card-body -->
+                                <div class="card-footer text-center">
+                                </div>
+                                <!-- /.card-footer -->
+                            </div>
+                            <!--/.card -->
+                            </div>
+                            
+
+                            <div class="col-md-6">
+                            <!-- USERS LIST -->
+                            <div class="card">
+                                <div class="card-header">
+                                <h3 class="card-title">Datos personales Hombre</h3>
+
+                                <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                    </button>
+                                
+                                </div>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                <div class="row" style="margin-left:5px;margin-right:5px;">
+                                
+                                    <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Nombres</label>
+                                        <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->nombresh}}" placeholder="Persona Contacto" disabled>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Apellidos</label>
+                                        <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->apellidosh}} {{$consulta->apellidosh1}}" placeholder="Persona Contacto" disabled>
+                                    </div>
+                                </div>
+
+                                <div class="row" style="margin-left:5px;margin-right:5px;">
+                                
+                                <div class="col-md-6">
+                                <label for="exampleInputEmail1">Documento</label>
+                                    <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->dnih}}" placeholder="Persona Contacto" disabled>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                <label for="exampleInputEmail1">Edad</label>
+                                    <input type="text" class="form-control" id="nombre" name="responsable" value="{{$edad1}}" placeholder="Persona Contacto" disabled>
+                                </div>
+                            </div>
+
+                            
+                            <div class="row" style="margin-left:5px;margin-right:5px;">
+                                
+                                <div class="col-md-6">
+                                <label for="exampleInputEmail1">Telèfono</label>
+                                    <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->telefonoh}}" placeholder="Persona Contacto" disabled>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                <label for="exampleInputEmail1">Ocupación</label>
+                                    <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->ocupacionh}}" placeholder="Persona Contacto" disabled>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-left:5px;margin-right:5px;">
+                                
+                                <div class="col-md-12">
+                                <label for="exampleInputEmail1">Dirección</label>
+                                    <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->direccionh}}" placeholder="Persona Contacto" disabled>
+                                </div>
+                                
+                                
+                            </div>
+                                
+                                <!-- /.users-list -->
+                                </div>
+                                <!-- /.card-body -->
+                                <div class="card-footer text-center">
+                                </div>
+                                <!-- /.card-footer -->
+                            </div>
+                            <!--/.card -->
+                            </div>
+                            <!-- /.col -->
                         </div>
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">Direccion</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->direccionh}}" placeholder="Persona Contacto" disabled>
-                        </div>
-                    
-                   </div>
+
+                                    
                    <br>
-
                    <div class="row">
-                        <div class="col-md-1">
+
+<div class="col-md-6">
+        <!-- USERS LIST -->
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">Ficha tècnica mujer</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+                </button>
+                
+            </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+                <div class="col-md-2">
                         <label for="exampleInputEmail1">Peso</label>
                             <input type="text" class="form-control" id="peso" name="responsable"  placeholder="" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">Talla</label>
                             <input type="text" class="form-control" id="talla" name="responsable"   placeholder="" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">IMC</label>
                             <input type="text" class="form-control" id="nombre" name="imc" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">PA</label>
                             <input type="text" class="form-control" id="nombre" name="pa" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">T</label>
                             <input type="text" class="form-control" id="nombre" name="t" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">G</label>
                             <input type="text" class="form-control" id="nombre" name="g" >
                         </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Peso</label>
-                            <input type="text" class="form-control" id="nombre" name="pesoh" >
-                        </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Talla</label>
-                            <input type="text" class="form-control" id="nombre" name="tallah" >
-                        </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">IMC</label>
-                            <input type="text" class="form-control" id="nombre" name="imch" >
-                        </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Hijos</label>
-                            <input type="text" class="form-control" id="nombre" name="hijos" >
-                        </div>
-                        <div class="col-md-2">
-                        <label for="exampleInputEmail1">Alergias</label>
-                            <input type="text" class="form-control" id="nombre" name="alerg" >
-                        </div>
-                       
-                   </div>
-                   <br>
+                    
+                        
+                </div>
 
+                <br>
 
-                   <div class="row">
-                        <div class="col-md-1">
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+                          <div class="col-md-2">
                         <label for="exampleInputEmail1">G1</label>
                             <input type="text" class="form-control" id="g1" name="responsable"  placeholder="" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">G2</label>
                             <input type="text" class="form-control" id="g2" name="responsable"   placeholder="" >
                         </div>
-                        <div class="col-md-1">
+
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">G3</label>
                             <input type="text" class="form-control" id="nombre" name="g3" >
                         </div>
-                        <div class="col-md-1">
+
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">G4</label>
                             <input type="text" class="form-control" id="nombre" name="g4" >
                         </div>
-                        <div class="col-md-1">
+
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">G5</label>
                             <input type="text" class="form-control" id="nombre" name="g5" >
                         </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">G</label>
-                            <input type="text" class="form-control" id="nombre" name="responsable" >
+                    
+                </div>
+
+                <br>
+
+
+                
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+                       <div class="col-md-3">
+                        <label for="exampleInputEmail1">FUR</label>
+                            <input type="date" class="form-control" id="g1" name="fur"  placeholder="" >
+                        </div>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1">RC</label>
+                            <input type="text" class="form-control" id="g2" name="rc"   placeholder="" >
+                        </div>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1">Menarquia</label>
+                            <input type="text" class="form-control" id="menarquia" name="g3" >
+                        </div>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1">Dismenorrea</label>
+                            <input type="text" class="form-control" id="dismenorrea" name="g4" >
                         </div>
                         <div class="col-md-3">
+                        <label for="exampleInputEmail1">Frec.Sexual</label>
+                            <input type="text" class="form-control" id="sexo" name="g5" >
+                        </div>
+                    
+                   
+                </div>
+                <br>
+
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+                <div class="col-md-2">
+                        <label for="exampleInputEmail1">Fuma</label>
+                            <input type="text" class="form-control" id="g1" name="fumam"  placeholder="" >
+                        </div>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1">Alcohol</label>
+                            <input type="text" class="form-control" id="g2" name="alcoholm"   placeholder="" >
+                        </div>
+                        <div class="col-md-8">
+                        <label for="exampleInputEmail1">Cirugias previas</label>
+                            <input type="text" class="form-control" id="menarquia" name="cirm" >
+                        </div>
+                    
+                   
+                    
+                    
+                </div>
+                <br>
+
+
+
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+
+                <div class="col-md-4">
+                        <label for="exampleInputEmail1">Enfermedades previas</label>
+                            <input type="text" class="form-control" id="g1" name="enfm"  placeholder="" >
+                        </div>
+                        <div class="col-md-4">
+                        <label for="exampleInputEmail1">Uso de medicamentos</label>
+                            <input type="text" class="form-control" id="g2" name="medm"   placeholder="" >
+                        </div>
+                        <div class="col-md-4">
+                        <label for="exampleInputEmail1">Alergias</label>
+                            <input type="text" class="form-control" id="alergm" name="alergm" >
+                        </div>
+
+                </div>
+                <br>
+
+
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+
+                <div class="col-md-2">
+                        <label for="exampleInputEmail1">Num.Par.Sex</label>
+                            <input type="text" class="form-control" id="g1" name="parejas"  placeholder="" >
+                        </div>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1">Anticoncept.</label>
+                            <input type="text" class="form-control" id="g2" name="anticonceptivos"   placeholder="" >
+                        </div>
+                        <div class="col-md-8">
+                        <label for="exampleInputEmail1">Tratamientos previos de fertilidad</label>
+                            <input type="text" class="form-control" id="alergm" name="alergm" >
+                        </div>
+
+                  
+
+                </div>
+            
+            <!-- /.users-list -->
+            </div>
+        
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!--/.card -->
+        </div>
+        
+
+        <div class="col-md-6">
+        <!-- USERS LIST -->
+        <div class="card">
+            <div class="card-header">
+            <h3 class="card-title">Datos personales Hombre</h3>
+
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+                </button>
+            
+            </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-2">
+                        <label for="exampleInputEmail1">Peso</label>
+                            <input type="text" class="form-control" id="nombre" name="pesoh" >
+                        </div>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1">Talla</label>
+                            <input type="text" class="form-control" id="nombre" name="tallah" >
+                        </div>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1">IMC</label>
+                            <input type="text" class="form-control" id="nombre" name="imch" >
+                        </div>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1">Hijos</label>
+                            <input type="text" class="form-control" id="nombre" name="hijos" >
+                        </div>
+                        <div class="col-md-4">
+                        <label for="exampleInputEmail1">Alergias</label>
+                            <input type="text" class="form-control" id="nombre" name="alerg" >
+                        </div>
+            
+                
+            </div>
+            <br>
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            
+                     <div class="col-md-6">
                         <label for="exampleInputEmail1">Cirugias previas</label>
                             <input type="text" class="form-control" id="nombre" name="cirugias" >
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                         <label for="exampleInputEmail1">Enfermedades previas</label>
                             <input type="text" class="form-control" id="nombre" name="enf" >
                         </div>
                      
-                       
-                   </div>
-                   <br>
+        </div>
 
-
-                   <div class="row">
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">FUR</label>
-                            <input type="text" class="form-control" id="g1" name="fur"  placeholder="" >
-                        </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">RC</label>
-                            <input type="text" class="form-control" id="g2" name="rc"   placeholder="" >
-                        </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Menarquia</label>
-                            <input type="text" class="form-control" id="menarquia" name="g3" >
-                        </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Dismenorrea</label>
-                            <input type="text" class="form-control" id="dismenorrea" name="g4" >
-                        </div>
-                        <div class="col-md-2">
-                        <label for="exampleInputEmail1">Frecuencia Sexual</label>
-                            <input type="text" class="form-control" id="sexo" name="g5" >
-                        </div>
-
-                        <div class="col-md-3">
+        
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+                 
+                     <div class="col-md-6">
                         <label for="exampleInputEmail1">Uso de medicamentos</label>
                             <input type="text" class="form-control" id="med" name="med" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">Fuma</label>
                             <input type="text" class="form-control" id="fuma" name="fuma" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">Drogas</label>
                             <input type="text" class="form-control" id="drogas" name="drogas" >
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                         <label for="exampleInputEmail1">Alcohol</label>
                             <input type="text" class="form-control" id="alcohol" name="alcohol" >
                         </div>
-                     
-                       
-                   </div>
-                   <br>
+                </div>
+    
+            
+            <!-- /.users-list -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!--/.card -->
+        </div>
+        <!-- /.col -->
+    </div>
 
+                
+<br>
 
-                   <div class="row">
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Fuma</label>
-                            <input type="text" class="form-control" id="g1" name="fumam"  placeholder="" >
-                        </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Alcohol</label>
-                            <input type="text" class="form-control" id="g2" name="alcoholm"   placeholder="" >
-                        </div>
-                        <div class="col-md-4">
-                        <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="menarquia" name="cirm" >
-                        </div>
-                   </div>
-                   <br>
-
-                   <div class="row">
-                        <div class="col-md-2">
-                        <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="g1" name="enfm"  placeholder="" >
-                        </div>
-                        <div class="col-md-2">
-                        <label for="exampleInputEmail1">Uso de medicamentos</label>
-                            <input type="text" class="form-control" id="g2" name="medm"   placeholder="" >
-                        </div>
-                        <div class="col-md-2">
-                        <label for="exampleInputEmail1">Alergias</label>
-                            <input type="text" class="form-control" id="alergm" name="alergm" >
-                        </div>
-                   </div>
-                   <br>
-
-                   <div class="row">
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Num.Par.Sex</label>
-                            <input type="text" class="form-control" id="g1" name="parejas"  placeholder="" >
-                        </div>
-                        <div class="col-md-1">
-                        <label for="exampleInputEmail1">Anticoncept.</label>
-                            <input type="text" class="form-control" id="g2" name="anticonceptivos"   placeholder="" >
-                        </div>
-                        <div class="col-md-4">
-                        <label for="exampleInputEmail1">Tratamientos previos de fertilidad</label>
-                            <input type="text" class="form-control" id="alergm" name="alergm" >
-                        </div>
-                   </div>
-
-
+                 
 
 
 
@@ -372,12 +552,6 @@
          
             <!-- /.card -->
 
-           
-           
-               
-
-
-           
               </div>
               <!-- /.card-body -->
             </div>
