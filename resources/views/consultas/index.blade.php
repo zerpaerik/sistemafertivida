@@ -129,8 +129,8 @@
                   <tr>
                     <td>{{$an->id}}</td>
                     <td>{{date('d-M-y H:i', strtotime($an->created_at))}}</td>
-                    <td>{{$an->nombres}} {{$an->apellidos}}</td>
-                    <td>{{$an->nombresh}} {{$an->apellidosh}}</td>
+                    <td>{{$an->nombres}} {{$an->apellidos}} {{$an->apellidos1}}</td>
+                    <td>{{$an->nombresh}} {{$an->apellidosh}} {{$an->apellidos1h}}</td>
                     <td>{{$an->name}} {{$an->lastname}}</td>
                     <td><span class="badge bg-info">{{$an->servicio}}</span></td>
 

@@ -45,7 +45,7 @@ class ConsultasController extends Controller
 
      
         $consultas = DB::table('consultas as a')
-        ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','c.nombres as nombresh','c.apellidos as apellidosh', 'u.name','u.lastname','s.nombre as servicio')
+        ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidos1h', 'u.name','u.lastname','s.nombre as servicio')
         ->join('pacientes as b','b.id','a.id_paciente_mujer')
         ->join('pacientes as c','c.id','a.id_paciente_hombre')
         ->join('users as u','u.id','a.id_especialista')
@@ -60,7 +60,7 @@ class ConsultasController extends Controller
         $f2 = date('Y-m-d');
 
         $consultas = DB::table('consultas as a')
-        ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','c.nombres as nombresh','c.apellidos as apellidosh', 'u.name','u.lastname','s.nombre as servicio')
+        ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidos1h', 'u.name','u.lastname','s.nombre as servicio')
         ->join('pacientes as b','b.id','a.id_paciente_mujer')
         ->join('pacientes as c','c.id','a.id_paciente_hombre')
         ->join('users as u','u.id','a.id_especialista')
