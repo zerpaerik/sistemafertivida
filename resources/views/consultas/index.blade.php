@@ -81,6 +81,11 @@
                               </i>
                               Agregar
                           </a>
+                          <a class="btn btn-info btn-sm" href="{{route('pacientes.create')}}">
+                              <i class="fas fa-folder">
+                              </i>
+                              Crear Paciente
+                          </a>
               <form method="get" action="consultas">					
                   <label for="exampleInputEmail1">Filtros de Busqueda</label>
 
