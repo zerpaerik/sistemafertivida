@@ -281,23 +281,23 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-2">
                         <label for="exampleInputEmail1">Peso</label>
-                            <input type="text" class="form-control" id="peso" name="peso"  placeholder="" required>
+                            <input type="text" class="form-control" id="peso" name="peso"  placeholder="" value="{{$admision->peso}}" disabled>
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">Talla</label>
-                            <input type="text" class="form-control" id="talla" name="talla"   placeholder="" require>
+                            <input type="text" class="form-control" id="talla" name="talla"   placeholder="" value="{{$admision->talla}}" disabled>
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">IMC</label>
-                            <input type="text" class="form-control" id="nombre" name="imc" require>
+                            <input type="text" class="form-control" id="nombre" name="imc" value="{{$admision->imc}}" disabled >
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">PA</label>
-                            <input type="text" class="form-control" id="nombre" name="pa" require>
+                            <input type="text" class="form-control" id="nombre" name="pa" value="{{$admision->pa}}" disabled>
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">T</label>
-                            <input type="text" class="form-control" id="nombre" name="t" >
+                            <input type="text" class="form-control" id="nombre" name="t" value="{{$admision->t}}" disabled>
                         </div>
                        
                         
@@ -308,12 +308,12 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-6">
                         <label for="exampleInputEmail1">G</label>
-                            <input type="text" class="form-control" id="nombre" name="g" >
+                            <input type="text" class="form-control" id="nombre" name="g" value="{{$admision->g}}" disabled>
                         </div>
                     
                           <div class="col-md-6">
                         <label for="exampleInputEmail1">G1</label>
-                            <input type="text" class="form-control" id="g1" name="responsable"  placeholder="" >
+                            <input type="text" class="form-control" id="g1" name="g1"  placeholder="" value="{{$admision->g1}}" disabled>
                         </div>
                       
                     
@@ -324,12 +324,12 @@
                        
                         <div class="col-md-6">
                         <label for="exampleInputEmail1">G2</label>
-                            <input type="text" class="form-control" id="g2" name="responsable"   placeholder="" >
+                            <input type="text" class="form-control" id="g2" name="g2"   placeholder="" value="{{$admision->g2}}" disabled>
                         </div>
 
                         <div class="col-md-6">
                         <label for="exampleInputEmail1">G3</label>
-                            <input type="text" class="form-control" id="nombre" name="g3" >
+                            <input type="text" class="form-control" id="nombre" name="g3" value="{{$admision->g3}}" disabled>
                         </div>
 
                     
@@ -341,12 +341,12 @@
 
                         <div class="col-md-6">
                         <label for="exampleInputEmail1">G4</label>
-                            <input type="text" class="form-control" id="nombre" name="g4" >
+                            <input type="text" class="form-control" id="nombre" name="g4" value="{{$admision->g4}}" disabled>
                         </div>
 
                         <div class="col-md-6">
                         <label for="exampleInputEmail1">G5</label>
-                            <input type="text" class="form-control" id="nombre" name="g5" >
+                            <input type="text" class="form-control" id="nombre" name="g5" value="{{$admision->g5}}" disabled>
                         </div>
                     
                 </div>
@@ -358,15 +358,15 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                        <div class="col-md-4">
                         <label for="exampleInputEmail1">FUR</label>
-                            <input type="date" class="form-control" id="g1" name="fur"  placeholder="" >
+                            <input type="date" class="form-control" id="g1" name="fur"  placeholder="" value="{{$admision->fur}}" disabled >
                         </div>
                         <div class="col-md-4">
                         <label for="exampleInputEmail1">RC</label>
-                            <input type="text" class="form-control" id="g2" name="rc"   placeholder="" >
+                            <input type="text" class="form-control" id="g2" name="rc"   placeholder="" value="{{$admision->rc}}" disabled>
                         </div>
                         <div class="col-md-4">
                         <label for="exampleInputEmail1">Menarquia</label>
-                            <input type="text" class="form-control" id="menarquia" name="g3" >
+                            <input type="text" class="form-control" id="menarquia" name="menarquia" value="{{$admision->menarquia}}" disabled>
                         </div>
                    
                     
@@ -377,20 +377,20 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-3">
                         <label for="exampleInputEmail1">Dismenorrea</label>
-                            <input type="text" class="form-control" id="dismenorrea" name="dismeno" >
+                            <input type="text" class="form-control" id="dismenorrea" name="dismeno" value="{{$admision->disme}}" disabled>
                         </div>
                     
                 <div class="col-md-3">
                         <label for="exampleInputEmail1">Frec.Sexual</label>
-                            <input type="text" class="form-control" id="sexo" name="sexo" >
+                            <input type="text" class="form-control" id="sexo" name="sexo" value="{{$admision->fsex}}" disabled>
                         </div>
                 <div class="col-md-3">
                         <label for="exampleInputEmail1">Fuma</label>
-                            <input type="text" class="form-control" id="g1" name="fumam"  placeholder="" >
+                            <input type="text" class="form-control" id="g1" name="fumam"  placeholder="" value="{{$admision->fum}}" disabled>
                         </div>
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">Alcohol</label>
-                            <input type="text" class="form-control" id="g2" name="alcoholm"   placeholder="" >
+                            <input type="text" class="form-control" id="g2" name="alcoholm"   placeholder="" value="{{$admision->alc}}" disabled>
                         </div>
                       
                     
@@ -400,7 +400,7 @@
                
                         <div class="col-md-12">
                         <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="menarquia" name="cirm" >
+                            <input type="text" class="form-control" id="menarquia" name="cirm" value="{{$admision->cir}}" disabled>
                         </div>
                     
                 </div>
@@ -414,11 +414,11 @@
 
                 <div class="col-md-6">
                         <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="g1" name="enfm"  placeholder="" >
+                            <input type="text" class="form-control" id="g1" name="enfm"  placeholder="" value="{{$admision->enf}}" disabled>
                         </div>
                         <div class="col-md-6">
                         <label for="exampleInputEmail1">Uso de medicamentos</label>
-                            <input type="text" class="form-control" id="g2" name="medm"   placeholder="" >
+                            <input type="text" class="form-control" id="g2" name="medm"   placeholder="" value="{{$admision->med}}" disabled>
                         </div>
                    
 
@@ -429,11 +429,11 @@
                
                         <div class="col-md-8">
                         <label for="exampleInputEmail1">Alergias</label>
-                            <input type="text" class="form-control" id="alergm" name="alergm" >
+                            <input type="text" class="form-control" id="alergm" name="alergm" value="{{$admision->alerg}}" disabled>
                         </div>
                         <div class="col-md-4">
                         <label for="exampleInputEmail1">Núm.Par.Sex</label>
-                            <input type="text" class="form-control" id="g1" name="parejas"  placeholder="" >
+                            <input type="text" class="form-control" id="g1" name="parejas"  placeholder="" value="{{$admision->parejas}}" disabled>
                         </div>
 
                 </div>
@@ -445,11 +445,11 @@
                 
                         <div class="col-md-6">
                         <label for="exampleInputEmail1">Anticonceptivos</label>
-                            <input type="text" class="form-control" id="g2" name="anticonceptivos"   placeholder="" >
+                            <input type="text" class="form-control" id="g2" name="anticonceptivos"   placeholder="" value="{{$admision->anti}}" disabled >
                         </div>
                         <div class="col-md-6">
                         <label for="exampleInputEmail1">Tratamientos previos de fertilidad</label>
-                            <input type="text" class="form-control" id="alergm" name="ferti" >
+                            <input type="text" class="form-control" id="alergm" name="ferti" value="{{$admision->trat}}" disabled>
                         </div>
 
                   
@@ -488,19 +488,19 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-3">
                         <label for="exampleInputEmail1">Peso</label>
-                            <input type="text" class="form-control" id="nombre" name="pesoh" >
+                            <input type="text" class="form-control" id="nombre" name="pesoh" value="{{$admision->pesoh}}" disabled>
                         </div>
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">Talla</label>
-                            <input type="text" class="form-control" id="nombre" name="tallah" >
+                            <input type="text" class="form-control" id="nombre" name="tallah" value="{{$admision->tallah}}" disabled>
                         </div>
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">IMC</label>
-                            <input type="text" class="form-control" id="nombre" name="imch" >
+                            <input type="text" class="form-control" id="nombre" name="imch" value="{{$admision->imch}}" disabled>
                         </div>
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">Hijos</label>
-                            <input type="text" class="form-control" id="nombre" name="hijos" >
+                            <input type="text" class="form-control" id="nombre" name="hijos" value="{{$admision->hijos}}" disabled>
                         </div>
                      
                 
@@ -511,11 +511,11 @@
             
                      <div class="col-md-6">
                         <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="nombre" name="cirugias" >
+                            <input type="text" class="form-control" id="nombre" name="cirugias" value="{{$admision->cir}}" disabled>
                         </div>
                         <div class="col-md-6">
                         <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="nombre" name="enf" >
+                            <input type="text" class="form-control" id="nombre" name="enf" value="{{$admision->enf}}" disabled>
                         </div>
                      
         </div>
@@ -525,11 +525,11 @@
             
             <div class="col-md-6">
                <label for="exampleInputEmail1">Uso de medicamentos</label>
-                   <input type="text" class="form-control" id="nombre" name="medh" >
+                   <input type="text" class="form-control" id="nombre" name="medh" value="{{$admision->medh}}" disabled>
                </div>
                <div class="col-md-6">
                <label for="exampleInputEmail1">Alergias</label>
-                   <input type="text" class="form-control" id="nombre" name="alergh" >
+                   <input type="text" class="form-control" id="nombre" name="alergh" value="{{$admision->alerg}}" disabled>
                </div>
             
 </div>
@@ -542,15 +542,15 @@
             
                         <div class="col-md-4">
                         <label for="exampleInputEmail1">Fuma</label>
-                            <input type="text" class="form-control" id="fuma" name="fuma" >
+                            <input type="text" class="form-control" id="fuma" name="fuma" value="{{$admision->fumh}}" disabled>
                         </div>
                         <div class="col-md-4">
                         <label for="exampleInputEmail1">Drogas</label>
-                            <input type="text" class="form-control" id="drogas" name="drogas" >
+                            <input type="text" class="form-control" id="drogas" name="drogas" value="{{$admision->drogh}}" disabled>
                         </div>
                         <div class="col-md-4">
                         <label for="exampleInputEmail1">Alcohol</label>
-                            <input type="text" class="form-control" id="alcohol" name="alcohol" >
+                            <input type="text" class="form-control" id="alcohol" name="alcohol" value="{{$admision->alch}}" disabled>
                         </div>
                 </div>
                 <br>
@@ -585,7 +585,6 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
               </form>
             </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Equipos;
-use App\Analisis;
+use App\Admision;
 use App\Clientes;
 use App\Tiempo;
 use App\Material;
@@ -50,7 +50,6 @@ class ConsultasController extends Controller
         ->join('pacientes as c','c.id','a.id_paciente_hombre')
         ->join('users as u','u.id','a.id_especialista')
         ->join('servicios as s','s.id','a.tipo')
-        ->where('a.estatus', '=', 0)
         ->whereBetween('a.created_at', [$f1, $f2])
         ->orderBy('a.id','DESC')
         ->get(); 
@@ -66,7 +65,6 @@ class ConsultasController extends Controller
         ->join('pacientes as c','c.id','a.id_paciente_hombre')
         ->join('users as u','u.id','a.id_especialista')
         ->join('servicios as s','s.id','a.tipo')
-        ->where('a.estatus', '=', 0)
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f1))])
         ->orderBy('a.id','DESC')
         ->get(); 
@@ -148,6 +146,30 @@ class ConsultasController extends Controller
 
       return view('consultas.admision',compact('consulta','edad','edad1'));
     }
+
+    public function atencion($id)
+
+    {
+
+      $consulta = DB::table('consultas as a')
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->join('pacientes as b','b.id','a.id_paciente_mujer')
+      ->join('pacientes as c','c.id','a.id_paciente_hombre')
+      ->join('users as u','u.id','a.id_especialista')
+      ->join('servicios as s','s.id','a.tipo')
+      ->where('a.id', '=', $id)
+      ->first(); 
+
+      $edad = Carbon::parse($consulta->fechanac)->age;
+      $edad1 = Carbon::parse($consulta->fechanach)->age;
+
+      $admision = Admision::where('consulta','=',$id)->first();
+
+
+
+      return view('consultas.atencion',compact('consulta','edad','edad1', 'admision'));
+    }
+
 
     public function historiap_crear($consulta)
 
@@ -679,6 +701,63 @@ class ConsultasController extends Controller
       ->with('success','Creado Exitosamente!');
 
     }
+
+    public function storeAdmision(Request $request){
+
+
+      $at_fin = Consultas::where('id','=',$request->consulta)->first();
+      $at_fin->estatus = 1;
+      $at_fin->historia = 1;
+      $at_fin->save();
+
+      
+      $ad = new Admision();
+      $ad->consulta =  $request->consulta;
+      $ad->peso =  $request->peso;
+      $ad->pesoh = $request->pesoh;
+      $ad->talla = $request->talla;
+      $ad->tallah = $request->tallah;
+      $ad->imc = $request->imc;
+      $ad->imch = $request->imch;
+      $ad->g = $request->g;
+      $ad->g1 = $request->g1;
+      $ad->g2 = $request->g2;
+      $ad->g3 = $request->g3;
+      $ad->g4 = $request->g4;
+      $ad->g5 = $request->g5;
+      $ad->hijos = $request->hijos;
+      $ad->pa = $request->pa;
+      $ad->t = $request->t;
+      $ad->fur = $request->fur;
+      $ad->rc = $request->rc;
+      $ad->menarquia = $request->menarquia;
+      $ad->disme = $request->dismeno;
+      $ad->fsex = $request->sexo;
+      $ad->fum = $request->fumam;
+      $ad->alc = $request->alcoholm;
+      $ad->cir = $request->cirm;
+      $ad->enf = $request->enfm;
+      $ad->med = $request->medm;
+      $ad->alerg = $request->alergm;
+      $ad->parejas = $request->parejas;
+      $ad->anti = $request->anticonceptivos;
+      $ad->trat = $request->ferti;
+      $ad->usuario = Auth::user()->id;
+      $ad->cirh = $request->cirugias;
+      $ad->enfh = $request->enf;
+      $ad->medh = $request->medh;
+      $ad->alergh = $request->alerg;
+      $ad->fumh = $request->fuma;
+      $ad->drogh = $request->drogas;
+      $ad->alch = $request->alcohol;
+      $ad->save();
+
+      return redirect()->action('ConsultasController@index')
+      ->with('success','Admitido Exitosamente!');
+
+    }
+
+
 
 
   

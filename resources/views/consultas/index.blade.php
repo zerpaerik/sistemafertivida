@@ -127,14 +127,24 @@
                     <td>{{$an->nombres}} {{$an->apellidos}}</td>
                     <td>{{$an->nombresh}} {{$an->apellidosh}}</td>
                     <td>{{$an->name}} {{$an->lastname}}</td>
-                    <td><span class="badge bg-success">{{$an->servicio}}</span></td>
+                    <td><span class="badge bg-info">{{$an->servicio}}</span></td>
 
                     <td>
+                      @if($an->estatus == 0)
                     <a class="btn btn-info btn-sm" href="consultas-admision-{{$an->id}}">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Admisión
                         </a>
+                        @else
+                        <span class="badge bg-success">ADMISIÓN REGISTRADA</span>
+                        <a class="btn btn-danger btn-sm" href="consultas-atencion-{{$an->id}}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Atender
+                        </a>
+                        @endif
+
                 
 
                     </td>
