@@ -109,7 +109,7 @@
                       <label>Paciente Mujer</label>
                         <select class="form-control" name="pacientem">
                          @foreach($pacientesm as $pm)
-						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}} {{$pm->nombres}}</option>
+						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
                          @endforeach
                         </select>
                    </div> 
@@ -118,7 +118,7 @@
                       <label>Paciente Hombre</label>
                         <select class="form-control" name="pacienteh">
                          @foreach($pacientesh as $ph)
-						             <option value="{{$ph->id}}">{{$ph->dni}} - {{$ph->apellidos}} {{$ph->nombres}}</option>
+						             <option value="{{$ph->id}}">{{$ph->dni}} - {{$ph->apellidos}},{{$ph->apellidos1}} {{$ph->nombres}}</option>
                          @endforeach
                         </select>
                    </div> 
