@@ -87,7 +87,7 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" method="post" action="consultas/admision" accept-charset="UTF-8" enctype="multipart/form-data">
+              <form role="form" method="post" action="consultas/atencion" accept-charset="UTF-8" enctype="multipart/form-data">
 					{{ csrf_field() }}                
                     <div class="card-body">
                     <br>
@@ -159,6 +159,15 @@
                                             <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->ocupacion}}" placeholder="Persona Contacto" disabled>
                                         </div>
                                     </div>
+                                    <div class="row" style="margin-left:5px;margin-right:5px;">
+                                
+                                <div class="col-md-12">
+                                <label for="exampleInputEmail1">Email</label>
+                                    <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->email}}" placeholder="Email" disabled>
+                                </div>
+                                
+                                
+                            </div>
                                     <div class="row" style="margin-left:5px;margin-right:5px;">
                                         
                                         <div class="col-md-12">
@@ -238,6 +247,15 @@
                             <div class="row" style="margin-left:5px;margin-right:5px;">
                                 
                                 <div class="col-md-12">
+                                <label for="exampleInputEmail1">Email</label>
+                                    <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->emailh}}" placeholder="Email" disabled>
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="row" style="margin-left:5px;margin-right:5px;">
+                                
+                                <div class="col-md-12">
                                 <label for="exampleInputEmail1">Dirección</label>
                                     <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->direccionh}}" placeholder="Persona Contacto" disabled>
                                 </div>
@@ -277,15 +295,18 @@
             <!-- /.card-header -->
             <div class="card-body p-0">
             <br>
+            <label for="exampleInputEmail1" style="margin-left:12px;">Antecedentes Obstétricos</label>
+               <br>               <br>
+
 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                <div class="col-md-2">
+                <div class="col-md-1">
                         <label for="exampleInputEmail1">Peso</label>
-                            <input type="text" class="form-control" id="peso" name="peso"  placeholder="" value="{{$admision->peso}}" disabled>
+                            <input type="text" class="form-control" id="peso" name="peso"  placeholder="" value="{{$admision->peso}}" disabled >
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">Talla</label>
-                            <input type="text" class="form-control" id="talla" name="talla"   placeholder="" value="{{$admision->talla}}" disabled>
+                            <input type="text" class="form-control" id="talla" name="talla"   placeholder="" value="{{$admision->talla}}" disabled >
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">IMC</label>
@@ -293,81 +314,115 @@
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">PA</label>
-                            <input type="text" class="form-control" id="nombre" name="pa" value="{{$admision->pa}}" disabled>
+                            <input type="text" class="form-control" id="nombre" name="pa" value="{{$admision->pa}}" disabled >
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">T</label>
-                            <input type="text" class="form-control" id="nombre" name="t" value="{{$admision->t}}" disabled>
+                            <input type="text" class="form-control" id="nombre" name="t" value="{{$admision->t}}" disabled >
+                        </div>
+                        <div class="col-md-3">
+                        <label for="exampleInputEmail1">PAP</label>
+                            <input type="date" class="form-control" id="nombre" name="pap" value="{{$admision->pap}}" disabled >
                         </div>
                        
                         
                 </div>
 
                 <br>
-
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                <div class="col-md-6">
-                        <label for="exampleInputEmail1">G</label>
-                            <input type="text" class="form-control" id="nombre" name="g" value="{{$admision->g}}" disabled>
+                <div class="col-md-3">
+                        <label for="exampleInputEmail1">Gestas</label>
+                            <input type="text" class="form-control" id="nombre" name="g" value="{{$admision->g}}" disabled >
                         </div>
                     
-                          <div class="col-md-6">
-                        <label for="exampleInputEmail1">G1</label>
-                            <input type="text" class="form-control" id="g1" name="g1"  placeholder="" value="{{$admision->g1}}" disabled>
+                          <div class="col-md-3">
+                        <label for="exampleInputEmail1">Abortos</label>
+                            <input type="text" class="form-control" id="g1" name="responsable"  placeholder="" value="{{$admision->g1}}" disabled >
+                        </div>
+                        <div class="col-md-3">
+                        <label for="exampleInputEmail1">Vaginales</label>
+                            <input type="text" class="form-control" id="nombre" name="g2" value="{{$admision->g2}}" disabled >
+                        </div>
+                    
+                          <div class="col-md-3">
+                        <label for="exampleInputEmail1">Nac Vivos</label>
+                            <input type="text" class="form-control" id="g1" name="g3"  placeholder="" value="{{$admision->g3}}" disabled >
                         </div>
                       
                     
                 </div>
 
                 <br>
+
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                       
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">G2</label>
-                            <input type="text" class="form-control" id="g2" name="g2"   placeholder="" value="{{$admision->g2}}" disabled>
+                <div class="col-md-3">
+                        <label for="exampleInputEmail1">Viven</label>
+                            <input type="text" class="form-control" id="g2" name="g4"   placeholder="" value="{{$admision->g4}}" disabled >
                         </div>
 
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">G3</label>
-                            <input type="text" class="form-control" id="nombre" name="g3" value="{{$admision->g3}}" disabled>
+                        <div class="col-md-3">
+                        <label for="exampleInputEmail1">Partos</label>
+                            <input type="text" class="form-control" id="nombre" name="g5" value="{{$admision->g5}}" disabled >
+                        </div>
+                        <div class="col-md-3">
+                        <label for="exampleInputEmail1">Cesarea</label>
+                            <input type="text" class="form-control" id="nombre" name="g6" value="{{$admision->g6}}" disabled >
                         </div>
 
+                        <div class="col-md-3">
+                        <label for="exampleInputEmail1">Nac Muertos</label>
+                            <input type="text" class="form-control" id="nombre" name="g7" value="{{$admision->g7}}" disabled >
+                        </div>
+                    
+
+              
+                      
                     
                 </div>
 
                 <br>
                 <div class="row" style="margin-left:5px;margin-right:5px;">
+                <div class="col-md-3">
+                       <label for="exampleInputEmail1">Desp.1SEM</label>
+                           <input type="text" class="form-control" id="nombre" name="g8" value="{{$admision->g8}}" disabled >
+                       </div>
                        
-
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">G4</label>
-                            <input type="text" class="form-control" id="nombre" name="g4" value="{{$admision->g4}}" disabled>
-                        </div>
-
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">G5</label>
-                            <input type="text" class="form-control" id="nombre" name="g5" value="{{$admision->g5}}" disabled>
-                        </div>
+                     
                     
                 </div>
 
                 <br>
+               
+
+               <div class="row" style="margin-left:5px;margin-right:5px;">
+               <div class="col-md-12">
+                    <label for="exampleInputEmail1">Observaciones</label>
+                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="obserg" placeholder="Observaciones" value="{{$admision->obserg}}" disabled >{{$admision->obserg}}</textarea>
+                   </div>
+                    </div>
+                    <br>
 
 
                 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                       <div class="col-md-4">
+                       <div class="col-md-3">
                         <label for="exampleInputEmail1">FUR</label>
                             <input type="date" class="form-control" id="g1" name="fur"  placeholder="" value="{{$admision->fur}}" disabled >
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                         <label for="exampleInputEmail1">RC</label>
-                            <input type="text" class="form-control" id="g2" name="rc"   placeholder="" value="{{$admision->rc}}" disabled>
+                            <input type="text" class="form-control" id="g2" name="rc"   placeholder="" value="{{$admision->rc}}" disabled >
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                         <label for="exampleInputEmail1">Menarquia</label>
-                            <input type="text" class="form-control" id="menarquia" name="menarquia" value="{{$admision->menarquia}}" disabled>
+                            <input type="text" class="form-control" id="menarquia" name="menarquia" value="{{$admision->menarquia}}" disabled >
                         </div>
+
+                        <div class="col-md-3">
+                        <label for="exampleInputEmail1">Drogas</label>
+                            <input type="text" class="form-control" id="menarquia" name="drogm" value="{{$admision->drogm}}" disabled >
+                        </div>
+                   
                    
                     
                    
@@ -377,67 +432,80 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-3">
                         <label for="exampleInputEmail1">Dismenorrea</label>
-                            <input type="text" class="form-control" id="dismenorrea" name="dismeno" value="{{$admision->disme}}" disabled>
+                            <input type="text" class="form-control" id="dismenorrea" name="dismeno" value="{{$admision->disme}}" disabled >
                         </div>
                     
                 <div class="col-md-3">
                         <label for="exampleInputEmail1">Frec.Sexual</label>
-                            <input type="text" class="form-control" id="sexo" name="sexo" value="{{$admision->fsex}}" disabled>
+                            <input type="text" class="form-control" id="sexo" name="sexo" value="{{$admision->fsex}}" disabled >
                         </div>
                 <div class="col-md-3">
                         <label for="exampleInputEmail1">Fuma</label>
-                            <input type="text" class="form-control" id="g1" name="fumam"  placeholder="" value="{{$admision->fum}}" disabled>
+                            <input type="text" class="form-control" id="g1" name="fumam"  placeholder="" value="{{$admision->fum}}" disabled >
                         </div>
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">Alcohol</label>
-                            <input type="text" class="form-control" id="g2" name="alcoholm"   placeholder="" value="{{$admision->alc}}" disabled>
+                            <input type="text" class="form-control" id="g2" name="alcoholm"   placeholder="" value="{{$admision->alc}}" disabled >
                         </div>
                       
                     
                 </div>
                 <br>
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-               
-                        <div class="col-md-12">
-                        <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="menarquia" name="cirm" value="{{$admision->cir}}" disabled>
+                <div class="col-md-3">
+                        <label for="exampleInputEmail1">Disporemia</label>
+                            <input type="text" class="form-control" id="dismenorrea" name="dispa" value="{{$admision->disparemia}}" disabled >
                         </div>
+                    
+                <div class="col-md-3">
+                        <label for="exampleInputEmail1">Papanicolao</label>
+                            <input type="text" class="form-control" id="sexo" name="papanico" value="{{$admision->papanico}}" disabled >
+                        </div>
+              
+                      
                     
                 </div>
                 <br>
+                <label for="exampleInputEmail1" style="margin-left:12px;">Antecedentes Quirurgicos</label>
+                <br>               <br>
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+               <div class="col-md-12">
+                    <label for="exampleInputEmail1">Cirugias previas</label>
+                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="cirm" placeholder="Cirugias previas" value="{{$admision->cir}}" disabled >{{$admision->cir}}</textarea>
+                   </div>
+                    </div>
+                    <br>
 
+            
 
-
-
+                <label for="exampleInputEmail1" style="margin-left:12px;">Antecedentes Patológicos</label>
+                <br>               <br>
 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
+               <div class="col-md-12">
+                    <label for="exampleInputEmail1">Enfermedades previas</label>
+                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="enfm" placeholder="Enfermedades previas" value="{{$admision->enf}}" disabled >{{$admision->enf}}</textarea>
+                   </div>
+                    </div>
+                    <br>
 
-                <div class="col-md-6">
-                        <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="g1" name="enfm"  placeholder="" value="{{$admision->enf}}" disabled>
-                        </div>
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">Uso de medicamentos</label>
-                            <input type="text" class="form-control" id="g2" name="medm"   placeholder="" value="{{$admision->med}}" disabled>
-                        </div>
-                   
+                    <div class="row" style="margin-left:5px;margin-right:5px;">
+               <div class="col-md-12">
+                    <label for="exampleInputEmail1">Uso de medicamentos</label>
+                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="medm" placeholder="Uso de medicamentos" value="{{$admision->med}}" disabled >{{$admision->med}}</textarea>
+                   </div>
+                    </div>
+                    <br>
 
-                </div>
-                <br>
-                <div class="row" style="margin-left:5px;margin-right:5px;">
+
+
 
                
-                        <div class="col-md-8">
-                        <label for="exampleInputEmail1">Alergias</label>
-                            <input type="text" class="form-control" id="alergm" name="alergm" value="{{$admision->alerg}}" disabled>
-                        </div>
-                        <div class="col-md-4">
-                        <label for="exampleInputEmail1">Núm.Par.Sex</label>
-                            <input type="text" class="form-control" id="g1" name="parejas"  placeholder="" value="{{$admision->parejas}}" disabled>
-                        </div>
-
-                </div>
                 <br>
+
+               
+                
+                
 
 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
@@ -571,6 +639,247 @@
 
                 
 <br>
+<div class="row">
+
+<div class="col-md-6">
+        <!-- USERS LIST -->
+        <div class="card">
+            <div class="card-header" style="background-color:pink;">
+            <h3 class="card-title" style="color: white;">Atención mujer</h3>
+
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+                </button>
+                
+            </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">EXAMEN FÍSICO</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Tiroides</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="tirm" placeholder="Tiroides"></textarea>
+            </div>
+            </div>
+                  
+            <br>
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Mamas</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="mamas" placeholder="Mamas"></textarea>
+            </div>
+            </div>
+                  
+            <br>
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Aparato genital</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="genm" placeholder="Aparato genital"></textarea>
+            </div>
+            </div>
+                  
+            <br>
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Eco TV</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="eco" placeholder="Eco TV"></textarea>
+            </div>
+            </div>
+                  
+            <br>
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Otros</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="otrosm" placeholder="Otros"></textarea>
+            </div>
+            </div>
+                  
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">IMPRESIÓN DIAGNÓSTICA</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="impm" placeholder=""></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">PLAN</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="planm" placeholder=""></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">TRATAMIENTO</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="tratm" placeholder=""></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">PROCEDIMIENTO</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="procm" placeholder=""></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+
+            
+            <!-- /.users-list -->
+            </div>
+        
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!--/.card -->
+        </div>
+        
+
+        <div class="col-md-6">
+        <!-- USERS LIST -->
+        <div class="card">
+        <div class="card-header" style="background-color:blue;">
+        <h3 class="card-title" style="color: white;">Atención hombre</h3>
+
+            <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                <i class="fas fa-minus"></i>
+                </button>
+            
+            </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">EXAMEN FÍSICO</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Tiroides</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="tirh" placeholder="Tiroides"></textarea>
+            </div>
+            </div>
+                
+            <br>
+           
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Aparato genital</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="genh" placeholder="Aparato genital"></textarea>
+            </div>
+            </div>
+                
+            <br>
+          
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Otros</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="otrosh" placeholder="Otros"></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">IMPRESIÓN DIAGNÓSTICA</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="imph" placeholder=""></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">PLAN</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="planh" placeholder=""></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">TRATAMIENTO</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="trath" placeholder=""></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+            <label for="exampleInputEmail1" style="margin-left:12px;">PROCEDIMIENTO</label>
+
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="proch" placeholder=""></textarea>
+            </div>
+            </div>
+                
+            <br>
+
+           
+    
+    
+            
+            <!-- /.users-list -->
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer text-center">
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!--/.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+
+
+
+
+<br>
 
                  
 
@@ -580,11 +889,12 @@
 
                 
 
-                  <br>
                 </div>
                 <!-- /.card-body -->
 
                 <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+
                 </div>
               </form>
             </div>

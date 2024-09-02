@@ -141,6 +141,14 @@
                               </i>
                               Admisión
                         </a>
+                        @elseif($an->estatus == 2)
+                        <span class="badge bg-success">YA FUE ATENDIDO</span>
+                        <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                        </a>
+
                         @else
                         <span class="badge bg-success">ADMISIÓN REGISTRADA</span>
                         <a class="btn btn-danger btn-sm" href="consultas-atencion-{{$an->id}}">

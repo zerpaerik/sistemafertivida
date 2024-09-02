@@ -140,6 +140,11 @@
                   </div>
                   <br>
                   <div class="row">
+
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" class="form-control" id="nombre" name="email" placeholder="Email">
+                  </div>
               
                
                   <div class="col-md-3">
@@ -171,6 +176,8 @@
                   </div>
                
                   </div>
+                  <br>
+
 
                   <div class="row">
                   <div class="col-md-12">
