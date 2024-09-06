@@ -180,7 +180,7 @@
                   </div>
                   <div class="col-md-3">
                     <label for="exampleInputEmail1">Religiòn</label>
-                    <input type="email" class="form-control" id="nombre" name="religion" value="{{$pacientes->religion}}" placeholder="Email de contacto">
+                    <input type="text" class="form-control" id="nombre" name="religion" value="{{$pacientes->religion}}" placeholder="Religiòn">
                   </div>
               
                   
