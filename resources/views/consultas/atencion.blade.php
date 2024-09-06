@@ -453,12 +453,12 @@
                 <br>
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-3">
-                        <label for="exampleInputEmail1">Disporemia</label>
+                        <label for="exampleInputEmail1">Dispareunia</label>
                             <input type="text" class="form-control" id="dismenorrea" name="dispa" value="{{$admision->disparemia}}" disabled >
                         </div>
                     
                 <div class="col-md-3">
-                        <label for="exampleInputEmail1">Papanicolao</label>
+                        <label for="exampleInputEmail1">Papanicoloau</label>
                             <input type="text" class="form-control" id="sexo" name="papanico" value="{{$admision->papanico}}" disabled >
                         </div>
               
@@ -511,17 +511,29 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
 
                 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                         <label for="exampleInputEmail1">Anticonceptivos</label>
                             <input type="text" class="form-control" id="g2" name="anticonceptivos"   placeholder="" value="{{$admision->anti}}" disabled >
                         </div>
-                        <div class="col-md-6">
+                      
+                </div>
+                <br>
+
+               
+                
+                
+
+
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+
+
+                    
+                        <div class="col-md-12">
                         <label for="exampleInputEmail1">Tratamientos previos de fertilidad</label>
-                            <input type="text" class="form-control" id="alergm" name="ferti" value="{{$admision->trat}}" disabled>
+                        <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="medm" placeholder="Uso de medicamentos" value="{{$admision->med}}" disabled >{{$admision->trat}}"</textarea>
                         </div>
 
-                  
-
+            
                 </div>
             
             <!-- /.users-list -->
@@ -587,15 +599,47 @@
                         </div>
                      
         </div>
+                <br>
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+                    
+                    <div class="col-md-12">
+                    <label for="exampleInputEmail1">Cirugias previas</label>
+                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="cirugias" placeholder="Cirugias previas" disabled>{{$admision->cir}}</textarea>
+
+                    </div>
+                    
+                    
+        </div>
+        <br>
+
+        <div class="row" style="margin-left:5px;margin-right:5px;">
+
+            
+                    <div class="col-md-12">
+                    <label for="exampleInputEmail1">Enfermedades previas</label>
+                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="enf" placeholder="Enfermadades previas" disabled> {{$admision->enf}}</textarea>
+
+                    </div>
+                
+        </div>
+        <br>
+
+        <div class="row" style="margin-left:5px;margin-right:5px;">
+
+            
+        <div class="col-md-12">
+        <label for="exampleInputEmail1">Uso de medicamentos</label>
+        <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="medh" placeholder="Uso de medicamentos" disabled>{{$admision->medh}}</textarea>
+
+        </div>
+
+        </div>
         <br>
 
         <div class="row" style="margin-left:5px;margin-right:5px;">
             
-            <div class="col-md-6">
-               <label for="exampleInputEmail1">Uso de medicamentos</label>
-                   <input type="text" class="form-control" id="nombre" name="medh" value="{{$admision->medh}}" disabled>
-               </div>
-               <div class="col-md-6">
+           
+               <div class="col-md-12">
                <label for="exampleInputEmail1">Alergias</label>
                    <input type="text" class="form-control" id="nombre" name="alergh" value="{{$admision->alerg}}" disabled>
                </div>

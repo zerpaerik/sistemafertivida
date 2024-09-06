@@ -521,16 +521,27 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
 
                 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                         <label for="exampleInputEmail1">Anticonceptivos</label>
                             <input type="text" class="form-control" id="g2" name="anticonceptivos"   placeholder="" >
                         </div>
-                        <div class="col-md-6">
+                      
+                  
+
+                </div>
+                <br>
+
+
+                <div class="row" style="margin-left:5px;margin-right:5px;">
+
+
+                      
+                        <div class="col-md-12">
                         <label for="exampleInputEmail1">Tratamientos previos de fertilidad</label>
-                            <input type="text" class="form-control" id="alergm" name="ferti" >
+                        <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="fert" placeholder="Tratamientos previos de fertilidad"></textarea>
                         </div>
 
-                  
+                
 
                 </div>
             
@@ -587,25 +598,43 @@
 
             <div class="row" style="margin-left:5px;margin-right:5px;">
             
-                     <div class="col-md-6">
+                     <div class="col-md-12">
                         <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="nombre" name="cirugias" >
+                        <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="cirugias" placeholder="Cirugias previas"></textarea>
+
                         </div>
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="nombre" name="enf" >
-                        </div>
+                     
                      
         </div>
         <br>
 
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+
+                
+                        <div class="col-md-12">
+                        <label for="exampleInputEmail1">Enfermedades previas</label>
+                        <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="enf" placeholder="Enfermadades previas"></textarea>
+
+                        </div>
+                    
+            </div>
+        <br>
+
         <div class="row" style="margin-left:5px;margin-right:5px;">
-            
-            <div class="col-md-6">
-               <label for="exampleInputEmail1">Uso de medicamentos</label>
-                   <input type="text" class="form-control" id="nombre" name="medh" >
-               </div>
-               <div class="col-md-6">
+
+                
+        <div class="col-md-12">
+        <label for="exampleInputEmail1">Uso de medicamentos</label>
+        <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="medh" placeholder="Uso de medicamentos"></textarea>
+
+        </div>
+
+        </div>
+        <br>
+
+        <div class="row" style="margin-left:5px;margin-right:5px;">
+           
+               <div class="col-md-12">
                <label for="exampleInputEmail1">Alergias</label>
                    <input type="text" class="form-control" id="nombre" name="alergh" >
                </div>

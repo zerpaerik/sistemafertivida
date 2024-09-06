@@ -453,12 +453,12 @@
                 <br>
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-3">
-                        <label for="exampleInputEmail1">Disporemia</label>
+                        <label for="exampleInputEmail1">Dispareunia</label>
                             <input type="text" class="form-control" id="dismenorrea" name="dispa" value="{{$admision->disparemia}}" disabled >
                         </div>
                     
                 <div class="col-md-3">
-                        <label for="exampleInputEmail1">Papanicolao</label>
+                        <label for="exampleInputEmail1">Papanicoloau</label>
                             <input type="text" class="form-control" id="sexo" name="papanico" value="{{$admision->papanico}}" disabled >
                         </div>
               
