@@ -205,6 +205,11 @@
                     <option value="Concubinato">Concubinato</option>
                         </select>
                   </div>
+
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" class="form-control" id="nombre" name="email" value="{{$pacientes->email}}" placeholder="Email">
+                  </div>
                 
                   
                   </div>

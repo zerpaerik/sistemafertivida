@@ -300,7 +300,7 @@
 
 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                <div class="col-md-1">
+                <div class="col-md-2">
                         <label for="exampleInputEmail1">Peso</label>
                             <input type="text" class="form-control" id="peso" name="peso"  placeholder="" required>
                         </div>
@@ -453,12 +453,12 @@
                 <br>
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-3">
-                        <label for="exampleInputEmail1">Disporemia</label>
+                        <label for="exampleInputEmail1">Dispareunia</label>
                             <input type="text" class="form-control" id="dismenorrea" name="dispa" >
                         </div>
                     
                 <div class="col-md-3">
-                        <label for="exampleInputEmail1">Papanicolao</label>
+                        <label for="exampleInputEmail1">Papanicoloau</label>
                             <input type="text" class="form-control" id="sexo" name="papanico" >
                         </div>
               

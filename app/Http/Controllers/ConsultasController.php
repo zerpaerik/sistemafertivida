@@ -773,7 +773,7 @@ class ConsultasController extends Controller
       $ad->alerg = $request->alergm;
       $ad->parejas = $request->parejas;
       $ad->anti = $request->anticonceptivos;
-      $ad->trat = $request->ferti;
+      $ad->trat = $request->fert;
       $ad->usuario = Auth::user()->id;
       $ad->cirh = $request->cirugias;
       $ad->enfh = $request->enf;

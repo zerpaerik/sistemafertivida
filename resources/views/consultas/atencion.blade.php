@@ -300,7 +300,7 @@
 
 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                <div class="col-md-1">
+                <div class="col-md-2">
                         <label for="exampleInputEmail1">Peso</label>
                             <input type="text" class="form-control" id="peso" name="peso"  placeholder="" value="{{$admision->peso}}" disabled >
                         </div>
