@@ -721,6 +721,8 @@ class ConsultasController extends Controller
       $con->id_especialista = $request->especialista;
       $con->id_paciente_mujer = $request->pacientem;
       $con->id_paciente_hombre = $request->pacienteh;
+      $con->entero = $request->entero;
+      $con->provincia = $request->provincia;
       $con->save();
 
 

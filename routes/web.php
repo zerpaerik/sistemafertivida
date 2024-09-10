@@ -563,6 +563,22 @@ Route::get('gastoss-procesar-{id}','CreditosController@procesarg');
 Route::get('gastoss-reversar-{id}','CreditosController@reversarg');
 Route::get('gastoss-delete-{id}','CreditosController@deleteg');
 
+Route::get('recetas', 'RecetasController@index')->name('recetas.index');
+Route::get('recetas-create', 'RecetasController@create')->name('recetas.create')->middleware('auth');
+Route::post('recetas/create', 'RecetasController@store')->middleware('auth');
+Route::get('recetas-delete-{id}', 'RecetasController@delete')->middleware('auth');
+Route::get('recetas-edit-{id}', 'RecetasController@edit')->name('recetas.edit');
+Route::post('recetas/edit', 'RecetasController@update');
+Route::get('recetas-ver-{id}', 'RecetasController@ver');
+
+Route::get('ordenes', 'OrdenesController@index')->name('ordenes.index');
+Route::get('ordenes-create', 'OrdenesController@create')->name('ordenes.create')->middleware('auth');
+Route::post('ordenes/create', 'OrdenesController@store')->middleware('auth');
+Route::get('ordenes-delete-{id}', 'OrdenesController@delete')->middleware('auth');
+Route::get('ordenes-edit-{id}', 'OrdenesController@edit')->name('ordenes.edit');
+Route::post('ordenes/edit', 'OrdenesController@update');
+Route::get('ordenes-ver-{id}', 'OrdenesController@ver');
+
 
 
 Route::get('download2/{filename}', function($filename)

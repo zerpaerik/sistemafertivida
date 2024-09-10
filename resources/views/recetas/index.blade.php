@@ -54,12 +54,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Consultas</h1>
+            <h1 class="m-0 text-dark">Recetas</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Crear</li>
+              <li class="breadcrumb-item active">Recetas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -70,125 +70,99 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
+      <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Agregar</h3>
+                <a class="btn btn-primary btn-sm" href="{{route('recetas.create')}}">
+                              <i class="fas fa-folder">
+                              </i>
+                              Agregar
+                          </a>
+                     
+
               </div>
               <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form" method="post" action="consultas/create" accept-charset="UTF-8" enctype="multipart/form-data">
-					{{ csrf_field() }}                
-                    <div class="card-body">
-                    <div class="row">
-                    <div class="col-md-3">
-                      <label>Servicio</label>
-                        <select class="form-control" name="servicio">
-                         @foreach($servicios as $s)
-						             <option value="{{$s->id}}">{{$s->nombre}}</option>
-                         @endforeach
-                        </select>
-                   </div> 
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
 
-                   <div class="col-md-3">
-                      <label>Especialista</label>
-                        <select class="form-control" name="especialista">
-                         @foreach($prof as $p)
-						             <option value="{{$p->id}}">{{$p->lastname}} {{$p->name}}</option>
-                         @endforeach
-                        </select>
-                   </div> 
-                   <div class="col-md-3">
-                      <label>Cómo se entero de nosotros?</label>
-                        <select class="form-control" name="entero">
-						             <option value="Facebook">Facebook</option>
-                         <option value="Tik Tok">Tik Tok</option>
-						             <option value="Instagram">Instagram</option>
-						             <option value="Youtube">Youtube</option>
-						             <option value="Por Familiar">Por Familiar</option>
-						             <option value="Por Amigo">Por Amigo</option>
-
-                        </select>
-                   </div> 
-                   <div class="col-md-3">
-                      <label>Lugar de procedencia</label>
-                        <select class="form-control" name="provincia">
-                        <option value="Facebook">Facebook</option>
-                         <option value="Tik Tok">Tik Tok</option>
-						             <option value="Instagram">Instagram</option>
-						             <option value="Youtube">Youtube</option>
-						             <option value="Por Familiar">Por Familiar</option>
-						             <option value="Por Amigo">Por Amigo</option>
-                        </select>
-                   </div> 
-                  </div>
-                  <br>
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <label>Paciente Mujer</label>
-                        <select class="form-control" name="pacientem">
-                         @foreach($pacientesm as $pm)
-						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
-                         @endforeach
-                        </select>
-                   </div> 
-
-                   <div class="col-md-6">
-                      <label>Paciente Hombre</label>
-                        <select class="form-control" name="pacienteh">
-                        <option value="999999">Ninguno</option>
-                         @foreach($pacientesh as $ph)
-						             <option value="{{$ph->id}}">{{$ph->dni}} - {{$ph->apellidos}},{{$ph->apellidos1}} {{$ph->nombres}}</option>
-                         @endforeach
-                        </select>
-                   </div> 
-                  </div>
-
-
-
-            
-
-                  <br>
-
-               
-                
-
-        
+                  @foreach($recetas as $p)
+                  <tr>
+                    <td>{{$p->nombres}}</td>
+                    <td>{{$p->apellidos}} {{$p->apellidos1}}</td>
+                    <td>{{$p->created_at}}</td>
                  
-                </div>
-                <!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-              </form>
-            </div>
-            <!-- /.card -->
-
-         
-            <!-- /.card -->
-
-           
-           
+                    <td><a class="btn btn-primary btn-sm" target="_blank" href="recetas-ver-{{$p->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                          </a>
+                       
+                          @if(Auth::user()->rol == 1)
+                          <a class="btn btn-danger btn-sm" href="recetas-delete-{{$p->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+                          @endif
+                          </td>
+                  </tr>
+                  @endforeach
+                 
+                 
                
-
-
-           
+                 
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </tfoot>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
-          <!--/.col (right) -->
+          <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
-    
+    <!-- /.content -->
+  </div>
+  </div>
+
+  <div class="modal fade" id="viewTicket" style="">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            </div>
+           
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+  </section>
 
   <!-- /.content-wrapper -->
   
@@ -240,11 +214,72 @@
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- page script -->
 
+<script type="text/javascript">
+		function viewh(e){
+		    var id = $(e).attr('id');
+		    
+		    $.ajax({
+		        type: "GET",
+		        url: "/pacientes/ver/"+id,
+		        success: function (data) {
+		            $("#viewTicket .modal-body").html(data);
+		            $('#viewTicket').modal('show');
+		        },
+		        error: function (data) {
+		            console.log('Error:', data);
+		        }
+		    });
+		}
+
+	
+	</script>
+
+
+<!-- page script -->
+<script>
+
+$(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+</script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+      dom: 'Bfrtip',
+      buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>
