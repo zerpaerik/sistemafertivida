@@ -56,7 +56,7 @@ class RecetasController extends Controller
         }
        
 
-        return view('recetas.index', compact('recetas'));
+        return view('recetas.index', compact('recetas','f1','f2'));
         //
     }
 
@@ -140,7 +140,7 @@ class RecetasController extends Controller
 
       
       $items = DB::table('receta_items as a')
-      ->select('a.*','u.nombre as producto')
+      ->select('a.*','u.nombre as producto','u.principio')
       ->join('medicamentos as u','u.id','a.id_producto')
       ->where('a.id_receta', '=',$id)
       ->get(); 

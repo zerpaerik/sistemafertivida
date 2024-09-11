@@ -94,12 +94,14 @@
 	<table style="">
 		<tr>
 			<th style="padding: 0;width: 5%;text-overflow: ellipsis;">Medicamento</th>
+            <th style="padding: 0;width: 5%;text-overflow: ellipsis;">Principio Activo</th>
             <th style="padding: 0;width: 5%;text-overflow: ellipsis;">Indicación</th>
 
 		</tr>
 		@foreach ($items as $s)
 			<tr>
 				<td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $s->producto }}</td>
+                <td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $s->principio }}</td>
                 <td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $s->descripcion }}</td>
 			</tr>
 		@endforeach

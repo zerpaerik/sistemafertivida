@@ -58,7 +58,7 @@ class OrdenesController extends Controller
         }
        
 
-        return view('orden.index', compact('ordenes'));
+        return view('orden.index', compact('ordenes','f1','f2'));
         //
     }
 
@@ -72,8 +72,9 @@ class OrdenesController extends Controller
     public function create()
     {
         $servicios = DB::table('servicios as a')
-        ->select('a.id','a.nombre')
+        ->select('a.id','a.nombre','a.tipo')
         ->orderby('a.nombre','asc')
+        ->where('a.tipo','=','ORDENES')
         ->where('a.estatus', '=', 1)
         ->get(); 
         
