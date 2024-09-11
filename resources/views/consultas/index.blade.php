@@ -136,11 +136,20 @@
 
                     <td>
                       @if($an->estatus == 0)
-                    <a class="btn btn-info btn-sm" href="consultas-admision-{{$an->id}}">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Admisión
-                        </a>
+                          @if($an->id_paciente_hombre == 999999)
+                          <a class="btn btn-info btn-sm" href="consultas-admisionm-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Admisión
+                            </a>
+                            @else
+                            <a class="btn btn-info btn-sm" href="consultas-admision-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Admisión
+                            </a>
+                            @endif
+
                         @elseif($an->estatus == 2)
                         <span class="badge bg-success">YA FUE ATENDIDO</span>
                         <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
@@ -151,11 +160,22 @@
 
                         @else
                         <span class="badge bg-success">ADMISIÓN REGISTRADA</span>
+                        @if($an->id_paciente_hombre == 999999)
+                        
+                        <a class="btn btn-danger btn-sm" href="consultas-atencionm-{{$an->id}}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Atender
+                        </a>
+                        @else
+                        
                         <a class="btn btn-danger btn-sm" href="consultas-atencion-{{$an->id}}">
                               <i class="fas fa-pencil-alt">
                               </i>
                               Atender
                         </a>
+                        @endif
+
                         @endif
 
                 

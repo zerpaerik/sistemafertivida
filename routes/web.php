@@ -325,6 +325,10 @@ Route::get('rep-ind/{id}/{id2}/{f1}/{f2}', 'ReportesController@reporte_individua
 
 Route::get('reporte_asignacion', 'ReportesController@reporte_asignacion')->name('reporte.asignacion');
 
+Route::get('reporte_provincia', 'ReportesController@reporte_provincia')->name('reporteprov');
+Route::get('reporte_referencia', 'ReportesController@reporte_referencia')->name('reporteref');
+
+
 
 Route::get('comisiones', 'ComisionesPagarController@index')->name('comisiones.index');
 Route::get('comisiones1', 'ComisionesPagarController@index1')->name('comisiones.index1');
@@ -351,8 +355,10 @@ Route::get('comisionese-reversar-{id}', 'VisitadorController@reversar');
 Route::get('consultas', 'ConsultasController@index')->name('consultas.index');
 Route::get('consultas-create', 'ConsultasController@create')->name('consultas.create')->middleware('auth');
 Route::get('consultas-admision-{id}', 'ConsultasController@admision')->name('consultas.admision')->middleware('auth');
+Route::get('consultas-admisionm-{id}', 'ConsultasController@admisionm')->name('consultas.admisionm')->middleware('auth');
 Route::get('consultas-ver-{id}', 'ConsultasController@ver')->name('consultas.ver')->middleware('auth');
 Route::get('consultas-atencion-{id}', 'ConsultasController@atencion')->name('consultas.atencion')->middleware('auth');
+Route::get('consultas-atencionm-{id}', 'ConsultasController@atencionm')->name('consultas.atencionm')->middleware('auth');
 Route::post('consultas/create', 'ConsultasController@store')->middleware('auth');
 Route::post('consultas/admision', 'ConsultasController@storeAdmision')->middleware('auth');
 Route::post('consultas/atencion', 'ConsultasController@storeAtencion')->middleware('auth');

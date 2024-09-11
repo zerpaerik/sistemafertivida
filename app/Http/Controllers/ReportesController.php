@@ -949,6 +949,101 @@ class ReportesController extends Controller
        
 
     }
+    public function reporte_provincia(Request $request){
+
+
+
+
+        
+
+        if ($request->inicio && $request->provincia != '0' ) {
+
+            $f1 = $request->inicio;
+            $f2 = $request->fin;
+         
+            $consultas = DB::table('consultas as a')
+            ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.provincia','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidos1h', 'u.name','u.lastname','s.nombre as servicio')
+            ->join('pacientes as b','b.id','a.id_paciente_mujer')
+            ->join('pacientes as c','c.id','a.id_paciente_hombre')
+            ->join('users as u','u.id','a.id_especialista')
+            ->join('servicios as s','s.id','a.tipo')
+            ->where('a.provincia','like','%'.$request->provincia.'%') 
+            ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f1))])
+            ->orderBy('a.id','DESC')
+            ->get(); 
+    
+          } else {
+    
+            $f1 = date('Y-m-d');
+            $f2 = date('Y-m-d');
+    
+            $consultas = DB::table('consultas as a')
+            ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.provincia','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidos1h', 'u.name','u.lastname','s.nombre as servicio')
+            ->join('pacientes as b','b.id','a.id_paciente_mujer')
+            ->join('pacientes as c','c.id','a.id_paciente_hombre')
+            ->join('users as u','u.id','a.id_especialista')
+            ->join('servicios as s','s.id','a.tipo')
+            ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f1))])
+            ->orderBy('a.id','DESC')
+            ->get(); 
+    
+          }
+    
+
+
+        return view('reportes.provincia', compact('f1','f2','consultas'));
+
+       
+
+    }
+
+    public function reporte_referencia(Request $request){
+
+
+
+
+        
+
+        if ($request->inicio && $request->provincia != '0' ) {
+
+            $f1 = $request->inicio;
+            $f2 = $request->fin;
+         
+            $consultas = DB::table('consultas as a')
+            ->select('a.id','a.id_paciente_mujer','a.entero','a.id_paciente_hombre','a.provincia','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidos1h', 'u.name','u.lastname','s.nombre as servicio')
+            ->join('pacientes as b','b.id','a.id_paciente_mujer')
+            ->join('pacientes as c','c.id','a.id_paciente_hombre')
+            ->join('users as u','u.id','a.id_especialista')
+            ->join('servicios as s','s.id','a.tipo')
+            ->where('a.entero','like','%'.$request->entero.'%') 
+            ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f1))])
+            ->orderBy('a.id','DESC')
+            ->get(); 
+    
+          } else {
+    
+            $f1 = date('Y-m-d');
+            $f2 = date('Y-m-d');
+    
+            $consultas = DB::table('consultas as a')
+            ->select('a.id','a.id_paciente_mujer','a.entero','a.id_paciente_hombre','a.provincia','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidos1h', 'u.name','u.lastname','s.nombre as servicio')
+            ->join('pacientes as b','b.id','a.id_paciente_mujer')
+            ->join('pacientes as c','c.id','a.id_paciente_hombre')
+            ->join('users as u','u.id','a.id_especialista')
+            ->join('servicios as s','s.id','a.tipo')
+            ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f1))])
+            ->orderBy('a.id','DESC')
+            ->get(); 
+    
+          }
+    
+
+
+        return view('reportes.referencia', compact('f1','f2','consultas'));
+
+       
+
+    }
 
     public function reporte_individual_pdf($tipo,$tipo2, $f1, $f2,Request $request){
 

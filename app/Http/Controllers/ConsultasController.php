@@ -148,6 +148,27 @@ class ConsultasController extends Controller
       return view('consultas.admision',compact('consulta','edad','edad1'));
     }
 
+    public function admisionm($consulta)
+
+    {
+
+      $consulta = DB::table('consultas as a')
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.email','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.email as emailh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->join('pacientes as b','b.id','a.id_paciente_mujer')
+      ->join('pacientes as c','c.id','a.id_paciente_hombre')
+      ->join('users as u','u.id','a.id_especialista')
+      ->join('servicios as s','s.id','a.tipo')
+      ->where('a.id', '=', $consulta)
+      ->first(); 
+
+      $edad = Carbon::parse($consulta->fechanac)->age;
+      $edad1 = Carbon::parse($consulta->fechanach)->age;
+
+
+
+      return view('consultas.admisionm',compact('consulta','edad','edad1'));
+    }
+
     public function atencion($id)
 
     {
@@ -170,6 +191,30 @@ class ConsultasController extends Controller
 
       return view('consultas.atencion',compact('consulta','edad','edad1', 'admision'));
     }
+
+    public function atencionm($id)
+
+    {
+
+      $consulta = DB::table('consultas as a')
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.email','b.apellidos','b.apellidos1','c.nombres as nombresh','c.email as emailh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->join('pacientes as b','b.id','a.id_paciente_mujer')
+      ->join('pacientes as c','c.id','a.id_paciente_hombre')
+      ->join('users as u','u.id','a.id_especialista')
+      ->join('servicios as s','s.id','a.tipo')
+      ->where('a.id', '=', $id)
+      ->first(); 
+
+      $edad = Carbon::parse($consulta->fechanac)->age;
+      $edad1 = Carbon::parse($consulta->fechanach)->age;
+
+      $admision = Admision::where('consulta','=',$id)->first();
+
+
+
+      return view('consultas.atencionm',compact('consulta','edad','edad1', 'admision'));
+    }
+
 
     public function ver($id)
 

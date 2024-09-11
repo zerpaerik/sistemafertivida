@@ -29,6 +29,8 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -49,17 +51,18 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Consultas</h1>
+            <h1 class="m-0 text-dark">Reportes</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Crear</li>
+              <li class="breadcrumb-item active">Reportes por provincia</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -69,53 +72,29 @@
 
     <!-- Main content -->
     <section class="content">
+    @include('flash-message')
       <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
+      <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Agregar</h3>
-              </div>
-              <!-- /.card-header -->
-              <!-- form start -->
-              <form role="form" method="post" action="consultas/create" accept-charset="UTF-8" enctype="multipart/form-data">
-					{{ csrf_field() }}                
-                    <div class="card-body">
+            
+              <form method="get" action="reporte_provincia">					
+                  <label for="exampleInputEmail1">Filtros de Busqueda</label>
+
                     <div class="row">
-                    <div class="col-md-3">
-                      <label>Servicio</label>
-                        <select class="form-control" name="servicio">
-                         @foreach($servicios as $s)
-						             <option value="{{$s->id}}">{{$s->nombre}}</option>
-                         @endforeach
-                        </select>
-                   </div> 
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Fecha Inicio</label>
+                    <input type="date" class="form-control" value="{{$f1}}" name="inicio">
+                  </div>
 
-                   <div class="col-md-3">
-                      <label>Especialista</label>
-                        <select class="form-control" name="especialista">
-                         @foreach($prof as $p)
-						             <option value="{{$p->id}}">{{$p->lastname}} {{$p->name}}</option>
-                         @endforeach
-                        </select>
-                   </div> 
-                   <div class="col-md-3">
-                      <label>Cómo se entero de nosotros?</label>
-                        <select class="form-control" name="entero">
-						             <option value="Facebook">Facebook</option>
-                         <option value="Tik Tok">Tik Tok</option>
-						             <option value="Instagram">Instagram</option>
-						             <option value="Youtube">Youtube</option>
-						             <option value="Por Familiar">Por Familiar</option>
-						             <option value="Por Amigo">Por Amigo</option>
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Fecha Fin</label>
+                    <input type="date" class="form-control" value="{{$f2}}" name="fin">
+                  </div>
 
-                        </select>
-                   </div> 
-                   <div class="col-md-3">
-                      <label>Lugar de procedencia</label>
-                        <select class="form-control" name="provincia">
+                  <div class="col-md-3">
+                    <label for="exampleInputEmail1">Provincia</label>
+                    <select class="form-control" name="provincia">
+                         <option value="0">Seleccione</option>
                          <option value="AMAZONAS">AMAZONAS</option>
                          <option value="ANCASH">ANCASH</option>
 						             <option value="APURIMAC">APURIMAC</option>
@@ -141,73 +120,99 @@
 						             <option value="TACNA">TACNA</option>
 						             <option value="TUMBES">TUMBES</option>
 						             <option value="UCAYALI">UCAYALI</option>
-                        </select>
-                   </div> 
-                  </div>
-                  <br>
+                        </select>                 
+                     </div>
 
-                  <div class="row">
-                    <div class="col-md-6">
-                      <label>Paciente Mujer</label>
-                        <select class="form-control" name="pacientem">
-                         @foreach($pacientesm as $pm)
-						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
-                         @endforeach
-                        </select>
-                   </div> 
-
-                   <div class="col-md-6">
-                      <label>Paciente Hombre</label>
-                        <select class="form-control" name="pacienteh">
-                        <option value="999999">Ninguno</option>
-                         @foreach($pacientesh as $ph)
-						             <option value="{{$ph->id}}">{{$ph->dni}} - {{$ph->apellidos}},{{$ph->apellidos1}} {{$ph->nombres}}</option>
-                         @endforeach
-                        </select>
-                   </div> 
-                  </div>
-
-
-
-            
-
-                  <br>
-
-               
+                  
                 
-
-        
                  
-                </div>
-                <!-- /.card-body -->
+                  <div class="col-md-2" style="margin-top: 30px;">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-              </form>
-            </div>
-            <!-- /.card -->
+                  </div>
+                  </form>
+              
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Provincia</th>
+                    <th>Fecha</th>
+                    <th>Paciente Mujer</th>
+                    <th>Paciente Hombre</th>
+                    <th>Especialista</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
 
-         
-            <!-- /.card -->
+                  @foreach($consultas as $an)
+                  <tr>
+                    <td>{{$an->id}}</td>
+                    <td>{{$an->provincia}}</td>
+                    <td>{{date('d-M-y H:i', strtotime($an->created_at))}}</td>
+                    <td>{{$an->apellidos}} {{$an->apellidos1}}, {{$an->nombres}} </td>
+                    <td>{{$an->apellidosh}} {{$an->apellidos1h}}, {{$an->nombresh}}</td>
+                    <td>{{$an->name}} {{$an->lastname}}</td>
+                    <td><span class="badge bg-info">{{$an->servicio}}</span></td>
 
-           
-           
-               
+                    <td>
+                    
 
-
-           
+                    </td>
+                  </tr>
+                  @endforeach
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Id</th>
+                    <th>Provincia</th>
+                    <th>Fecha</th>
+                    <th>Paciente Mujer</th>
+                    <th>Paciente Hombre</th>
+                    <th>Especialista</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </tfoot>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
-          <!--/.col (right) -->
+          <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
-    
+    <!-- /.content -->
+  </div>
+  </div>
+
+  <div class="modal fade" id="viewTicket">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            </div>
+           
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+  </section>
 
   <!-- /.content-wrapper -->
   
@@ -259,11 +264,53 @@
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
+<script type="text/javascript">
+		function viewh(e){
+		    var id = $(e).attr('id');
+		    
+		    $.ajax({
+		        type: "GET",
+		        url: "/resultados/anotar/"+id,
+		        success: function (data) {
+		            $("#viewTicket .modal-body").html(data);
+		            $('#viewTicket').modal('show');
+		        },
+		        error: function (data) {
+		            console.log('Error:', data);
+		        }
+		    });
+		}
 
+	
+	</script>
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 </body>
 </html>
