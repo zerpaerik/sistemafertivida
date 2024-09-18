@@ -123,5 +123,18 @@
 </div>
 @endif
 
+<br><br><br><br>
+
+<center>
+<img src="/var/www/html/sistemafertivida/public/firma.png"  style="width: 20%;"/>
+
+
+<p>ENRIQUE JESUS VILLAJULCA QUIÑONES</p>
+<p>CMP: 037256 RNE: 030473</p>
+<p>MEDICO CIRUJANO</p>
+<p>ESPECIALISTA EN GINECOLOGIA OBSTETRICA Y FERTILIDAD</p>
+
+</center>
+
 
 

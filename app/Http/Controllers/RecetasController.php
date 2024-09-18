@@ -85,7 +85,11 @@ class RecetasController extends Controller
             $res = 'NO';
             }
 
-        return view('recetas.create', compact('medicamentos','paciente','res'));
+
+            $pacientes = Pacientes::where('estatus','=', 1)->orderby('apellidos','asc')->get();
+
+
+        return view('recetas.create', compact('medicamentos','paciente','res', 'pacientes'));
     }
 
     /**

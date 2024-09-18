@@ -25,6 +25,10 @@
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
+
+    <!-- Select2 -->
+  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <!-- DataTables -->
 <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
@@ -80,61 +84,26 @@
               
               </div>
 
-              <br>
-
-
-              <form method="get" action="ordenes-create">		
-              {{ csrf_field() }}  
-
-              
-              <div class="row" style="margin-left:20px;">
-                  <div class="col-md-4">
-                    <label for="exampleInputEmail1">Buscar Paciente</label>
-                    <input type="text" class="form-control" id="el1" name="pac" placeholder="Buscar por dni" onsubmit="datapac()">
-                  </div>
-
-                  <div class="col-md-2" style="margin-top: 30px;">
-                  <button type="submit" class="btn btn-primary">Buscar</button>
-
-                  </div>
-              </div>
-
-              </form>
+             
 
 
                   <br>
 
               <form method="post" action="ordenes/create" >			
               {{ csrf_field() }}  	
-                @if($paciente && $res == 'SI')
-                  <input type="hidden" name="paciente" value="{{$paciente->id}}">
-                  <p style="margin-left:20px;">Datos de Paciente</p>
-                  <div class="row" style="background:yellowgreen;margin-left:20px;">
-                    <div class="col-md-2">
-                      <strong>Nombres:</strong>{{$paciente->nombres}}
-                    </div>
-                    <div class="col-md-2">
-                      <strong>Apellidos:</strong>{{$paciente->apellidos}}
-                    </div>
-                    <div class="col-md-2">
-                      <strong>TipoDoc:</strong>{{$paciente->tipo_doc}}
-                    </div>
-                    <div class="col-md-2">
-                      <strong>DNI:</strong>{{$paciente->dni}}
-                    </div>
-                    
-                    <div class="col-md-2">
-                      <strong>Teléfono:</strong>{{$paciente->telefono}}
-                    </div>
-                    
-                    </div>
-                  @else
-                  <label for="exampleInputEmail1" style="margin-left:20px;">NO EXISTE EL PACIENTE</label>
-                  @endif
+              
 
-                  <br><br>
-
-
+              <div class="row" style="margin-left:10px;">
+                    <div class="col-md-6">
+                      <label>Seleccione el paciente</label>
+                        <select class="js-example-basic-single" name="paciente">
+                         @foreach($pacientes as $pm)
+						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
+                         @endforeach
+                        </select>
+                    </div> 
+              </div>
+              <br><br>
               <ul class="nav nav-tabs">
                 <li class="nav-item">
                   <a class="nav-link active" data-toggle="tab" href="#serv">Seleccionar servicios</a>
@@ -375,6 +344,10 @@ function datapac(){
 </script>
 
 <script>
+
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
 
 $(document).ready(function() {
 

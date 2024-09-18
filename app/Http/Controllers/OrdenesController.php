@@ -77,7 +77,7 @@ class OrdenesController extends Controller
         $servicios = DB::table('servicios as a')
         ->select('a.id','a.nombre','a.tipo')
         ->orderby('a.nombre','asc')
-        ->where('a.tipo','=','ORDENES')
+        ->where('a.tipo','=','SERVICIOS')
         ->where('a.estatus', '=', 1)
         ->get(); 
         
@@ -92,7 +92,10 @@ class OrdenesController extends Controller
             $res = 'NO';
             }
 
-        return view('orden.create', compact('servicios','analisis','res','paciente'));
+            $pacientes = Pacientes::where('estatus','=', 1)->orderby('apellidos','asc')->get();
+
+
+        return view('orden.create', compact('servicios','analisis','res','pacientes'));
     }
 
     /**
