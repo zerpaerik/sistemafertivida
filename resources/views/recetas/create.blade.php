@@ -88,27 +88,57 @@
               <!-- /.card-header -->
               <!-- form start -->
                     <div class="card-body">
-                    <form method="post" action="recetas/create" >			
-                  {{ csrf_field() }}  					
+                   
+              <form method="get" action="recetas-create">		
+              {{ csrf_field() }}  
 
-            
-                  
+              
+              <div class="row" style="margin-left:20px;">
+                  <div class="col-md-4">
+                    <label for="exampleInputEmail1">Buscar Paciente</label>
+                    <input type="text" class="form-control" id="el1" name="pac" placeholder="Buscar por dni" onsubmit="datapac()">
+                  </div>
+
+                  <div class="col-md-2" style="margin-top: 30px;">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+
+                  </div>
+              </div>
+
+              </form>
+
+
                   <br>
-                  <div class="row">
 
-               
+              <form method="post" action="recetas/create" >			
+              {{ csrf_field() }}  	
+                @if($paciente && $res == 'SI')
+                  <input type="hidden" name="paciente" value="{{$paciente->id}}">
+                  <p style="margin-left:20px;">Datos de Paciente</p>
+                  <div class="row" style="background:yellowgreen;margin-left:20px;">
+                    <div class="col-md-2">
+                      <strong>Nombres:</strong>{{$paciente->nombres}}
+                    </div>
+                    <div class="col-md-2">
+                      <strong>Apellidos:</strong>{{$paciente->apellidos}}
+                    </div>
+                    <div class="col-md-2">
+                      <strong>TipoDoc:</strong>{{$paciente->tipo_doc}}
+                    </div>
+                    <div class="col-md-2">
+                      <strong>DNI:</strong>{{$paciente->dni}}
+                    </div>
                     
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Seleccione el paciente</label>
-                    <select class="form-control select2" name="paciente">
-                         @foreach($pacientes as $pm)
-						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
-                         @endforeach
-                        </select>
-
+                    <div class="col-md-2">
+                      <strong>Teléfono:</strong>{{$paciente->telefono}}
                     </div>
-
+                    
                     </div>
+                  @else
+                  <label for="exampleInputEmail1" style="margin-left:20px;">NO EXISTE EL PACIENTE</label>
+                  @endif
+
+                  <br><br>
                     <br>
 
 
@@ -268,6 +298,7 @@
 <!-- Summernote -->
 <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
 <script>
+
 function datapac(){
       
       $('#el1').on('submit',function(){

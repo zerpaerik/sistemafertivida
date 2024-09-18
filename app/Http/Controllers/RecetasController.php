@@ -40,6 +40,7 @@ class RecetasController extends Controller
         $recetas = DB::table('receta as a')
         ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
+        ->where('a.estatus', '=', 1)
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
         ->get(); 
 
@@ -50,6 +51,7 @@ class RecetasController extends Controller
             $recetas = DB::table('receta as a')
             ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
             ->join('pacientes as b','b.id','a.id_paciente')
+            ->where('a.estatus', '=', 1)
             ->whereDate('a.created_at', date('Y-m-d 00:00:00', strtotime($f1)))
             ->get(); 
 
@@ -67,17 +69,23 @@ class RecetasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $medicamentos = DB::table('medicamentos as a')
         ->select('a.id','a.nombre','a.principio','a.estatus')
         ->where('a.estatus', '=', 1)
         ->get(); 
         
-        $pacientes = Pacientes::where('estatus','=',1)->orderby('apellidos','asc')->get();
 
+        if(!is_null($request->pac)){
+            $paciente = Pacientes::where('dni','=',$request->pac)->first();
+            $res = 'SI';
+            } else {
+            $paciente = Pacientes::where('dni','=','LABORATORIO')->first();
+            $res = 'NO';
+            }
 
-        return view('recetas.create', compact('medicamentos','pacientes'));
+        return view('recetas.create', compact('medicamentos','paciente','res'));
     }
 
     /**
@@ -94,6 +102,7 @@ class RecetasController extends Controller
         $receta = new Recetas();
         $receta->id_paciente =$request->paciente;
         $receta->usuario =Auth::user()->id;
+        $receta->estatus =1;
         $receta->save();
 
     

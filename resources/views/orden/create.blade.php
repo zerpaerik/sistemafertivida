@@ -24,16 +24,13 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <!-- DataTables -->
 <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -54,17 +51,18 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Crear Orden</h1>
+            <h1 class="m-0 text-dark">Orden</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Orden</a></li>
-              <li class="breadcrumb-item active">Crear</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Crear Orden</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -74,129 +72,223 @@
 
     <!-- Main content -->
     <section class="content">
+    @include('flash-message')
       <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
+      <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Agregar</h3>
-              </div>
-              @include('flash-message')
-
-              <!-- /.card-header -->
-              <!-- form start -->
-                    <div class="card-body">
-                    <form method="post" action="ordenes/create" >			
-                  {{ csrf_field() }}  					
-
-            
-                  
-                  <br>
-                  <div class="row">
-
-               
-                    
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Seleccione el paciente</label>
-                    <select class="form-control select2" name="paciente">
-                         @foreach($pacientes as $pm)
-						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
-                         @endforeach
-                        </select>
-
-                    </div>
-
-                    </div>
-                    <br>
-
-
-
-
-                    <label for="exampleInputEmail1">Seleccione los servicios</label>
-                    <br><br>
-            <!-- sheepIt Form -->
-            <div id="laboratorios" class="embed ">
-            
-                <!-- Form template-->
-                <div id="laboratorios_template" class="template row">
-
-                    <label for="laboratorios_#index#_laboratorio" class="col-sm-1 control-label">Servicios</label>
-                    <div class="col-sm-4">
-                      <select id="laboratorios_#index#_laboratorio" name="id_laboratorio[laboratorios][#index#][laboratorio]" class="selectLab form-control">
-                        <option value="1">Seleccionar Servicio</option>
-                        @foreach($servicios as $pac)
-                          <option value="{{$pac->id}}">
-                            {{$pac->nombre}}
-                          </option>
-                        @endforeach
-                      </select>
-                    </div>
-
-            
+          
               
+              </div>
+
+              <br>
 
 
+              <form method="get" action="ordenes-create">		
+              {{ csrf_field() }}  
+
+              
+              <div class="row" style="margin-left:20px;">
+                  <div class="col-md-4">
+                    <label for="exampleInputEmail1">Buscar Paciente</label>
+                    <input type="text" class="form-control" id="el1" name="pac" placeholder="Buscar por dni" onsubmit="datapac()">
+                  </div>
+
+                  <div class="col-md-2" style="margin-top: 30px;">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+
+                  </div>
+              </div>
+
+              </form>
 
 
+                  <br>
+
+              <form method="post" action="ordenes/create" >			
+              {{ csrf_field() }}  	
+                @if($paciente && $res == 'SI')
+                  <input type="hidden" name="paciente" value="{{$paciente->id}}">
+                  <p style="margin-left:20px;">Datos de Paciente</p>
+                  <div class="row" style="background:yellowgreen;margin-left:20px;">
+                    <div class="col-md-2">
+                      <strong>Nombres:</strong>{{$paciente->nombres}}
+                    </div>
+                    <div class="col-md-2">
+                      <strong>Apellidos:</strong>{{$paciente->apellidos}}
+                    </div>
+                    <div class="col-md-2">
+                      <strong>TipoDoc:</strong>{{$paciente->tipo_doc}}
+                    </div>
+                    <div class="col-md-2">
+                      <strong>DNI:</strong>{{$paciente->dni}}
+                    </div>
+                    
+                    <div class="col-md-2">
+                      <strong>Teléfono:</strong>{{$paciente->telefono}}
+                    </div>
+                    
+                    </div>
+                  @else
+                  <label for="exampleInputEmail1" style="margin-left:20px;">NO EXISTE EL PACIENTE</label>
+                  @endif
+
+                  <br><br>
 
 
-                    <a id="laboratorios_remove_current" style="cursor: pointer;"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" data-toggle="tab" href="#serv">Seleccionar servicios</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#anal">Seleccionar analisis</a>
+                  
+                </li>
+              
+              
+              </ul>
+
+              <div class="tab-content">
+
+
+              <div class="tab-pane container active" id="serv">
+                  <div class="card-body">
+
+                  <!-- /.sheepit servicios -->
+
+                    <div id="laboratorios" class="embed ">
+                    
+                    <!-- Form template-->
+                    <div id="laboratorios_template" class="template row">
+
+                        <label for="laboratorios_#index#_laboratorio" class="col-sm-1 control-label">Servicios</label>
+                        <div class="col-sm-4">
+                          <select id="laboratorios_#index#_laboratorio" name="id_laboratorio[laboratorios][#index#][laboratorio]" class="form-control">
+                            <option value="1">Seleccionar Servicio</option>
+                            @foreach($servicios as $pac)
+                              <option value="{{$pac->id}}">
+                                {{$pac->nombre}}
+                              </option>
+                            @endforeach
+                          </select>
+                        </div>
+
+                        <a id="laboratorios_remove_current" style="cursor: pointer;"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- /Form template-->
+                    
+                    <!-- No forms template -->
+                    <div id="laboratorios_noforms_template" class="noItems col-sm-12 text-center">Ningún servicio</div>
+                    <!-- /No forms template-->
+                    
+                    <!-- Controls -->
+                    <div id="laboratorios_controls" class="controls col-sm-11 col-sm-offset-1">
+                        <div id="laboratorios_add" class="btn btn-default form add"><a><span><i class="fa fa-plus-circle"></i> Agregar servicio</span></a></div>
+                        <div id="laboratorios_remove_last" class="btn form removeLast"><a><span><i class="fa fa-close-circle"></i> Eliminar ultimo</span></a></div>
+                        <div id="laboratorios_remove_all" class="btn form removeAll"><a><span><i class="fa fa-close-circle"></i> Eliminar todos</span></a></div>
+                    </div>
+                    <!-- /Controls -->
+                    
                 </div>
-                <!-- /Form template-->
-                
-                <!-- No forms template -->
-                <div id="laboratorios_noforms_template" class="noItems col-sm-12 text-center">Ningún servicio</div>
-                <!-- /No forms template-->
-                
-                <!-- Controls -->
-                <div id="laboratorios_controls" class="controls col-sm-11 col-sm-offset-1">
-                    <div id="laboratorios_add" class="btn btn-default form add"><a><span><i class="fa fa-plus-circle"></i> Agregar servicio</span></a></div>
-                    <div id="laboratorios_remove_last" class="btn form removeLast"><a><span><i class="fa fa-close-circle"></i> Eliminar ultimo</span></a></div>
-                    <div id="laboratorios_remove_all" class="btn form removeAll"><a><span><i class="fa fa-close-circle"></i> Eliminar todos</span></a></div>
+
+              
+                  <!-- /.sheepit servicios -->                   
+                  
+                  </div>
+              </div>
+
+              <div class="tab-pane container" id="anal">
+
+                <div class="card-body">
+
+                 <!-- /.sheepit anal -->
+
+                 <div id="servicios" class="embed ">
+                    
+                    <!-- Form template-->
+                    <div id="servicios_template" class="template row">
+
+                        <label for="servicios_#index#_servicio" class="col-sm-1 control-label">Analisis</label>
+                        <div class="col-sm-4">
+                          <select id="servicios_#index#_servicio" name="id_servicio[servicios][#index#][servicio]" class="form-control">
+                            <option value="1">Seleccionar Analisis</option>
+                            @foreach($analisis as $anali)
+                              <option value="{{$anali->id}}">
+                                {{$anali->nombre}}
+                              </option>
+                            @endforeach
+                          </select>
+                        </div>
+
+                        <a id="servicios_remove_current" style="cursor: pointer;"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- /Form template-->
+                    
+                    <!-- No forms template -->
+                    <div id="servicios_noforms_template" class="noItems col-sm-12 text-center">Ningún Analisis</div>
+                    <!-- /No forms template-->
+                    
+                    <!-- Controls -->
+                    <div id="servicios_controls" class="controls col-sm-11 col-sm-offset-1">
+                        <div id="servicios_add" class="btn btn-default form add"><a><span><i class="fa fa-plus-circle"></i> Agregar Analisis</span></a></div>
+                        <div id="servicios_remove_last" class="btn form removeLast"><a><span><i class="fa fa-close-circle"></i> Eliminar ultimo</span></a></div>
+                        <div id="servicios_remove_all" class="btn form removeAll"><a><span><i class="fa fa-close-circle"></i> Eliminar todos</span></a></div>
+                    </div>
+                    <!-- /Controls -->
+                    
                 </div>
-                <!-- /Controls -->
-                
-            </div>
-            <!-- /sheepIt Form --> 
-						
-					</div>
 
-             
-                 </div>
+              
+                  <!-- /.sheepit anal -->     
+
+                  
+                </div>
+              
+              </div>
 
 
-                
-                <!-- /.card-body -->
 
-                <div class="card-footer">
+              <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
               </form>
-            </div>
-            <!-- /.card -->
 
          
-            <!-- /.card -->
-
-           
-           
-               
 
 
-           
-              </div>
+            
+              <!-- /.card-header -->
+             
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
-          <!--/.col (right) -->
+          <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+
+      <div class="modal fade" id="viewTicket">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+            </div>
+           
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
-    
+    <!-- /.content -->
+  </div>
+  </div>
+  </section>
 
   <!-- /.content-wrapper -->
   
@@ -354,6 +446,24 @@ var phonesForm = $("#laboratorios").sheepIt({
       calculo_general();
     }
 });
+
+// Main sheepIt form
+var phonesForm = $("#servicios").sheepIt({
+    separator: '',
+    allowRemoveCurrent: true,
+    allowAdd: true,
+    allowRemoveAll: true,
+    allowRemoveLast: true,
+
+    // Limits
+    maxFormsCount: 10,
+    minFormsCount: 1,
+    iniFormsCount: 0,
+
+    removeAllConfirmationMsg: 'Seguro que quieres eliminar todos?',
+
+});
+
 
 
 $(document).on('change', '.selectLab', function(){

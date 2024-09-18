@@ -106,5 +106,22 @@
 </div>
 @endif
 
+@if($iteml)
+<div style="margin-top:10px; background: #eaeaea;">
+	<table style="">
+		<tr>
+			<th style="padding: 0;width: 5%;text-overflow: ellipsis;">Analisis</th>
+
+		</tr>
+		@foreach ($iteml as $l)
+			<tr>
+				<td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $l->analisis }}</td>
+			</tr>
+		@endforeach
+	
+	</table>
+</div>
+@endif
+
 
 

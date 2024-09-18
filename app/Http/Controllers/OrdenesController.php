@@ -15,6 +15,7 @@ use App\Recetas;
 use App\RecetasItems;
 use App\Orden;
 use App\OrdenItems;
+use App\OrdenIteml;
 use App\Medicamentos;
 use App\Pacientes;
 use Auth;
@@ -42,6 +43,7 @@ class OrdenesController extends Controller
         $ordenes = DB::table('orden as a')
         ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
+        ->where('a.estatus', '=', 1)
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
         ->get(); 
 
@@ -52,6 +54,7 @@ class OrdenesController extends Controller
             $ordenes = DB::table('orden as a')
             ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
             ->join('pacientes as b','b.id','a.id_paciente')
+            ->where('a.estatus', '=', 1)
             ->whereDate('a.created_at', date('Y-m-d 00:00:00', strtotime($f1)))
             ->get(); 
 
@@ -69,7 +72,7 @@ class OrdenesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $servicios = DB::table('servicios as a')
         ->select('a.id','a.nombre','a.tipo')
@@ -78,9 +81,18 @@ class OrdenesController extends Controller
         ->where('a.estatus', '=', 1)
         ->get(); 
         
-        $pacientes = Pacientes::where('estatus','=',1)->orderby('apellidos','asc')->get();
+        //$pacientes = Pacientes::where('estatus','=',1)->orderby('apellidos','asc')->get();
+        $analisis = Analisis::where('estatus','=',1)->orderby('nombre','asc')->get();
 
-        return view('orden.create', compact('servicios','pacientes'));
+        if(!is_null($request->pac)){
+            $paciente = Pacientes::where('dni','=',$request->pac)->first();
+            $res = 'SI';
+            } else {
+            $paciente = Pacientes::where('dni','=','LABORATORIO')->first();
+            $res = 'NO';
+            }
+
+        return view('orden.create', compact('servicios','analisis','res','paciente'));
     }
 
     /**
@@ -92,29 +104,42 @@ class OrdenesController extends Controller
     public function store(Request $request)
     {
 
-
+       // dd($request->all());
         
         $orden = new Orden();
         $orden->id_paciente =$request->paciente;
         $orden->usuario =Auth::user()->id;
+        $orden->estatus = 1;
         $orden->save();
+
 
     
         if (isset($request->id_laboratorio)) {
             foreach ($request->id_laboratorio['laboratorios'] as $key => $lab) {
               if (!is_null($lab['laboratorio'])) {
-
-
                $items= new OrdenItems();
                $items->id_orden =$orden->id;
                $items->id_servicio =$lab['laboratorio'];
                $items->save();
-
-              
             }
           }
 
         }
+
+        
+        if (isset($request->id_servicio)) {
+            foreach ($request->id_servicio['servicios'] as $key => $serv) {
+              if (!is_null($serv['servicio'])) {
+               $iteml= new OrdenIteml();
+               $iteml->id_orden =$orden->id;
+               $iteml->id_lab =$serv['servicio'];
+               $iteml->save();
+            }
+          }
+
+        }
+
+
 
 
         return redirect()->action('OrdenesController@index')
@@ -140,7 +165,15 @@ class OrdenesController extends Controller
       ->where('a.id_orden', '=',$id)
       ->get(); 
 
-      $view = \View::make('orden.pdf', compact('paciente','orden','edad','items'));
+
+      $iteml = DB::table('orden_iteml as a')
+      ->select('a.*','u.nombre as analisis')
+      ->join('analisis as u','u.id','a.id_lab')
+      ->where('a.id_orden', '=',$id)
+      ->get(); 
+
+
+      $view = \View::make('orden.pdf', compact('paciente','orden','edad','items', 'iteml'));
 
       $pdf = \App::make('dompdf.wrapper');
       $pdf->loadHTML($view);
@@ -207,7 +240,7 @@ class OrdenesController extends Controller
     public function delete($id)
     {
 
-        $analisis = Ordenes::find($id);
+        $analisis = Orden::find($id);
         $analisis->estatus = 0;
         $analisis->save();
 

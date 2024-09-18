@@ -70,7 +70,7 @@
 		FECHA CONSULTA:  {{date('d/m/Y', strtotime($receta->created_at))}}
 </div>
 <div style="font-weight: bold; font-size: 14px">
-		PACIENTE:  {{ $paciente->apellidos }} {{ $paciente->nombres }}
+		PACIENTE:  {{ $paciente->apellidos }} {{ $paciente->apellidos1 }} {{ $paciente->nombres }}
 </div>
 
 <div style="font-weight: bold; font-size: 14px">
