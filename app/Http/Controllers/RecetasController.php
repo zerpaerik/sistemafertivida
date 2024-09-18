@@ -92,6 +92,15 @@ class RecetasController extends Controller
         return view('recetas.create', compact('medicamentos','paciente','res', 'pacientes'));
     }
 
+
+    public function dibujo(Request $request)
+    {
+        
+
+
+        return view('recetas.dibujo');
+    }
+
     /**
      * Store a newly created resource in storage.
      *

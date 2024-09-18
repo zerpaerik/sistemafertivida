@@ -570,6 +570,7 @@ Route::get('gastoss-reversar-{id}','CreditosController@reversarg');
 Route::get('gastoss-delete-{id}','CreditosController@deleteg');
 
 Route::get('recetas', 'RecetasController@index')->name('recetas.index');
+Route::get('dibujo', 'RecetasController@dibujo')->name('dibujo.index');
 Route::get('recetas-create', 'RecetasController@create')->name('recetas.create')->middleware('auth');
 Route::post('recetas/create', 'RecetasController@store')->middleware('auth');
 Route::get('recetas-delete-{id}', 'RecetasController@delete')->middleware('auth');
