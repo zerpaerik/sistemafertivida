@@ -588,6 +588,19 @@ Route::get('ordenes-ver-{id}', 'OrdenesController@ver');
 
 
 
+Route::get('evaluaciones', 'EvaluacionesController@index')->name('evaluaciones.index');
+Route::get('evaluaciones-create', 'EvaluacionesController@create')->name('evaluaciones.create')->middleware('auth');
+Route::post('evaluaciones/create', 'EvaluacionesController@store')->middleware('auth');
+Route::get('evaluaciones-delete-{id}', 'EvaluacionesController@delete')->middleware('auth');
+Route::get('evaluaciones-edit-{id}', 'EvaluacionesController@edit')->name('evaluaciones.edit');
+Route::post('evaluaciones/edit', 'EvaluacionesController@update');
+Route::get('evaluaciones-ver-{id}', 'EvaluacionesController@ver');
+
+Route::get('crear/utero1','EvaluacionesController@utero1');
+Route::get('crear/utero2','EvaluacionesController@utero2');
+
+
+
 Route::get('download2/{filename}', function($filename)
 {
     // Check if file exists in 
