@@ -120,7 +120,7 @@
                     <td>{{$p->apellidos}} {{$p->apellidos1}}</td>
                     <td>{{$p->created_at}}</td>
                  
-                    <td><a class="btn btn-primary btn-sm" target="_blank" href="evaluaciones-ver-{{$p->id}}">
+                    <td><a class="btn btn-primary btn-sm"  href="evaluaciones-ver-{{$p->id}}">
                               <i class="fas fa-eye">
                               </i>
                               Ver
