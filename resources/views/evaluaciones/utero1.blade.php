@@ -8,13 +8,13 @@
                   </div>
 
                   <div class="col-md-6">
-                    <label for="exampleInputEmail1">Medida Embrion</label>
+                    <label for="exampleInputEmail1">Posición del embrión</label>
                     <input type="text" class="form-control" id="password" name="p1" placeholder="Embrion">
                     <br>
-                    <label for="exampleInputEmail1">Medida OCI</label>
+                    <label for="exampleInputEmail1">Medida del OCE al OCI</label>
                     <input type="text" class="form-control" id="password" name="p2" placeholder="OCI">
                     <br>
-                    <label for="exampleInputEmail1">Medida Fondo</label>
+                    <label for="exampleInputEmail1">Medida OCE al fondo</label>
                     <input type="text" class="form-control" id="password" name="p3" placeholder="Fondo">
                   </div>
                                 

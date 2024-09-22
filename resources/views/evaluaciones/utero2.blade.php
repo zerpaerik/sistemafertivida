@@ -5,16 +5,16 @@
                   <div class="col-md-6">
                     <center><img src="ute1.png" class="" alt="User Image" width="350"></center>
 
-                  </div>
+               
                   <div class="col-md-6">
-                    <label for="exampleInputEmail1">Medida Embrion</label>
-                    <input type="text" class="form-control" id="password" name="p1" placeholder="Embrion">
+                    <label for="exampleInputEmail1">Posición del embrión</label>
+                    <input type="text" class="form-control" id="password" name="p1" placeholder="">
                     <br>
-                    <label for="exampleInputEmail1">Medida OCI</label>
-                    <input type="text" class="form-control" id="password" name="p2" placeholder="OCI">
+                    <label for="exampleInputEmail1">Medida del OCE al OCI</label>
+                    <input type="text" class="form-control" id="password" name="p2" placeholder="">
                     <br>
-                    <label for="exampleInputEmail1">Medida Fondo</label>
-                    <input type="text" class="form-control" id="password" name="p3" placeholder="Fondo">
+                    <label for="exampleInputEmail1">Medida OCE al fondo</label>
+                    <input type="text" class="form-control" id="password" name="p3" placeholder="">
                   </div>
                                 
               </div>
