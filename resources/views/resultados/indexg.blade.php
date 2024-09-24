@@ -120,7 +120,6 @@
                   <tr>
                     <th>Fecha</th>
                     <th>Pac.</th>
-                    <th>Origen</th>
                     <th>Det.</th>
                     <th>Informe.</th>
                     <th>Acciones</th>
@@ -132,7 +131,6 @@
                   <tr>
                     <td>{{$an->created_at}}</td>
                     <td>{{$an->apellidos}} {{$an->nombres}}</td>
-                    <td>{{$an->lastname}} {{$an->name}}</td>
                     <td>{{$an->servicio}}</td>
                     <td>
                     @if(Auth::user()->rol == 1 || Auth::user()->rol == 2)
@@ -169,7 +167,6 @@
                   <tr>
                     <th>Fecha</th>
                     <th>Pac.</th>
-                    <th>Origen</th>
                     <th>Det.</th>
                     <th>Informe.</th>
                     <th>Acciones</th>
