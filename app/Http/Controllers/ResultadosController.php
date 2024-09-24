@@ -15,6 +15,7 @@ use App\Placas;
 use App\PlacasUsadas;
 use App\PlacasMalogradas;
 use App\Comisiones;
+use App\Orden;
 use App\ResultadosServicios;
 use App\ResultadosLaboratorio;
 use Auth;
@@ -43,47 +44,37 @@ class ResultadosController extends Controller
   
 
             $resultados = DB::table('resultados_servicios as a')
-        ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.resta','b.monto','b.abono', 'b.id_paciente','b.estatus','b.sede', 'b.id_origen', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos', 'c.name', 'c.lastname')
-        ->join('atenciones as b', 'b.id', 'a.id_atencion')
-        ->join('users as c', 'c.id', 'b.id_origen')
-        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
-        ->join('servicios as s', 's.id', 'a.id_servicio')
-        ->where('b.estatus', '=', 1)
-       // ->where('b.resta', '=', 0)
-        ->where('a.estatus', '=', 1)
-        ->where('b.sede', '=', $request->session()->get('sede'))
-        ->whereBetween('a.created_at', [$f1, $f2])
-        ->orderBy('a.id','DESC')
-        //->where('a.monto', '!=', '0')
-        ->get();
+          ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
+          ->join('orden as b', 'b.id', 'a.id_atencion')
+          ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+          ->join('servicios as s', 's.id', 'a.id_servicio')
+          ->where('a.estatus', '=', 1)
+          ->whereBetween('a.created_at', [$f1, $f2])
+          ->orderBy('a.id','DESC')
+          //->where('a.monto', '!=', '0')
+          ->get();
+
         } else {
 
             $f1 = date('Y-m-d');
             $f2 = date('Y-m-d');
 
 
-            $resultados = DB::table('resultados_servicios as a')
-            ->select('a.id', 'a.id_atencion', 'a.id_servicio','a.informe', 'b.usuario','b.resta', 'a.created_at', 'a.estatus', 'b.estatus','b.monto','b.abono','b.sede','b.id_paciente', 'b.id_origen', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos', 'c.name', 'c.lastname')
-            ->join('atenciones as b', 'b.id', 'a.id_atencion')
-            ->join('users as c', 'c.id', 'b.id_origen')
+           
+                $resultados = DB::table('resultados_servicios as a')
+            ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
+            ->join('orden as b', 'b.id', 'a.id_atencion')
             ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
             ->join('servicios as s', 's.id', 'a.id_servicio')
-            ->where('b.estatus', '=', 1)
             ->where('a.estatus', '=', 1)
-            //->where('b.resta', '=', 0)
-            ->where('b.sede', '=', $request->session()->get('sede'))
             ->where('a.created_at', '=', date('Y-m-d'))
             ->orderBy('a.id','DESC')
             ->get();
 
-            //->where('
 
         }
 
-       // $file_path = public_path().'/modelos_informes/';
-        //$files = File::allFiles($file_path);
-
-     ///   dd($files);
+    
 
         return view('resultados.index', compact('resultados','f1','f2'));
         //
@@ -96,20 +87,16 @@ class ResultadosController extends Controller
             $f1 = $request->inicio;
             $f2 = $request->fin;
   
-
             $resultados = DB::table('resultados_laboratorio as a')
-        ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.informe','b.usuario','b.resta', 'a.created_at', 'a.estatus','b.sede','b.monto','b.abono', 'b.estatus','b.id_paciente', 'b.id_origen', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos', 'c.name', 'c.lastname')
-        ->join('atenciones as b', 'b.id', 'a.id_atencion')
-        ->join('users as c', 'c.id', 'b.id_origen')
-        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
-        ->join('analisis as s', 's.id', 'a.id_laboratorio')
-        ->where('b.estatus', '=', 1)
-        ->where('a.estatus', '=', 1)
-       // ->where('b.resta', '=', 0)
-        ->where('b.sede', '=', $request->session()->get('sede'))
-        ->whereBetween('a.created_at', [$f1, $f2])
-        ->orderBy('a.id','DESC')
-        ->get();
+            ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
+            ->join('orden as b', 'b.id', 'a.id_atencion')
+            ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+            ->join('analisis as s', 's.id', 'a.id_laboratorio')
+            ->where('a.estatus', '=', 1)
+            ->whereBetween('a.created_at', [$f1, $f2])
+            ->orderBy('a.id','DESC')
+            ->get();
+
         } else {
 
             $f1 = date('Y-m-d');
@@ -117,20 +104,15 @@ class ResultadosController extends Controller
 
 
             $resultados = DB::table('resultados_laboratorio as a')
-            ->select('a.id', 'a.id_atencion', 'a.id_laboratorio','a.informe','b.resta', 'b.usuario', 'a.created_at', 'a.estatus','b.sede','b.monto','b.abono','b.estatus', 'b.id_paciente', 'b.id_origen', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos', 'c.name', 'c.lastname')
-            ->join('atenciones as b', 'b.id', 'a.id_atencion')
-            ->join('users as c', 'c.id', 'b.id_origen')
+            ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
+            ->join('orden as b', 'b.id', 'a.id_atencion')
             ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
             ->join('analisis as s', 's.id', 'a.id_laboratorio')
-            ->where('b.estatus', '=', 1)
             ->where('a.estatus', '=', 1)
-           // ->where('b.resta', '=', 0)
-            ->where('b.sede', '=', $request->session()->get('sede'))
             ->where('a.created_at', '=', date('Y-m-d'))
             ->orderBy('a.id','DESC')
             ->get();
 
-            //->where('
 
         }
 
@@ -145,39 +127,33 @@ class ResultadosController extends Controller
       
 
         if ($request->id_paciente != null) {
-            $resultados = DB::table('resultados_servicios as a')
-        ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.fec_entrega','a.por_entrega','a.entregado','a.informe', 'a.informe_guarda', 'b.estatus', 'b.usuario', 'a.created_at', 'a.estatus', 'b.sede','b.id_paciente', 'b.id_origen', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos', 'c.name', 'c.lastname')
-        ->join('atenciones as b', 'b.id', 'a.id_atencion')
-        ->join('users as c', 'c.id', 'b.id_origen')
-        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
-        ->join('servicios as s', 's.id', 'a.id_servicio')
-        ->where('b.estatus', '=', 1)
-        ->where('a.estatus', '=', 3)
-        ->where('b.sede', '=', $request->session()->get('sede'))
-        ->where('b.id_paciente', '=', $request->id_paciente)
-        ->get();
-        } else {
+
           $resultados = DB::table('resultados_servicios as a')
-          ->select('a.id', 'a.id_atencion', 'a.id_servicio','a.entregado','a.fec_entrega','a.por_entrega', 'a.informe', 'a.informe_guarda', 'b.estatus', 'b.usuario', 'a.created_at', 'a.estatus','b.sede', 'b.id_paciente', 'b.id_origen', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos', 'c.name', 'c.lastname')
-          ->join('atenciones as b', 'b.id', 'a.id_atencion')
-          ->join('users as c', 'c.id', 'b.id_origen')
+          ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
+          ->join('orden as b', 'b.id', 'a.id_atencion')
           ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
           ->join('servicios as s', 's.id', 'a.id_servicio')
-          ->where('b.estatus', '=', 1)
-          ->where('a.estatus', '=', 999)
-          ->where('b.sede', '=', $request->session()->get('sede'))
-          ->where('a.created_at', '=', date('Y-m-d'))
+          ->where('a.estatus', '=', 3)
+          ->where('b.id_paciente', '=', $request->id_paciente)
           ->get();
 
+        } else {
+          $resultados = DB::table('resultados_servicios as a')
+          ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
+          ->join('orden as b', 'b.id', 'a.id_atencion')
+          ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+          ->join('servicios as s', 's.id', 'a.id_servicio')
+          ->where('a.estatus', '=', 999999999)
+          ->where('b.id_paciente', '=', $request->id_paciente)
+          ->get();
         }
 
-
         
-    if(!is_null($request->filtro)){
-      $pacientes =Pacientes::where("estatus", '=', 1)->where('apellidos','like','%'.$request->filtro.'%')->orderby('apellidos','asc')->get();
-      }else{
-      $pacientes =Pacientes::where("estatus", '=', 9)->orderby('nombres','asc')->get();
-      }
+        if(!is_null($request->filtro)){
+          $pacientes =Pacientes::where("estatus", '=', 1)->where('apellidos','like','%'.$request->filtro.'%')->orderby('apellidos','asc')->get();
+          }else{
+          $pacientes =Pacientes::where("estatus", '=', 9)->orderby('nombres','asc')->get();
+          }
 
 
         return view('resultados.indexg', compact('resultados','pacientes'));
@@ -190,30 +166,26 @@ class ResultadosController extends Controller
         if ($request->id_paciente) {
           
 
-            $resultados = DB::table('resultados_laboratorio as a')
-        ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.fec_entrega','a.por_entrega','a.entregado','a.informe','a.informe_guarda','b.estatus as sta_ate','b.sede','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente', 'b.id_origen', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos', 'c.name', 'c.lastname')
-        ->join('atenciones as b', 'b.id', 'a.id_atencion')
-        ->join('users as c', 'c.id', 'b.id_origen')
-        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
-        ->join('analisis as s', 's.id', 'a.id_laboratorio')
-        ->where('a.estatus', '=', 3)
-        ->where('b.sede', '=', $request->session()->get('sede'))
-        ->where('b.id_paciente', '=', $request->id_paciente)
-        ->get();
+          $resultados = DB::table('resultados_laboratorio as a')
+          ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
+          ->join('orden as b', 'b.id', 'a.id_atencion')
+          ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+          ->join('analisis as s', 's.id', 'a.id_laboratorio')
+          ->where('a.estatus', '=', 3)
+          ->where('b.id_paciente', '=', $request->id_paciente)
+          ->get();
+
         } else {
 
        
 
-            $resultados = DB::table('resultados_laboratorio as a')
-            ->select('a.id', 'a.id_atencion', 'a.id_laboratorio','a.entregado','a.fec_entrega','a.por_entrega','a.informe', 'a.informe_guarda','b.estatus as sta_ate','b.sede','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente', 'b.id_origen', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos', 'c.name', 'c.lastname')
-            ->join('atenciones as b', 'b.id', 'a.id_atencion')
-            ->join('users as c', 'c.id', 'b.id_origen')
-            ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
-            ->join('analisis as s', 's.id', 'a.id_laboratorio')
-            ->where('a.estatus', '=', 999)
-            ->where('b.sede', '=', $request->session()->get('sede'))
-            ->where('a.created_at', '=', date('Y-m-d'))
-            ->get();
+           $resultados = DB::table('resultados_laboratorio as a')
+          ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
+          ->join('orden as b', 'b.id', 'a.id_atencion')
+          ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+          ->join('analisis as s', 's.id', 'a.id_laboratorio')
+          ->where('a.estatus', '=', 99999999999999999)
+          ->get();
 
             //->where('
 
@@ -388,13 +360,11 @@ class ResultadosController extends Controller
     
     public function guardar_informe($id)
     {
-
-        $resultados = DB::table('resultados_servicios as a')
-        ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente', 'b.id_origen','b.tipo_atencion', 's.nombre as servicio', 'pa.fechanac','pa.nombres', 'pa.apellidos','pa.dni', 'c.name', 'c.lastname')
-        ->join('atenciones as b', 'b.id', 'a.id_atencion')
-        ->join('users as c', 'c.id', 'b.id_origen')
-        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
-        ->join('servicios as s', 's.id', 'a.id_servicio')
+      $resultados = DB::table('resultados_servicios as a')
+      ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
+      ->join('orden as b', 'b.id', 'a.id_atencion')
+      ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+      ->join('servicios as s', 's.id', 'a.id_servicio')
         //->where('a.estatus', '=', 1)
         ->where('a.id',  '=', $id)
         //->where('a.monto', '!=', '0')
@@ -411,12 +381,11 @@ class ResultadosController extends Controller
     public function guardar_informel($id)
     {
 
-        $resultados = DB::table('resultados_laboratorio as a')
-        ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente', 'b.id_origen', 's.nombre as servicio', 'pa.fechanac','pa.nombres', 'pa.apellidos','pa.dni', 'c.name', 'c.lastname')
-        ->join('atenciones as b', 'b.id', 'a.id_atencion')
-        ->join('users as c', 'c.id', 'b.id_origen')
-        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
-        ->join('analisis as s', 's.id', 'a.id_laboratorio')
+   $resultados = DB::table('resultados_laboratorio as a')
+            ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
+            ->join('orden as b', 'b.id', 'a.id_atencion')
+            ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+            ->join('analisis as s', 's.id', 'a.id_laboratorio')
         //->where('a.estatus', '=', 1)
         ->where('a.id',  '=', $id)
         //->where('a.monto', '!=', '0')
@@ -434,7 +403,6 @@ class ResultadosController extends Controller
     public function guardar(Request $request){
 
 
-      //dd($request->id_servicio);
 
       
       $usuario = DB::table('users')
@@ -449,93 +417,7 @@ class ResultadosController extends Controller
 
 
 
-      $atenc = Atenciones::where('id','=',$res->id_atencion)->first();
-
-      
-
-      if ($usuario->tipo_personal == 'Tecnólogo' && $servicio->porcentaje2 > 0 && $atenc->tipo_atencion != 7) {
-          $com = new Comisiones();
-          $com->id_atencion =  $res->id_atencion;
-          $com->detalle =  $servicio->nombre;
-          $com->porcentaje = $servicio->porcentaje2;
-          $com->id_responsable = Auth::user()->id;
-          $com->monto = $atenc->monto * $servicio->porcentaje2 / 100;
-          $com->id_origen = 1;
-          $com->estatus = 1;
-          $com->tecnologo = 1;
-          $com->usuario = Auth::user()->id;
-          $com->save();
-      }
-
-      if($usuario->tipo_personal == 'Tecnólogo' && $servicio->porcentaje2 > 0 && $atenc->tipo_atencion == 7){
-        $com = new Comisiones();
-        $com->id_atencion =  $res->id_atencion;
-        $com->detalle =  $servicio->nombre;
-        $com->porcentaje = $servicio->porcentaje2;
-        $com->id_responsable = Auth::user()->id;
-        $com->monto = $servicio->precio * $servicio->porcentaje2 / 100;
-        $com->id_origen = 1;
-        $com->estatus = 1;
-        $com->tecnologo = 1;
-        $com->usuario = Auth::user()->id;
-        $com->save();
-      }
-
-
-
-        $at = Atenciones::where('id','=',$res->id_atencion)->first();
-        $img = $request->file('informe');
-        $nombre_imagen=$img->getClientOriginalName();
-        $at->informe =  $nombre_imagen;
-        $at->atendido =  2;
-        $at->atendido_por =  $usuario->lastname.' '.$usuario->name;
-        $at->save();
-
-
-        //guardado de placas usadas
-
-        if ($request->id_servicio != null) {
-          foreach ($request->id_servicio['servicios'] as $key => $serv) {
-              if (!is_null($serv['servicio'])) {
-                  $servicio = Placas::where('id', '=', $serv['servicio'])->first();
-                  //TIPO ATENCION SERVICIOS= 1
-                  $plac_u = new PlacasUsadas();
-                  $plac_u->paciente =  $atenc->id_paciente;
-                  $plac_u->placa = $servicio->id;
-                  $plac_u->cantidad = (float)$request->monto_s['servicios'][$key]['monto'];
-                  $plac_u->usuario = Auth::user()->id;
-                  $plac_u->resultado = $request->id;
-                  $plac_u->atencion =  $atenc->id;
-                  $plac_u->save();
-
-              }
-          }
-      }
-
-
-      if ($request->id_ecografia != null) {
-        foreach ($request->id_ecografia['ecografias'] as $key => $eco) {
-            if (!is_null($eco['ecografia'])) {
-              $placa_m = Placas::where('id', '=', $eco['ecografia'])->first();
-
-              $plac_m = new PlacasMalogradas();
-              $plac_m->paciente =  $atenc->id_paciente;
-              $plac_m->placa = $placa_m->id;
-              $plac_m->cantidad = (float)$request->monto_s['ecografias'][$key]['monto'];
-              $plac_m->usuario = Auth::user()->id;
-              $plac_m->resultado = $request->id;
-              $plac_m->atencion =  $atenc->id;
-              $plac_m->save();
-
-
-                
-                }
-            }
-        }
-    
-
-
-
+      $atenc = Orden::where('id','=',$res->id_atencion)->first();
 
 
         $rs = ResultadosServicios::where('id','=',$request->id)->first();
@@ -559,22 +441,12 @@ class ResultadosController extends Controller
 
         $res = ResultadosLaboratorio::where('id','=',$request->id)->first();
 
-        $atenc = Atenciones::where('id','=',$res->id_atencion)->first();
+        $atenc = Orden::where('id','=',$res->id_atencion)->first();
 
         $usuario = DB::table('users')
         ->select('*')
         ->where('id','=', Auth::user()->id)
         ->first();  
-
-        
-        $at = Atenciones::where('id','=',$res->id_atencion)->first();
-        $img = $request->file('informe');
-        $nombre_imagen=$img->getClientOriginalName();
-        $at->informe =  $nombre_imagen;
-        $at->atendido =  2;
-        $at->atendido_por =  $usuario->lastname.' '.$usuario->name;
-        $at->save();
-
 
         $rs = ResultadosLaboratorio::where('id','=',$request->id)->first();
         $img = $request->file('informe');
@@ -884,28 +756,17 @@ class ResultadosController extends Controller
 
         File::delete(File::glob('*.docx'));
         $informe = $templateProcessor = new TemplateProcessor(public_path('modelos_informes/'.$informe));
-      /*  $resultados = ReportesController::elasticSearch($id);
-        $resultados1 = DB::table('atenciones as a')
-        ->select('a.id','a.id_paciente','a.origen_usuario','a.es_servicio','a.es_laboratorio','a.created_at','a.origen','a.id_servicio','a.pendiente','a.id_laboratorio','a.monto','a.porcentaje','a.informe','a.abono','a.resultado','b.nombres as nombrePaciente','b.apellidos as apellidoPaciente','b.fechanac','c.detalle as servicio','e.name','e.dni as dniprof','e.lastname','d.name as laboratorio','b.dni')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('servicios as c','c.id','a.id_servicio')
-        ->join('analises as d','d.id','a.id_laboratorio')
-        ->join('users as e','e.id','a.origen_usuario')
-        ->whereNotIn('a.monto',[0,0.00])
-        ->where('a.resultado','=', NULL)
-        ->where('a.id','=',$id)
-        ->first();*/
+   
 
         $resultados = DB::table('resultados_servicios as a')
-        ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.tipo_origen', 'b.id_paciente', 'b.id_origen', 's.nombre as servicio', 'pa.fechanac','pa.nombres', 'pa.apellidos','pa.dni', 'c.name', 'c.lastname')
-        ->join('atenciones as b', 'b.id', 'a.id_atencion')
-        ->join('users as c', 'c.id', 'b.id_origen')
-        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
-        ->join('servicios as s', 's.id', 'a.id_servicio')
-        //->where('a.estatus', '=', 1)
-        ->where('a.id',  '=', $id)
-        //->where('a.monto', '!=', '0')
-        ->first();
+          ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos', 'pa.fechanac', 'pa.dni')
+          ->join('orden as b', 'b.id', 'a.id_atencion')
+          ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+          ->join('servicios as s', 's.id', 'a.id_servicio')
+          ->where('a.id',  '=', $id)
+          ->first();
+
+          //dd($resultados);
 
 
         if ($resultados->fechanac != null) {
@@ -919,11 +780,7 @@ class ResultadosController extends Controller
         $informe->setValue('name', $resultados->apellidos. ' '.$resultados->nombres. ' Edad: '.$edad);
         $informe->setValue('descripcion',$resultados->servicio);
         $informe->setValue('date',date('d-m-Y'));  
-        if($resultados->tipo_origen == 2){
-        $informe->setValue('indicacion',$resultados->id_origen);
-        } else {
-        $informe->setValue('indicacion','MADRE TERESA');
-        } 
+        $informe->setValue('indicacion','FERTIVIDA');
         $informe->saveAs($resultados->id.'-'.$resultados->apellidos.'-'.$resultados->nombres.'-'.$resultados->dni.'.docx');
         return response()->download($resultados->id.'-'.$resultados->apellidos.'-'.$resultados->nombres.'-'.$resultados->dni.'.docx');
 

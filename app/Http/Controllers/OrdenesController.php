@@ -18,6 +18,8 @@ use App\OrdenItems;
 use App\OrdenIteml;
 use App\Medicamentos;
 use App\Pacientes;
+use App\ResultadosServicios;
+use App\ResultadosLaboratorio;
 use Auth;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -124,6 +126,14 @@ class OrdenesController extends Controller
                $items->id_orden =$orden->id;
                $items->id_servicio =$lab['laboratorio'];
                $items->save();
+
+
+               $rs = new ResultadosServicios();
+               $rs->id_atencion =  $orden->id;
+               $rs->id_servicio = $lab['laboratorio'];
+              // $rs->monto = (float)$request->monto_abol['ecografias'][$key]['abono'];
+               $rs->save();
+
             }
           }
 
@@ -137,6 +147,15 @@ class OrdenesController extends Controller
                $iteml->id_orden =$orden->id;
                $iteml->id_lab =$serv['servicio'];
                $iteml->save();
+
+
+               $rs = new ResultadosLaboratorio();
+               $rs->id_atencion =  $orden->id;
+               $rs->id_laboratorio = $serv['servicio'];
+               $rs->save();
+
+
+
             }
           }
 
