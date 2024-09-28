@@ -241,6 +241,45 @@ class ConsultasController extends Controller
       return view('consultas.ver',compact('consulta','edad','edad1', 'admision','atencion'));
     }
 
+    public function editar($id)
+    {
+      $servicios = Servicios::where('estatus','=',1)->get();
+      $pacientesm = Pacientes::where('sexo','=','F')->orderby('apellidos','asc')->get();
+      $pacientesh = Pacientes::where('sexo','=','M')->orderby('apellidos','asc')->get();
+      $prof = DB::table('users as a')
+      ->select('a.id','a.name','a.lastname','a.telefono','a.nacimiento','a.especialidad','a.estatus','a.tipo','a.centro','a.email')
+      ->where('a.estatus','=',1)
+      ->where('a.tipo','=',2)
+      ->get(); 
+   
+
+      $consulta = DB::table('consultas as a')
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.email','b.apellidos','b.apellidos1','c.nombres as nombresh','c.email as emailh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->join('pacientes as b','b.id','a.id_paciente_mujer')
+      ->join('pacientes as c','c.id','a.id_paciente_hombre')
+      ->join('users as u','u.id','a.id_especialista')
+      ->join('servicios as s','s.id','a.tipo')
+      ->where('a.id', '=', $id)
+      ->first(); 
+
+      return view('consultas.editar', compact('consulta','prof','pacientesm','pacientesh','servicios')); //
+    }
+
+    public function update(Request $request)
+    {
+
+      $p = Consultas::find($request->id);
+      $p->tipo =$request->servicio;
+      $p->id_especialista =$request->especialista;
+      $p->id_paciente_mujer =$request->pacientem;
+      $p->id_paciente_hombre =$request->pacienteh;
+      $res = $p->update();
+      return redirect()->action('ConsultasController@index')
+      ->with('success','Modificado Exitosamente!');
+        //
+    }
+
+
 
 
     public function historiap_crear($consulta)
@@ -881,21 +920,13 @@ class ConsultasController extends Controller
   
 
   
- 
     public function delete($id)
     {
 
-        $searchUsuarioID = DB::table('users')
-        ->select('*')
-        ->where('id','=', Auth::user()->id)
-        ->first();  
+        $cliente = Consultas::find($id);
+        $cliente->delete();
 
-        $atencion = Atenciones::find($id);
-        $atencion->estatus = 0;
-        $atencion->eliminado_por= $searchUsuarioID->name.' '.$searchUsuarioID->lastname;
-        $atencion->save();
-
-        return redirect()->action('AtencionesController@index')
+        return redirect()->action('ConsultasController@index')
         ->with('success','Eliminado Exitosamente!');
         //
     }
@@ -1237,6 +1268,9 @@ class ConsultasController extends Controller
 
 
     }
+
+
+
 
 
 

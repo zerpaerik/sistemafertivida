@@ -135,6 +135,16 @@
                     <td><span class="badge bg-info">{{$an->servicio}}</span></td>
 
                     <td>
+                    <a class="btn btn-primary btn-sm" href="consultas-editar-{{$an->id}}">
+                              <i class="fas fa-edit">
+                              </i>
+                              Editar
+                          </a>
+                    <a class="btn btn-danger btn-sm" href="consultas-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
                       @if($an->estatus == 0)
                           @if($an->id_paciente_hombre == 999999)
                           <a class="btn btn-info btn-sm" href="consultas-admisionm-{{$an->id}}">

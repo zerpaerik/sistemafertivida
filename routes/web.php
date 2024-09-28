@@ -362,12 +362,15 @@ Route::get('consultas-atencionm-{id}', 'ConsultasController@atencionm')->name('c
 Route::post('consultas/create', 'ConsultasController@store')->middleware('auth');
 Route::post('consultas/admision', 'ConsultasController@storeAdmision')->middleware('auth');
 Route::post('consultas/atencion', 'ConsultasController@storeAtencion')->middleware('auth');
+Route::post('consultas/update', 'ConsultasController@update')->middleware('auth');
 Route::get('consultas-delete-{id}', 'ConsultasController@delete')->middleware('auth');
 Route::get('cobrconsultasar-edit-{id}', 'ConsultasController@edit')->name('ingresos.edit');
 Route::post('consultas/edit', 'ConsultasController@update');
 Route::get('consultas-ticket-{id}', 'ConsultasController@ticket');
 Route::get('controles-ant-reversar-{id}', 'ConsultasController@reversar_ant_cont');
 Route::get('historia-ant-reversar-{id}', 'ConsultasController@reversar_ant_hist');
+Route::get('consultas-editar-{id}', 'ConsultasController@editar')->name('consultas.editar')->middleware('auth');
+
 
 
 Route::get('historias', 'ConsultasController@historias')->name('historias.index');
@@ -577,6 +580,12 @@ Route::get('recetas-delete-{id}', 'RecetasController@delete')->middleware('auth'
 Route::get('recetas-edit-{id}', 'RecetasController@edit')->name('recetas.edit');
 Route::post('recetas/edit', 'RecetasController@update');
 Route::get('recetas-ver-{id}', 'RecetasController@ver');
+Route::get('receta-item-delete-{id}', 'RecetasController@deleteItem')->middleware('auth');
+Route::get('receta-item-edit-{id}', 'RecetasController@editItem')->name('recetas.edit-item');
+Route::post('recitem/update', 'RecetasController@updateItem')->middleware('auth');
+
+
+
 
 Route::get('ordenes', 'OrdenesController@index')->name('ordenes.index');
 Route::get('ordenes-create', 'OrdenesController@create')->name('ordenes.create')->middleware('auth');
@@ -585,6 +594,12 @@ Route::get('ordenes-delete-{id}', 'OrdenesController@delete')->middleware('auth'
 Route::get('ordenes-edit-{id}', 'OrdenesController@edit')->name('ordenes.edit');
 Route::post('ordenes/edit', 'OrdenesController@update');
 Route::get('ordenes-ver-{id}', 'OrdenesController@ver');
+Route::get('ordenes-item-edit-{id}', 'OrdenesController@editItem');
+Route::get('ordenes-iteml-edit-{id}', 'OrdenesController@editItemL');
+Route::get('ordenes-item-delete-{id}', 'OrdenesController@deletes')->middleware('auth');
+Route::get('ordenes-iteml-delete-{id}', 'OrdenesController@deletel')->middleware('auth');
+Route::post('ordenes/edits', 'OrdenesController@updates');
+Route::post('ordenes/editl', 'OrdenesController@updatel');
 
 
 

@@ -128,6 +128,12 @@
                           </a>
                        
                           @if(Auth::user()->rol == 1)
+
+                          <a class="btn btn-primary btn-sm" href="recetas-edit-{{$p->id}}">
+                              <i class="fas fa-edit">
+                              </i>
+                              Editar
+                          </a>
                           <a class="btn btn-danger btn-sm" href="recetas-delete-{{$p->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
                               <i class="fas fa-trash">
                               </i>

@@ -205,6 +205,10 @@ class OrdenesController extends Controller
 
     }
 
+    
+    
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -214,12 +218,74 @@ class OrdenesController extends Controller
      */
     public function edit($id)
     {
-       
-        $activo = Activos::where('id','=',$id)->first();
-        $ubicaciones = Ubicaciones::all();
+        $orden = DB::table('orden as a')
+        ->select('a.id','a.id_paciente','a.created_at')
+        ->where('a.id', '=', $id)
+        ->first(); 
+  
+        $paciente = Pacientes::where('id','=',$orden->id_paciente)->first();
+        $edad = Carbon::parse($paciente->fechanac)->age;
+  
+        $item = DB::table('orden_items as a')
+        ->select('a.*','u.nombre as servicio')
+        ->join('servicios as u','u.id','a.id_servicio')
+        ->where('a.id_orden', '=',$id)
+        ->get(); 
+  
+  
+        $iteml = DB::table('orden_iteml as a')
+        ->select('a.*','u.nombre as analisis')
+        ->join('analisis as u','u.id','a.id_lab')
+        ->where('a.id_orden', '=',$id)
+        ->get(); 
 
-        return view('activos.edit', compact('activo','ubicaciones')); //
+
+
+        return view('orden.edit', compact('item','iteml','orden'));
     }
+
+    public function editItem($id)
+    {
+
+        $servicios = DB::table('servicios as a')
+        ->select('a.id','a.nombre','a.tipo')
+        ->orderby('a.nombre','asc')
+        ->where('a.tipo','=','SERVICIOS')
+        ->where('a.estatus', '=', 1)
+        ->get(); 
+    
+      
+
+        $item = DB::table('orden_items as a')
+        ->select('a.*')
+        ->where('a.id', '=',$id)
+        ->first(); 
+  
+
+
+
+        return view('orden.edit-item', compact('item','servicios'));
+    }
+
+    public function editItemL($id)
+    {
+
+        $analisis = Analisis::where('estatus','=',1)->orderby('nombre','asc')->get();
+
+    
+       
+  
+        $iteml = DB::table('orden_iteml as a')
+        ->select('a.*')
+        ->where('a.id', '=',$id)
+        ->first(); 
+
+
+
+        return view('orden.edit-iteml', compact('iteml','analisis'));
+    }
+
+    
 
     /**
      * Update the specified resource in storage.
@@ -250,6 +316,37 @@ class OrdenesController extends Controller
         //
     }
 
+    public function updatel(Request $request)
+    {
+
+
+      $p = OrdenItemL::find($request->id);
+      $p->id_lab =$request->analisis;
+      $res = $p->update();
+    
+    
+      return redirect()->route('ordenes.edit', [$request->orden]);
+
+
+        //
+    }
+
+    public function updates(Request $request)
+    {
+
+
+       
+
+      $p = OrdenItems::find($request->id);
+      $p->id_servicio =$request->servicio;
+      $res = $p->update();
+    
+    
+      return redirect()->route('ordenes.edit', [$request->orden]);
+
+        //
+    }
+
   
   
 
@@ -267,6 +364,28 @@ class OrdenesController extends Controller
         $analisis->save();
 
         return redirect()->action('OrdenesController@index');
+
+        //
+    }
+
+    public function deletes($id)
+    {
+
+        $analisis = OrdenItems::find($id);
+        $analisis->delete();
+
+        return back();
+
+        //
+    }
+
+    public function deletel($id)
+    {
+
+        $analisis = OrdenItemL::find($id);
+        $analisis->delete();
+
+        return back();
 
         //
     }

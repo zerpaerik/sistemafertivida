@@ -190,10 +190,27 @@ class RecetasController extends Controller
     public function edit($id)
     {
        
-        $activo = Activos::where('id','=',$id)->first();
-        $ubicaciones = Ubicaciones::all();
+        
+      $receta = DB::table('receta as a')
+      ->select('a.id','a.id_paciente','a.created_at')
+      ->where('a.id', '=', $id)
+      ->first(); 
 
-        return view('activos.edit', compact('activo','ubicaciones')); //
+
+      $paciente = Pacientes::where('id','=',$receta->id_paciente)->first();
+      $edad = Carbon::parse($paciente->fechanac)->age;
+      $pacientes = Pacientes::where('estatus','=', 1)->orderby('apellidos','asc')->get();
+
+
+      
+      $items = DB::table('receta_items as a')
+      ->select('a.*','u.nombre as producto','u.principio')
+      ->join('medicamentos as u','u.id','a.id_producto')
+      ->where('a.id_receta', '=',$id)
+      ->get(); 
+
+
+        return view('recetas.editar', compact('receta','pacientes','items')); //
     }
 
     /**
@@ -225,6 +242,20 @@ class RecetasController extends Controller
         //
     }
 
+    public function updateItem(Request $request)
+    {
+
+
+      $p = RecetasItems::find($request->id);
+      $p->id_producto =$request->medicamento;
+      $p->descripcion =$request->indicacion;
+      $res = $p->update();
+
+      return redirect()->route('recetas.edit', [$request->receta]);
+
+    
+    }
+
   
   
 
@@ -246,12 +277,39 @@ class RecetasController extends Controller
         //
     }
 
+    public function editItem($id)
+    {
+
+
+        $medicamentos = DB::table('medicamentos as a')
+        ->select('a.id','a.nombre','a.principio','a.estatus')
+        ->where('a.estatus', '=', 1)
+        ->get(); 
+       
+        
+    
+        $items = DB::table('receta_items as a')
+        ->select('a.*')
+        ->where('a.id', '=',$id)
+        ->first(); 
+
+
+        return view('recetas.editar-item', compact('items','medicamentos')); //
+    }
+
+    public function deleteItem($id)
+    {
+        $analisis = RecetasItems::find($id);
+        $analisis->delete();
+        return back();
+    }
+
     public function deletea($id)
     {
 
         $analisis = Activos::find($id);
-        $analisis->estatus = 99;
-        $analisis->save();
+        $analisis->delete();
+
 
         return redirect()->action('ActivosController@index');
 
