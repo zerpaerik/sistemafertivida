@@ -41,14 +41,7 @@
                   <p>Servicios</p>
                 </a>
               </li>
-
-              <li class="nav-item">
-                <a href="{{route('paquetes.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Paquetes</p>
-                </a>
-              </li>
-              
+          
               <li class="nav-item">
                 <a href="{{route('pacientes.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -250,23 +243,6 @@
           </li>
 
 
-
-          
-        
-
-     
-
-     
-
-        
-
-       
-         
-
-        
-
-        
-
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tools"></i>
@@ -296,14 +272,7 @@
                   <p>Roles</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{route('activos.index')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Activos</p>
-                </a>
-              </li>
             
-              
             </ul>
           </li>
 

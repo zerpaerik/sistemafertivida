@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+
 <!-- DataTables -->
 <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -149,7 +151,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <label>Paciente Mujer</label>
-                        <select class="form-control" name="pacientem">
+                        <select class="form-control js-example-basic-single" name="pacientem">
                          @foreach($pacientesm as $pm)
 						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
                          @endforeach
@@ -158,7 +160,7 @@
 
                    <div class="col-md-6">
                       <label>Paciente Hombre</label>
-                        <select class="form-control" name="pacienteh">
+                        <select class="form-control js-example-basic-single1" name="pacienteh">
                         <option value="999999">Ninguno</option>
                          @foreach($pacientesh as $ph)
 						             <option value="{{$ph->id}}">{{$ph->dni}} - {{$ph->apellidos}},{{$ph->apellidos1}} {{$ph->nombres}}</option>
@@ -259,10 +261,24 @@
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+  });
+
+  $(document).ready(function() {
+    $('.js-example-basic-single1').select2();
+  });
+
+
+</script>
 <!-- page script -->
 
 </body>

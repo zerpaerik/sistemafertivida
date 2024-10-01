@@ -18,6 +18,7 @@ use App\Comisiones;
 use App\Orden;
 use App\ResultadosServicios;
 use App\ResultadosLaboratorio;
+use App\ResultadosImagenes;
 use Auth;
 use Illuminate\Http\Request;
 use PhpOffice\PhpWord\TemplateProcessor;
@@ -203,6 +204,28 @@ class ResultadosController extends Controller
         //
     }
 
+      public function postImagenes(Request $request)
+      {
+
+        /*$archivos = ArchivosPaciente::where('id_paciente','=',$id)->get();
+        return back();*/
+
+        $arch_pac = new ResultadosImagenes();
+        $img = $request->file('archivo');
+        $nombre_imagen=$img->getClientOriginalName();
+        $arch_pac->name= $request->nombre;
+        $arch_pac->imagen=$nombre_imagen;
+        $arch_pac->id_resultado= $request->id_resultado;
+        if ($arch_pac->save()) {
+            \Storage::disk('public')->put($nombre_imagen, \File::get($img));
+        }
+        \DB::commit();
+
+        return back();
+
+      }
+
+
 
 
 
@@ -307,6 +330,16 @@ class ResultadosController extends Controller
 
     return back();
 
+
+    }
+
+    public function imagenes($id){
+
+     $rs = ResultadosServicios::where('id','=',$id)->first();
+     $ri = ResultadosImagenes::where('id_resultado','=',$id)->get();
+
+
+     return view('resultados.imagenes', compact('rs','ri'));
 
     }
 

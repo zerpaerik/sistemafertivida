@@ -54,12 +54,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Roles</h1>
+            <h1 class="m-0 text-dark">Guardar Archivo</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Roles</li>
+              <li class="breadcrumb-item active">Imagenes de resultados</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -70,27 +70,69 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      <div class="card">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
               <div class="card-header">
-              
+                <h3 class="card-title">Agregar</h3>
               </div>
+              @include('flash-message')
+
               <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" method="post" action="resultados_imaganes" enctype="multipart/form-data">
+					{{ csrf_field() }}                
+                    <div class="card-body">
+                    <div class="row">
+                    <div class="col-md-6">
+                    <label for="exampleInputEmail1">Nombre de Archivo</label>
+                    <input type="text"  class="form-control" id="nombre" name="nombre" placeholder="Nombre">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="exampleInputEmail1">Adjunte el Archivo</label>
+                    <input type="file"  class="form-control" id="nombre" name="archivo" placeholder="Nombre">
+                  </div>
+
+                  <input type="hidden" name="id_resultado" value="{{$rs->id}}">
+                 
+                  </div>
+              
+                  <br>
+                  
+
+                  
+
+        
+                 
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+              </form>
+
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Estatus</th>
+                    <th>Archivo</th>
+                    <th>Acciones</th>
                   </tr>
                   </thead>
                   <tbody>
 
-                  @foreach($roles as $rol)
+                  @foreach($ri as $p)
                   <tr>
-                    <td>{{$rol->nombre}}</td>
-                    <td>{{$rol->descripcion}}</td>
-                    <td><span class="badge bg-success">Disponible</span></td>
+                    <td>{{$p->name}}</td>
+                    <td>{{$p->imagen}}</td>
+                    <td>                    
+                    <a href="{{route('descargar2',$p->imagen)}}" class="btn btn-success" target="_blank">Ver Archivo</a>
+                    </td>
+
                   </tr>
                   @endforeach
                  
@@ -101,27 +143,41 @@
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Estatus</th>
+                  <th>Nombre</th>
+                    <th>Archivo</th>
+                    <th>Acciones</th>
                   </tr>
                   </tfoot>
                 </table>
+              </div>
+
+
+
+
+
+            </div>
+            <!-- /.card -->
+
+         
+            <!-- /.card -->
+
+           
+           
+               
+
+
+           
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
-          <!-- /.col -->
+          <!--/.col (right) -->
         </div>
         <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
+      </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-  </div>
-  </div>
-  </section>
+    
 
   <!-- /.content-wrapper -->
   
@@ -178,22 +234,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
-<script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true,
-      "autoWidth": false,
-    });
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
+
 </body>
 </html>

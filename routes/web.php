@@ -296,6 +296,10 @@ Route::get('resultados-reversar-{id}', 'ResultadosController@reversar');
 Route::get('resultados-reversarl-{id}', 'ResultadosController@reversarl');
 Route::get('modelo-informe-{id}-{id2}', 'ResultadosController@modelo_informe');
 Route::get('modelo-informel-{id}-{id2}', 'ResultadosController@modelo_informel');
+Route::get('resultados-imagenes-{id}', 'ResultadosController@imagenes');
+Route::post('resultados_imaganes', 'ResultadosController@postImagenes');
+
+
 
 Route::get('resultados-guardar-{id}', 'ResultadosController@guardar_informe');
 Route::get('resultados-guardarl-{id}', 'ResultadosController@guardar_informel');

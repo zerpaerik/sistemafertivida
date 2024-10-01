@@ -120,60 +120,41 @@
                     <td>{{$an->created_at}}</td>
                     <td>{{$an->apellidos}} {{$an->nombres}}</td>
                     <td>{{$an->servicio}}</td>
+                    <td>{{$an->informe}}</td>
                     <td>
+                          <a href="resultados-imagenes-{{$an->id}}" class="btn btn-warning">Adjuntar Imagenes</a>
 
-                  
+                            @if($an->informe) 
 
-                      @if($an->informe) 
+                            <a href="resultados-desoc-{{$an->id}}" class="btn btn-danger">Reversar</a>
 
-                      <a href="resultados-desoc-{{$an->id}}" class="btn btn-danger">Reversar</a>
-	
-                      <a href="/modelo-informe-{{$an->id}}-{{$an->informe}}" class="btn btn-primary" target="_blank">Descargar Modelo</a>
+                            <a href="/modelo-informe-{{$an->id}}-{{$an->informe}}" class="btn btn-primary" target="_blank">Descargar Modelo</a>
 
-                      <a href="resultados-guardar-{{$an->id}}" class="btn btn-success">Adjuntar Informe</a>
-
-
-                      @else
+                            <a href="resultados-guardar-{{$an->id}}" class="btn btn-success">Adjuntar Informe</a>
 
 
-
-                        <form action="{{'resultados-asoc-' .$an->id}}" method="get">
-                                    <select class="form-control" name="informe">
-                                    <option value="">Seleccione</option>
-                                    <option value="HISTEROSONOGRAFIA UNICO.docx">HISTEROSONOGRAFIA UNICO</option>
-                                    <option value="INFORME ECOGRAFIA TRANSVAGINAL.docx">INFORME ECOGRAFIA TRANSVAGINAL</option>
-
-                                <td>
-
-                                  <input type="hidden" name="id" value="{{$an->id}}">
-
-                                  <input type="submit" class="btn btn-success" value="Asociar">
-                                  <a class="btn btn-primary btn-sm" id="{{$an->id_atencion}}" onclick="viewh(this)">
-                                    <i class="fas fa-eye">
-                                    </i>
-                                    Anotaciòn
-                                </a>
-                                  </td>
-
-                              </tr>
-                              </form>
-                              @endif
+                            @else
+                             <form action="{{'resultados-asoc-' .$an->id}}" method="get">
+                                <select class="form-control" name="informe">
+                                <option value="">Seleccione</option>
+                                <option value="HISTEROSONOGRAFIA UNICO.docx">HISTEROSONOGRAFIA UNICO</option>
+                                <option value="INFORME ECOGRAFIA TRANSVAGINAL.docx">INFORME ECOGRAFIA TRANSVAGINAL</option>
 
 
+                              <input type="hidden" name="id" value="{{$an->id}}">
 
+                              <input type="submit" class="btn btn-success" value="Asociar">
+                                    <a class="btn btn-primary btn-sm" id="{{$an->id_atencion}}" onclick="viewh(this)">
+                                      <i class="fas fa-eye">
+                                      </i>
+                                      Anotaciòn
+                                  </a>
 
+                             </form>
+                          @endif                    
                     </td>
 
 
-                    <td>
-                    @if(Auth::user()->rol == 1)
-                   
-
-                         
-
-                        
-                         </td>
-                          @endif
                   </tr>
                   @endforeach
                  
