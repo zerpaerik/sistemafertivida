@@ -133,6 +133,8 @@
                     <td>{{$an->apellidos}} {{$an->nombres}}</td>
                     <td>{{$an->servicio}}</td>
                     <td>
+                    <a href="resultados-imagenes-{{$an->id}}" class="btn btn-warning">Ver Imagenes</a>
+
                     @if(Auth::user()->rol == 1 || Auth::user()->rol == 2)
 
                     <a href="resultadosg-reversar-{{$an->id}}" class="btn btn-success">Reversar</a>

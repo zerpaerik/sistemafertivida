@@ -818,6 +818,7 @@ class ConsultasController extends Controller
     public function storeAdmision(Request $request){
 
 
+
       $at_fin = Consultas::where('id','=',$request->consulta)->first();
       $at_fin->estatus = 1;
       $at_fin->historia = 1;
@@ -825,6 +826,7 @@ class ConsultasController extends Controller
 
       
       $ad = new Admision();
+      $ad->motivo =  $request->motivo;
       $ad->consulta =  $request->consulta;
       $ad->peso =  $request->peso;
       $ad->pesoh = $request->pesoh;
@@ -889,6 +891,7 @@ class ConsultasController extends Controller
       
       $ad = new AdmisionAtencion();
       $ad->consulta =  $request->consulta;
+      $ad->motivo =  $request->motivo;
       $ad->tirm =  $request->tirm;
       $ad->mamas =  $request->mamas;
       $ad->genm = $request->genm;

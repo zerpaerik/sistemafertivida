@@ -296,11 +296,18 @@
             <div class="card-body p-0">
             <br>
             <label for="exampleInputEmail1" style="margin-left:12px;">Antecedentes Obstétricos</label>
-               <br>               <br>
+               <br>               
+
+               <div class="row" style="margin-left:5px;margin-right:5px;">
+               <div class="col-md-12">
+                    <label for="exampleInputEmail1">Motivo de Consulta</label>
+                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="obserg" placeholder="Observaciones" value="{{$admision->motivo}}" disabled >{{$admision->motivo}}</textarea>
+                   </div>
+                    </div>
 
 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                <div class="col-md-1">
+                <div class="col-md-2">
                         <label for="exampleInputEmail1">Peso</label>
                             <input type="text" class="form-control" id="peso" name="peso"  placeholder="" value="{{$admision->peso}}" disabled >
                         </div>
@@ -457,10 +464,6 @@
                             <input type="text" class="form-control" id="dismenorrea" name="dispa" value="{{$admision->disparemia}}" disabled >
                         </div>
                     
-                <div class="col-md-3">
-                        <label for="exampleInputEmail1">Papanicoloau</label>
-                            <input type="text" class="form-control" id="sexo" name="papanico" value="{{$admision->papanico}}" disabled >
-                        </div>
               
                       
                     
@@ -657,6 +660,14 @@
             <!-- /.card-header -->
             <div class="card-body p-0">
             <br>
+
+            <div class="row" style="margin-left:5px;margin-right:5px;">
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Motivo</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="tirm" disabled>{{$atencion->motivo}}</textarea>
+            </div>
+            </div>
+                  
 
             <label for="exampleInputEmail1" style="margin-left:12px;">EXAMEN FÍSICO</label>
 

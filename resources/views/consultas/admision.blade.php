@@ -298,6 +298,16 @@
                <label for="exampleInputEmail1" style="margin-left:12px;">Antecedentes Obstétricos</label>
                <br>               <br>
 
+                         
+                <div class="col-md-12">
+                <label for="exampleInputEmail1">Motivo de Consulta</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="motivo" placeholder="Motivo de Consulta"></textarea>
+
+                </div>
+
+                </div>
+                <br>
+
 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-2">
@@ -457,10 +467,7 @@
                             <input type="text" class="form-control" id="dismenorrea" name="dispa" >
                         </div>
                     
-                <div class="col-md-3">
-                        <label for="exampleInputEmail1">Papanicoloau</label>
-                            <input type="text" class="form-control" id="sexo" name="papanico" >
-                        </div>
+             
               
                       
                     
