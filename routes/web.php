@@ -263,6 +263,17 @@ Route::get('activos-edit-{id}', 'ActivosController@edit')->name('activos.edit');
 Route::post('activos/edit', 'ActivosController@update');
 Route::get('activos/ver/{id}', 'ActivosController@ver');
 
+Route::get('proformas', 'ProformasController@index')->name('proformas.index');
+Route::get('proformas-create', 'ProformasController@create')->name('proformas.create')->middleware('auth');
+Route::post('proformas/create', 'ProformasController@store')->middleware('auth');
+Route::get('proformas-delete-{id}', 'ProformasController@delete')->middleware('auth');
+Route::get('proformas-upload-{id}', 'ProformasController@upload')->name('upload.edit');
+Route::post('proformas/edit', 'ProformasController@update');
+Route::get('proformas/ver/{id}', 'ProformasController@ver');
+Route::get('modelo-proforma-{id}-{id2}', 'ProformasController@modelo_informe');
+Route::post('proformas/upload', 'ProformasController@uploadPost')->middleware('auth');
+
+
 
 Route::get('atenciones/getServicio/{id}', 'AtencionesController@getServicio')->middleware('auth');
 Route::get('atenciones/getAnalisis/{id}', 'AtencionesController@getAnalisis')->middleware('auth');
