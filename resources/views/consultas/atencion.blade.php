@@ -706,8 +706,8 @@
 
 
             <div class="col-md-12">
-                <label for="exampleInputEmail1">Motivo de Atencion</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="motivo" placeholder="Motivo de Consulta"></textarea>
+                <label for="exampleInputEmail1">Signos y sintomas</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="motivo" placeholder="Signos y sintomas"></textarea>
 
                 </div>
 

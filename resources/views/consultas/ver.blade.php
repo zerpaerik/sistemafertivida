@@ -663,7 +663,7 @@
 
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
-                <label for="exampleInputEmail1">Motivo</label>
+                <label for="exampleInputEmail1">Signos y sintomas</label>
                 <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="tirm" disabled>{{$atencion->motivo}}</textarea>
             </div>
             </div>
