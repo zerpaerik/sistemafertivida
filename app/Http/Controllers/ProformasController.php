@@ -77,12 +77,22 @@ class ProformasController extends Controller
    
 
         $proformas = DB::table('proformas as a')
-        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.dni','b.apellidos1')
+        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.dni','b.apellidos1','b.fechanac')
         ->join('pacientes as b','b.id','a.id_paciente')
         ->where('a.id','=', $id)
         ->first(); 
+
+
   
-        $informe->setValue('name', $proformas->apellidos. ' '.$proformas->nombres);
+        if ($proformas->fechanac != null) {
+            $edad = Carbon::parse($proformas->fechanac)->age;
+        } else {
+          $edad = "X";
+
+        }
+
+  
+        $informe->setValue('name', $proformas->apellidos. ' '.$proformas->nombres. ' Edad: '.$edad);
         $informe->setValue('descripcion',$proformas->modelo);
         $informe->setValue('date',date('d-m-Y'));  
         $informe->saveAs($proformas->id.'-'.$proformas->apellidos.'-'.$proformas->nombres.'-'.$proformas->dni.'.docx');
