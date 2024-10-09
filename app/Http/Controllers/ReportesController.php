@@ -449,283 +449,90 @@ class ReportesController extends Controller
 
       if($request->id_paciente != null){
 
-        $serv = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
+          
+        $consultas = DB::table('consultas as a')
+        ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidos1h', 'u.name','u.lastname','s.nombre as servicio')
+        ->join('pacientes as b','b.id','a.id_paciente_mujer')
+        ->join('pacientes as c','c.id','a.id_paciente_hombre')
+        ->join('users as u','u.id','a.id_especialista')
+        ->join('servicios as s','s.id','a.tipo')
+        ->where('a.id_paciente_mujer', '=', $request->id_paciente)
+        ->orderBy('a.id','DESC')
+        ->get(); 
+        
+        $ordenes = DB::table('orden as a')
+        ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
         ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 1)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
-       // ->get(); 
+        ->where('a.id_paciente', '=', $request->id_paciente)
+        ->get(); 
 
-        $eco = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
+        $recetas = DB::table('receta as a')
+        ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
         ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 2)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
-
-        $cons = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 5)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
-
-        $meto = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 6)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
+        ->where('a.id_paciente', '=', $request->id_paciente)
+        ->get(); 
 
         
-        $salud = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
+        $evaluaciones = DB::table('evaluaciones as a')
+        ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
         ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 8)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
-
-        $ana = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('analisis as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 4)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
-
-        $paq = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('paquetes as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 7)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
-
-
-        $metodos = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('meto_pro as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 6)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
-
-        $consultas = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('tipo_con as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 5)
-        ->where('a.monto', '!=', '0')
-        //->orderBy('a.created_at','ASC')
-        ->where('a.id_paciente', '=', $request->id_paciente);
-        //->get(); 
-
-     
-
-        $atenciones = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 3)
-        ->where('a.monto', '!=', '0')
         ->where('a.id_paciente', '=', $request->id_paciente)
-        ->union($serv)
-        ->union($eco)
-        ->union($ana)
-        ->union($metodos)
-        ->union($paq)
-        ->union($consultas)
-        ->union($salud)
-        ->orderBy('created_at','DESC')
+        ->get(); 
+
+        
+        $proformas = DB::table('proformas as a')
+        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+        ->join('pacientes as b','b.id','a.id_paciente')
+        ->where('a.id_paciente', '=', $request->id_paciente)
         ->get(); 
 
 
     } else {
 
-        $serv = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 1)
-        ->where('a.monto', '!=', '0')
+        $consultas = DB::table('consultas as a')
+        ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.apellidos','b.apellidos1','c.nombres as nombresh','c.apellidos as apellidosh','c.apellidos1 as apellidos1h', 'u.name','u.lastname','s.nombre as servicio')
+        ->join('pacientes as b','b.id','a.id_paciente_mujer')
+        ->join('pacientes as c','c.id','a.id_paciente_hombre')
+        ->join('users as u','u.id','a.id_especialista')
+        ->join('servicios as s','s.id','a.tipo')
+        ->where('a.id_paciente_mujer', '=', 5454554545454)
         ->orderBy('a.id','DESC')
-        ->where('a.sede', '=',99999999);
-       // ->get(); 
-
-        $eco = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.informe','a.sede','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
+        ->get(); 
+        
+        $ordenes = DB::table('orden as a')
+        ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
         ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 2)
-        ->where('a.monto', '!=', '0')
-        ->orderBy('a.id','DESC')
-        ->where('a.sede', '=', 99999999);
-
-        $cons = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.sede','a.informe','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 5)
-        ->where('a.monto', '!=', '0')
-        ->orderBy('a.id','DESC')
-        ->where('a.sede', '=', 9999999);
-
-        $meto = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.sede','a.informe','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 6)
-        ->where('a.monto', '!=', '0')
-        ->orderBy('a.id','DESC')
-        ->where('a.sede', '=', 9999999);
-
-        $salud = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.sede','a.informe','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 8)
-        ->where('a.monto', '!=', '0')
-        ->orderBy('a.id','DESC')
-        ->where('a.sede', '=', 9999999);
-
-        $ana = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.sede','a.informe','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('analisis as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 4)
-        ->where('a.monto', '!=', '0')
-        ->orderBy('a.id','DESC')
-        ->where('a.sede', '=', 9999999);
-
-        $paq = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.sede','a.informe','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('paquetes as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 7)
-        ->where('a.monto', '!=', '0')
-        ->orderBy('a.id','DESC')
-        ->where('a.sede', '=', 99999999);
-
-
-        $metodos = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.sede','a.informe','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('meto_pro as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 6)
-        ->where('a.monto', '!=', '0')
-        ->orderBy('a.id','DESC')
-        ->where('a.sede', '=', 999999999);
-
-        $consultas = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.sede','a.informe','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('tipo_con as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 5)
-        ->where('a.monto', '!=', '0')
-        ->orderBy('a.id','DESC')
-        ->where('a.sede', '=', 99999999);
-        //->get(); 
-
-     
-
-        $atenciones = DB::table('atenciones as a')
-        ->select('a.id','a.tipo_origen','a.id_origen','a.sede','a.informe','a.atendido_por','a.id_tipo','a.pagado','a.atendido','a.sede','a.usuario','a.created_at','a.estatus','a.id_paciente','a.tipo_atencion','a.monto','a.abono','a.tipo_pago','b.nombres','b.apellidos','b.dni','c.name as nameo','c.lastname as lasto','d.name as nameu','d.lastname as lastu','s.nombre as detalle')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->join('users as c','c.id','a.id_origen')
-        ->join('users as d','d.id','a.usuario')
-        ->join('servicios as s','s.id','a.id_tipo')
-        ->where('a.estatus', '=', 1)
-        ->where('a.tipo_atencion', '=', 3)
-        ->where('a.monto', '!=', '0')
-        ->where('a.sede', '=', 99999999)
-        ->orderBy('a.id','DESC')
-        ->union($serv)
-        ->union($eco)
-        ->union($ana)
-        ->union($metodos)
-        ->union($paq)
-        ->union($consultas)
-        ->union($salud)
+        ->where('a.id_paciente', '=', 5454554545454)
         ->get(); 
 
+        $recetas = DB::table('receta as a')
+        ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+        ->join('pacientes as b','b.id','a.id_paciente')
+        ->where('a.estatus', '=', 1)
+        ->where('a.id_paciente', '=', 5454554545454)
+        ->get(); 
+
+        
+        $evaluaciones = DB::table('evaluaciones as a')
+        ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+        ->join('pacientes as b','b.id','a.id_paciente')
+        ->where('a.estatus', '=', 1)
+        ->where('a.id_paciente', '=', 5454554545454)
+        ->get(); 
+
+        
+        $proformas = DB::table('proformas as a')
+        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+        ->join('pacientes as b','b.id','a.id_paciente')
+        ->where('a.id_paciente', '=', 5454554545454)
+        ->get(); 
+
+
     }
-
-
-
-
-
-
 
         
         if(!is_null($request->filtro)){
@@ -734,15 +541,7 @@ class ReportesController extends Controller
             $pacientes =Pacientes::where("estatus", '=', 9)->orderby('nombres','asc')->get();
             }
       
-
-       
-
-     
-     
-       
-        return view('reportes.historialp', compact('pacientes','atenciones'));
-
-       
+        return view('reportes.historialp', compact('pacientes','proformas','recetas','consultas','evaluaciones','ordenes'));
 
     }
 

@@ -116,108 +116,361 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
+                <p>CONSULTAS</p>
                 <table id="" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                  <th>Fecha</th>
-                  <th>Sede</th>
-                    <th>Paciente</th>
-                    <th>Origen</th>
-                    <th>Detalle</th>
-                    <th>Mto</th>
-                    <th>Abo</th>
-                    <th>Tp</th>
-                    <th>PG</th>
-                    <th>AT</th>
-                    <th>RP</th>
+                    <th>Id</th>
+                    <th>Fecha</th>
+                    <th>Paciente Mujer</th>
+                    <th>Paciente Hombre</th>
+                    <th>Especialista</th>
+                    <th>Tipo</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
                   <tbody>
 
-                  
-                  @foreach($atenciones as $an)
+                  @foreach($consultas as $an)
                   <tr>
+                    <td>{{$an->id}}</td>
                     <td>{{date('d-M-y H:i', strtotime($an->created_at))}}</td>
-                    @if($an->sede == 1)
-                    <td>PROCERES</td>
-                    @elseif($an->sede == 2)
-                    <td>CANTO REY</td>
-                    @elseif($an->sede == 3)
-                    <td>VIDA FELIZ</td>
-                    @elseif($an->sede == 4)
-                    <td>ZARATE</td>
-                    @elseif($an->sede == 5)
-                    <td>INDEPENDENCIA</td>
-                     @elseif($an->sede == 7)
-                    <td>LABORATORIO VIDA</td>
-                    @else
-                    <td>LOS OLIVOS</td>
-                    @endif
-                    <td>{{$an->apellidos}} {{$an->nombres}}</td>
-                    <td>{{$an->lasto}} {{$an->nameo}}</td>
-                    <td>{{$an->detalle}}</td>
-                    <td>{{$an->monto}}</td>
-                    <td>{{$an->abono}}</td>
-                    <td >{{$an->tipo_pago}}</td>
-                    @if($an->pagado == 1)
-                    <td><span class="badge bg-success">SI</span></td>
-                    @else
-                    <td><span class="badge bg-danger">NO</span></td>
-                    @endif
-                    @if($an->atendido == 1)
-                    <td><span class="badge bg-danger">NO</span></td>
-                    @else
-                    <td><span class="badge bg-success">SI</span></td>
-                    @endif
-                    <td>{{substr($an->lastu,0,5)}} {{substr($an->nameu,0,5)}}</td>
+                    <td>{{$an->apellidos}} {{$an->apellidos1}}, {{$an->nombres}} </td>
+                    <td>{{$an->apellidosh}} {{$an->apellidos1h}}, {{$an->nombresh}}</td>
+                    <td>{{$an->name}} {{$an->lastname}}</td>
+                    <td><span class="badge bg-info">{{$an->servicio}}</span></td>
+
                     <td>
-                    @if($an->tipo_atencion == 7)
-                    <a href="reporte-paquetes-{{$an->id}}" class="btn btn-success">Ver detalle</a>
-                    @endif
-                    @if($an->atendido_por != null && $an->tipo_atencion != 7)
-                    <p>Atendido Por: {{$an->atendido_por}}</p>
-                      @if($an->tipo_atencion == 1)
-                      <a href="{{route('descargar2',$an->informe)}}" class="btn btn-success" target="_blank">Ver Informe</a>
-                      @endif
-                      @if($an->tipo_atencion == 2)
-                      <a href="{{route('descargar2',$an->informe)}}" class="btn btn-success" target="_blank">Ver Informe</a>
-                      @endif
-                      @if($an->tipo_atencion == 4)
-                      <a href="{{route('descargar2',$an->informe)}}" class="btn btn-success" target="_blank">Ver Informe</a>
-                      @endif
-                    @else
-                      @if($an->tipo_atencion != 7)
-                      <p>NO HAY INFORME</p>
-                      @endif
-                    @endif
+                   
+                    <a class="btn btn-danger btn-sm" href="consultas-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+                      @if($an->estatus == 0)
+                          @if($an->id_paciente_hombre == 999999)
+                          <a class="btn btn-info btn-sm" href="consultas-admisionm-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Admisión
+                            </a>
+                            @else
+                            <a class="btn btn-info btn-sm" href="consultas-admision-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Admisión
+                            </a>
+                            @endif
+
+                        @elseif($an->estatus == 2)
+                        <span class="badge bg-success">YA FUE ATENDIDO</span>
+                        <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                        </a>
+
+                        @else
+                        <span class="badge bg-success">ADMISIÓN REGISTRADA</span>
+                        @if($an->id_paciente_hombre == 999999)
+                        
+                        <a class="btn btn-danger btn-sm" href="consultas-atencionm-{{$an->id}}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Atender
+                        </a>
+                        @else
+                        
+                        <a class="btn btn-danger btn-sm" href="consultas-atencion-{{$an->id}}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Atender
+                        </a>
+                        @endif
+
+                        @endif
+
+                
+
                     </td>
-                  
                   </tr>
                   @endforeach
                  
                   </tbody>
                   <tfoot>
                   <tr>
-                  <th>Fecha</th>
-                  <th>Sede</th>
-                    <th>Paciente</th>
-                    <th>Origen</th>
-                    <th>Detalle</th>
-                    <th>Mto</th>
-                    <th>Abo</th>
-                    <th>Tp</th>
-                    <th>PG</th>
-                    <th>AT</th>
-                    <th>RP</th>
+                    <th>Id</th>
+                    <th>Fecha</th>
+                    <th>Paciente Mujer</th>
+                    <th>Paciente Hombre</th>
+                    <th>Especialista</th>
+                    <th>Tipo</th>
                     <th>Acciones</th>
                   </tr>
-                 
                   </tfoot>
-
                 </table>
               </div>
               <!-- /.card-body -->
+              <p style="margin-left:20px;">RECETAS</p>
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($recetas as $p)
+                  <tr>
+                    <td>{{$p->nombres}}</td>
+                    <td>{{$p->apellidos}} {{$p->apellidos1}}</td>
+                    <td>{{$p->created_at}}</td>
+                 
+
+                    <td><a class="btn btn-primary btn-sm" target="_blank" href="recetas-ver-{{$p->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                          </a>
+                       
+                          @if(Auth::user()->rol == 1)
+
+                          <a class="btn btn-primary btn-sm" href="recetas-edit-{{$p->id}}">
+                              <i class="fas fa-edit">
+                              </i>
+                              Editar
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="recetas-delete-{{$p->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+                          @endif
+                          </td>
+                  </tr>
+                  @endforeach
+                 
+                 
+               
+                 
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+              <p style="margin-left:20px;">ORDENES</p>
+
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($ordenes as $p)
+                  <tr>
+                    <td>{{$p->nombres}}</td>
+                    <td>{{$p->apellidos}} {{$p->apellidos1}}</td>
+                    <td>{{$p->created_at}}</td>
+                 
+                    <td><a class="btn btn-primary btn-sm" target="_blank" href="ordenes-ver-{{$p->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                          </a>
+                       
+                          @if(Auth::user()->rol == 1)
+                          <a class="btn btn-primary btn-sm" href="ordenes-edit-{{$p->id}}">
+                              <i class="fas fa-edit">
+                              </i>
+                              Editar
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="ordenes-delete-{{$p->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+                          @endif
+                          </td>
+                  </tr>
+                  @endforeach
+                 
+                 
+               
+                 
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+              <p style="margin-left:20px;">EVALUACIONES</p>
+
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($evaluaciones as $p)
+                  <tr>
+                    <td>{{$p->nombres}}</td>
+                    <td>{{$p->apellidos}} {{$p->apellidos1}}</td>
+                    <td>{{$p->created_at}}</td>
+                 
+                    <td><a class="btn btn-primary btn-sm"  href="evaluaciones-ver-{{$p->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                          </a>
+                       
+                          @if(Auth::user()->rol == 1)
+                          <a class="btn btn-danger btn-sm" href="evaluaciones-delete-{{$p->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+                          @endif
+                          </td>
+                  </tr>
+                  @endforeach
+                 
+                 
+               
+                 
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <p style="margin-left:20px;">PROFORMAS</p>
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Estatus</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($proformas as $p)
+                  <tr>
+                    <td>{{$p->nombres}}</td>
+                    <td>{{$p->apellidos}} {{$p->apellidos1}}</td>
+                    <td>{{$p->created_at}}</td>
+                    <td>{{$p->modelo}}</td>
+                    @if($p->estatus == 1)
+                    <td><span class="badge bg-info">SIN PROFORMA</span></td>
+                    @else
+                    <td><span class="badge bg-info">PROFORMA CARGADA</span></td>
+                    @endif
+                 
+                    <td>
+
+                        @if($p->estatus ==1)
+
+                         <a class="btn btn-primary btn-sm" href="/modelo-proforma-{{$p->id}}-{{$p->modelo}}" target="_blank">
+                              <i class="fas fa-download">
+                              </i>
+                              Descargar Modelo
+                         </a>
+
+                         <a class="btn btn-secondary btn-sm" href="proformas-upload-{{$p->id}}">
+                              <i class="fas fa-upload">
+                              </i>
+                              Subir Archivo
+                          </a>
+                          @else
+                          <a class="btn btn-primary btn-sm" href="proformas-upload-{{$p->id}}">
+                              <i class="fas fa-download">
+                              </i>
+                              Descargar Archivo
+                          </a>
+                          @endif
+                       
+                          @if(Auth::user()->rol == 1)
+                         
+                          <a class="btn btn-danger btn-sm" href="proformas-delete-{{$p->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+                          @endif
+                          </td>
+                  </tr>
+                  @endforeach
+                 
+                 
+               
+                 
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th>Estatus</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
             <!-- /.card -->
           </div>

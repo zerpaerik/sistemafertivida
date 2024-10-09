@@ -92,7 +92,7 @@ class ProformasController extends Controller
         }
 
   
-        $informe->setValue('name', $proformas->apellidos. ' '.$proformas->nombres. ' Edad: '.$edad);
+        $informe->setValue('name', $proformas->apellidos.' '.$proformas->apellidos1.' - '.$proformas->nombres. ' Edad: '.$edad);
         $informe->setValue('descripcion',$proformas->modelo);
         $informe->setValue('date',date('d-m-Y'));  
         $informe->saveAs($proformas->id.'-'.$proformas->apellidos.'-'.$proformas->nombres.'-'.$proformas->dni.'.docx');

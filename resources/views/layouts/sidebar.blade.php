@@ -260,6 +260,14 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a href="{{route('historial.pacientes')}}" class="nav-link">
+                  <i class="fas fa-hand-holding-usd nav-icon"></i>
+                  <p>Historial de Pacientes</p>
+                </a>
+              </li>
+
+
               
               
             </ul>
