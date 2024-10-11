@@ -536,7 +536,7 @@ class ReportesController extends Controller
 
         
         if(!is_null($request->filtro)){
-            $pacientes =Pacientes::where("estatus", '=', 1)->where('apellidos','like','%'.$request->filtro.'%')->orderby('apellidos','asc')->get();
+            $pacientes =Pacientes::where("estatus", '=', 1)->where('apellidos','like','%'.$request->filtro.'%')->orWhere('apellidos1','like',$request->filtro)->orderby('apellidos','asc')->get();
             }else{
             $pacientes =Pacientes::where("estatus", '=', 9)->orderby('nombres','asc')->get();
             }

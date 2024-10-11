@@ -140,25 +140,11 @@
                     <a href="{{route('descargar2',$an->informe_guarda)}}" class="btn btn-success" target="_blank">Ver Informe</a>
 
                     
-                    @if($an->entregado == 0)
-
-                    <a href="resultadosgl-entregar-{{$an->id}}" class="btn btn-danger" onclick="return confirm('¿Desea entregar este resultado?')">Entregar</a>
-                    @endif
-
+              
 
                     </td>
 
-                    @if($an->entregado == 0)
-                    <td style="background-color: yellow;">
-                      <p>EL INFORME NO HA SIDO ENTREGADO AL PACIENTE</p>
-                    </td>
-                    @endif
-
-                    @if($an->entregado == 1)
-                    <td style="background-color: green;color: white;">
-                      <p>EL INFORME YA FUE ENTREGADO AL PACIENTE POR: {{$an->por_entrega}}, fecha:{{date('d-M-y H:i', strtotime($an->fec_entrega))}}</p>
-                    </td>
-                    @endif
+                   
 
                     </td>
 

@@ -600,7 +600,7 @@ class ConsultasController extends Controller
       $con->pcefa = $request->pcefa;
       $con->pbra = $request->pbrazo;
       $con->ppier = $request->ppier;
-      $con->imc = $request->imc;
+      $con->imc = $request->peso / $request->talla;
       $con->pa = $request->pa;
       $con->t = $request->t;
       $con->fc = $request->fc;
@@ -832,9 +832,10 @@ class ConsultasController extends Controller
       $ad->pesoh = $request->pesoh;
       $ad->talla = $request->talla;
       $ad->pap = $request->pap;
+      $ad->ant_pap = $request->ant_pap;
       $ad->tallah = $request->tallah;
       $ad->imc = $request->imc;
-      $ad->imch = $request->imch;
+      $ad->imch = $request->pesoh / $request->tallah;
       $ad->g = $request->g;
       $ad->g1 = $request->g1;
       $ad->g2 = $request->g2;

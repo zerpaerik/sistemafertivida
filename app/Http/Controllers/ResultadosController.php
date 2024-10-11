@@ -130,7 +130,7 @@ class ResultadosController extends Controller
         if ($request->id_paciente != null) {
 
           $resultados = DB::table('resultados_servicios as a')
-          ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
+          ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','a.informe_guarda','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
           ->join('orden as b', 'b.id', 'a.id_atencion')
           ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
           ->join('servicios as s', 's.id', 'a.id_servicio')
@@ -168,7 +168,7 @@ class ResultadosController extends Controller
           
 
           $resultados = DB::table('resultados_laboratorio as a')
-          ->select('a.id', 'a.id_atencion', 'a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
+          ->select('a.id', 'a.id_atencion','a.informe_guarda','a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
           ->join('orden as b', 'b.id', 'a.id_atencion')
           ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
           ->join('analisis as s', 's.id', 'a.id_laboratorio')

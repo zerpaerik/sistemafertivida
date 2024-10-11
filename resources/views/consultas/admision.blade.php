@@ -310,7 +310,7 @@
 
 
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                <div class="col-md-2">
+                       <div class="col-md-2">
                         <label for="exampleInputEmail1">Peso</label>
                             <input type="text" class="form-control" id="peso" name="peso"  placeholder="" required>
                         </div>
@@ -318,10 +318,7 @@
                         <label for="exampleInputEmail1">Talla</label>
                             <input type="text" class="form-control" id="talla" name="talla"   placeholder="" require>
                         </div>
-                        <div class="col-md-2">
-                        <label for="exampleInputEmail1">IMC</label>
-                            <input type="text" class="form-control" id="nombre" name="imc" require>
-                        </div>
+                    
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">PA</label>
                             <input type="text" class="form-control" id="nombre" name="pa" require>
@@ -333,6 +330,11 @@
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">PAP</label>
                             <input type="date" class="form-control" id="nombre" name="pap" >
+                        </div>
+                        <br>
+                        <div class="col-md-12">
+                        <label for="exampleInputEmail1">Diagnòstico PAP</label>
+                            <input type="text" class="form-control" id="nombre" name="ant_pap" require>
                         </div>
                        
                         
@@ -582,7 +584,7 @@
             <br>
 
             <div class="row" style="margin-left:5px;margin-right:5px;">
-            <div class="col-md-3">
+                       <div class="col-md-3">
                         <label for="exampleInputEmail1">Peso</label>
                             <input type="text" class="form-control" id="nombre" name="pesoh" >
                         </div>
@@ -590,10 +592,7 @@
                         <label for="exampleInputEmail1">Talla</label>
                             <input type="text" class="form-control" id="nombre" name="tallah" >
                         </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">IMC</label>
-                            <input type="text" class="form-control" id="nombre" name="imch" >
-                        </div>
+                       
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">Hijos</label>
                             <input type="text" class="form-control" id="nombre" name="hijos" >
