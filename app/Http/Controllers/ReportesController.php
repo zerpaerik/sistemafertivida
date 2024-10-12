@@ -484,10 +484,19 @@ class ReportesController extends Controller
 
         
         $proformas = DB::table('proformas as a')
-        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.proforma','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
         ->where('a.id_paciente', '=', $request->id_paciente)
         ->get(); 
+
+        $resultados = DB::table('resultados_servicios as a')
+        ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','a.informe_guarda','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
+        ->join('orden as b', 'b.id', 'a.id_atencion')
+        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+        ->join('servicios as s', 's.id', 'a.id_servicio')
+        ->where('a.estatus', '=', 3)
+        ->where('b.id_paciente', '=', $request->id_paciente)
+        ->get();
 
 
     } else {
@@ -530,6 +539,15 @@ class ReportesController extends Controller
         ->join('pacientes as b','b.id','a.id_paciente')
         ->where('a.id_paciente', '=', 5454554545454)
         ->get(); 
+
+        $resultados = DB::table('resultados_servicios as a')
+        ->select('a.id', 'a.id_atencion', 'a.id_servicio', 'a.informe','a.informe_guarda','b.usuario', 'a.created_at', 'a.estatus', 'b.id_paciente','b.estatus', 's.nombre as servicio', 'pa.nombres', 'pa.apellidos')
+        ->join('orden as b', 'b.id', 'a.id_atencion')
+        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+        ->join('servicios as s', 's.id', 'a.id_servicio')
+        ->where('a.estatus', '=', 3)
+        ->where('b.id_paciente', '=', 32323232323233)
+        ->get();
 
 
     }
