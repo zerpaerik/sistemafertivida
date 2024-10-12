@@ -163,6 +163,24 @@
                 
             </div>
             <!-- /sheepIt Form --> 
+             <br>
+
+            <div class="row">
+            <div class="col-md-3">
+                        <label for="exampleInputEmail1">Necesita descanso médico?</label>
+                        <select class="form-control" name="descanso" id="el2">
+                        <option value="0">Seleccione</option>
+                        <option value="1">SI</option>
+                        <option value="2">NO</option>
+                    </select>
+              </div>
+
+              <div style="margin: top 15px;" class="col-md-8" id="sesion" class="form-control">
+
+              </div>
+
+
+            </div>
 						
 					</div>
 
@@ -246,10 +264,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
-<!-- sheepit -->
-
-<script src="../../plugins/sheepit/jquery.sheepItPlugin.min.js"></script>
-
 <!-- DataTables -->
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -257,13 +271,38 @@
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="../../plugins/select2/js/select2.full.min.js"></script>
 
+<script src="../../plugins/sheepit/jquery.sheepItPlugin.min.js"></script>
+
+
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<!-- page script -->
-<!-- Summernote -->
-<script src="../../plugins/summernote/summernote-bs4.min.js"></script>
+
+<script type="text/javascript">
+      $(document).ready(function(){
+        $('#el2').on('change',function(){
+          var link;
+          if ($(this).val() == 1) {
+            link = '/crear/descanso/';
+          } else {
+		    link = '/crear/descanso1/';
+		  }
+
+          $.ajax({
+                 type: "get",
+                 url:  link,
+                 success: function(a) {
+                    $('#sesion').html(a);
+                 }
+          });
+
+        });
+        
+
+      });
+       
+</script>
 <script>
 
 function datapac(){

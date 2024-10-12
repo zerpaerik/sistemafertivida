@@ -109,6 +109,15 @@
 	</table>
 </div>
 @endif
+<br>
+@if($receta->descanso == '1')
+<div style="font-weight: bold; font-size: 14px">
+		DESCANSO MÉDICO
+</div>
+<center><p>{{ $receta->desc_descanso}}</p></center>
+
+
+@endif
 
 <br><br><br><br>
 

@@ -115,6 +115,8 @@ class RecetasController extends Controller
         $receta = new Recetas();
         $receta->id_paciente =$request->paciente;
         $receta->usuario =Auth::user()->id;
+        $receta->descanso =$request->descanso;
+        $receta->desc_descanso = $request->descripcion;
         $receta->estatus =1;
         $receta->save();
 
@@ -148,11 +150,33 @@ class RecetasController extends Controller
 
     }
 
+
+    public function descanso()
+    {
+
+        return view('recetas.descanso');
+
+        //
+    }
+
+    public function descanso1()
+    {
+
+
+        return view('recetas.descanso1');
+
+    
+    }
+
+
+
+
+
     public function ver($id)
     {
 
       $receta = DB::table('receta as a')
-      ->select('a.id','a.id_paciente','a.created_at')
+      ->select('a.id','a.id_paciente','a.created_at','a.descanso','a.desc_descanso')
       ->where('a.id', '=', $id)
       ->first(); 
 

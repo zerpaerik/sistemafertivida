@@ -598,6 +598,8 @@ Route::get('recetas-ver-{id}', 'RecetasController@ver');
 Route::get('receta-item-delete-{id}', 'RecetasController@deleteItem')->middleware('auth');
 Route::get('receta-item-edit-{id}', 'RecetasController@editItem')->name('recetas.edit-item');
 Route::post('recitem/update', 'RecetasController@updateItem')->middleware('auth');
+Route::get('crear/descanso','RecetasController@descanso');
+Route::get('crear/descanso1','RecetasController@descanso1');
 
 
 

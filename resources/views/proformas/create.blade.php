@@ -115,11 +115,11 @@
                         <select class="form-control" name="modelo">
                             <option value="BIOPSIA TESTICULAR.docx">BIOPSIA TESTICULAR</option>
                             <option value="CRIO DE OVOCITOS.docx">CRIO DE OVOCITOS</option>
-						    <option value="FIV-1+NGS.docx">FIV-1+NGS</option>
+                            <option value="FIV-1+NGS.docx">FIV-1+NGS</option>
                             <option value="FIV-2+NGS.docx">FIV-2+NGS</option>
-						    <option value="FIV-MIXTO+NGS.docx">FIV-MIXTO+NGS</option>
-						    <option value="HISTEROSCOPIA QUIRURGICA.docx">HISTEROSCOPIA QUIRURGICA </option>
-						    <option value="PPTO-IIU">PPTO-IIU</option>
+                            <option value="FIV-MIXTO+NGS.docx">FIV-MIXTO+NGS</option>
+                            <option value="HISTEROSCOPIA QUIRURGICA.docx">HISTEROSCOPIA QUIRURGICA </option>
+                            <option value="PPTO-IIU">PPTO-IIU</option>
                         </select>
                     </div> 
               </div>
