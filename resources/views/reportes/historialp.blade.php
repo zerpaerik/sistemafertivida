@@ -461,6 +461,125 @@
               </div>
 
 
+              <p style="margin-left:20px;">RESULTADOS DE SERVICIO</p>
+
+
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Pac.</th>
+                    <th>Det.</th>
+                    <th>Informe.</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($resultados as $an)
+                  <tr>
+                    <td>{{$an->created_at}}</td>
+                    <td>{{$an->apellidos}} {{$an->nombres}}</td>
+                    <td>{{$an->servicio}}</td>
+                    <td>
+                    <a href="resultados-imagenes-{{$an->id}}" class="btn btn-warning">Ver Imagenes</a>
+
+                    @if(Auth::user()->rol == 1 || Auth::user()->rol == 2)
+
+                    <a href="resultadosg-reversar-{{$an->id}}" class="btn btn-success">Reversar</a>
+                    @endif
+
+                    <a href="{{route('descargar2',$an->informe_guarda)}}" class="btn btn-success" target="_blank">Ver Informe</a>
+
+
+
+                    </td>
+
+                  </tr>
+                  @endforeach
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Pac.</th>
+                    <th>Det.</th>
+                    <th>Informe.</th>
+                    <th>Acciones</th>
+                  </tr>
+                 
+                  </tfoot>
+
+                </table>
+              </div>
+
+              <p style="margin-left:20px;">RESULTADOS DE LABORATORIO</p>
+
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Pac.</th>
+                    <th>Det.</th>
+                    <th>Informe.</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($resultadosL as $resl)
+                  <tr>
+                   <td>{{$resl->created_at}}</td>
+                    <td>{{$resl->apellidos}} {{$resl->nombres}}</td>
+                    <td>{{$resl->laboratorio}}</td>
+                    <td>
+                    @if(Auth::user()->rol == 1 || Auth::user()->rol == 2)
+                    <a href="resultadosgl-reversar-{{$resl->id}}" class="btn btn-success">Reversar</a>
+                    @endif
+
+                    <a href="{{route('descargar2',$resl->informe_guarda)}}" class="btn btn-success" target="_blank">Ver Informe</a>
+
+                    
+              
+
+                    </td>
+
+                   
+
+                    </td>
+
+
+                    <td>
+                    @if(Auth::user()->rol == 1)
+                   
+
+                         
+
+                        
+                         </td>
+                          @endif
+                  </tr>
+                  @endforeach
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Pac.</th>
+                    <th>Det.</th>
+                    <th>Informe.</th>
+                    <th>Acciones</th>
+                  </tr>
+                 
+                  </tfoot>
+
+                </table>
+              </div>
+
+
+
 
 
 

@@ -498,6 +498,15 @@ class ReportesController extends Controller
         ->where('b.id_paciente', '=', $request->id_paciente)
         ->get();
 
+        $resultadosl = DB::table('resultados_laboratorio as a')
+        ->select('a.id', 'a.id_atencion','a.informe_guarda','a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
+        ->join('orden as b', 'b.id', 'a.id_atencion')
+        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+        ->join('analisis as s', 's.id', 'a.id_laboratorio')
+        ->where('a.estatus', '=', 3)
+        ->where('b.id_paciente', '=', $request->id_paciente)
+        ->get();
+
 
     } else {
 
@@ -549,6 +558,16 @@ class ReportesController extends Controller
         ->where('b.id_paciente', '=', 32323232323233)
         ->get();
 
+        $resultadosl = DB::table('resultados_laboratorio as a')
+        ->select('a.id', 'a.id_atencion','a.informe_guarda','a.id_laboratorio', 'a.informe','b.usuario', 'a.created_at', 'a.estatus','b.id_paciente', 's.nombre as laboratorio', 'pa.nombres', 'pa.apellidos')
+        ->join('orden as b', 'b.id', 'a.id_atencion')
+        ->join('pacientes as pa', 'pa.id', 'b.id_paciente')
+        ->join('analisis as s', 's.id', 'a.id_laboratorio')
+        ->where('a.estatus', '=', 3)
+        ->where('b.id_paciente', '=', 4545454545454)
+        ->get();
+
+
 
     }
 
@@ -559,7 +578,7 @@ class ReportesController extends Controller
             $pacientes =Pacientes::where("estatus", '=', 9)->orderby('nombres','asc')->get();
             }
       
-        return view('reportes.historialp', compact('pacientes','proformas','recetas','consultas','evaluaciones','ordenes'));
+        return view('reportes.historialp', compact('pacientes','proformas','recetas','consultas','evaluaciones','ordenes','resultados','resultadosl'));
 
     }
 
