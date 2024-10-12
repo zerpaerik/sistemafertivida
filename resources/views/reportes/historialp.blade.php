@@ -529,7 +529,7 @@
                   </thead>
                   <tbody>
 
-                  @foreach($resultadosL as $resl)
+                  @foreach($resultadosl as $resl)
                   <tr>
                    <td>{{$resl->created_at}}</td>
                     <td>{{$resl->apellidos}} {{$resl->nombres}}</td>
