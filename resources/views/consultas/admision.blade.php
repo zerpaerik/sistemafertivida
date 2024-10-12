@@ -312,11 +312,11 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                        <div class="col-md-2">
                         <label for="exampleInputEmail1">Peso</label>
-                            <input type="text" class="form-control" id="peso" name="peso"  placeholder="" required>
+                            <input type="double" class="form-control" id="peso" name="peso"  placeholder="" required>
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">Talla</label>
-                            <input type="text" class="form-control" id="talla" name="talla"   placeholder="" require>
+                            <input type="double" class="form-control" id="talla" name="talla"   placeholder="" require>
                         </div>
                     
                         <div class="col-md-2">
@@ -586,11 +586,11 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
                        <div class="col-md-3">
                         <label for="exampleInputEmail1">Peso</label>
-                            <input type="text" class="form-control" id="nombre" name="pesoh" >
+                            <input type="double" class="form-control" id="nombre" name="pesoh" >
                         </div>
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">Talla</label>
-                            <input type="text" class="form-control" id="nombre" name="tallah" >
+                            <input type="double" class="form-control" id="nombre" name="tallah" >
                         </div>
                        
                         <div class="col-md-3">
