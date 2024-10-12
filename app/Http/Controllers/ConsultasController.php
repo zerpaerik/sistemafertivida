@@ -834,8 +834,8 @@ class ConsultasController extends Controller
       $ad->pap = $request->pap;
       $ad->ant_pap = $request->ant_pap;
       $ad->tallah = $request->tallah;
-      $ad->imc = $request->peso / $request->talla;
-      $ad->imch = $request->pesoh / $request->tallah;
+      $ad->imc =($request->peso / $request->talla) / $request->talla;
+      $ad->imch = ($request->pesoh / $request->tallah) / $request->tallah ;
       $ad->g = $request->g;
       $ad->g1 = $request->g1;
       $ad->g2 = $request->g2;
