@@ -423,7 +423,7 @@
                               Subir Archivo
                           </a>
                           @else
-                          <a class="btn btn-primary btn-sm" href="proformas-upload-{{$p->id}}">
+                          <a class="btn btn-primary btn-sm" href="{{route('descargar2',$p->proforma)}}">
                               <i class="fas fa-download">
                               </i>
                               Descargar Archivo

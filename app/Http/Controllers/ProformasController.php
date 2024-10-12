@@ -47,7 +47,7 @@ class ProformasController extends Controller
 
 
         $proformas = DB::table('proformas as a')
-        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.proforma','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
         ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
         ->get(); 
@@ -57,7 +57,7 @@ class ProformasController extends Controller
             $f2 = date('Y-m-d');
 
             $proformas = DB::table('proformas as a')
-            ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+            ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.proforma','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
             ->join('pacientes as b','b.id','a.id_paciente')
             ->whereDate('a.created_at', date('Y-m-d 00:00:00', strtotime($f1)))
             ->get(); 

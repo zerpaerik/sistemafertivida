@@ -526,7 +526,7 @@ class ReportesController extends Controller
 
         
         $proformas = DB::table('proformas as a')
-        ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+        ->select('a.id','a.id_paciente','a.modelo','a.proforma','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
         ->where('a.id_paciente', '=', 5454554545454)
         ->get(); 
