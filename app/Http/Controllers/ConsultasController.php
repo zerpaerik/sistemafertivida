@@ -22,6 +22,7 @@ use App\Control;
 use App\HistoriaBase;
 use App\HistoriaBaseP;
 use App\HistoriaBM;
+use App\Evolucion;
 use Auth;
 use Illuminate\Http\Request;
 use DB;
@@ -185,12 +186,37 @@ class ConsultasController extends Controller
       $edad = Carbon::parse($consulta->fechanac)->age;
       $edad1 = Carbon::parse($consulta->fechanach)->age;
 
+      $evoluciones  = Evolucion::where('id_paciente','=',$consulta->id_paciente_mujer)->get();
+
+
       $admision = Admision::where('consulta','=',$id)->first();
 
 
 
-      return view('consultas.atencion',compact('consulta','edad','edad1', 'admision'));
+      return view('consultas.atencion',compact('consulta','edad','edad1', 'admision','evoluciones'));
     }
+
+    public function evolucion($id)
+
+    {
+
+      $consulta = DB::table('consultas as a')
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.email','b.apellidos','b.apellidos1','c.nombres as nombresh','c.email as emailh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->join('pacientes as b','b.id','a.id_paciente_mujer')
+      ->join('pacientes as c','c.id','a.id_paciente_hombre')
+      ->join('users as u','u.id','a.id_especialista')
+      ->join('servicios as s','s.id','a.tipo')
+      ->where('a.id', '=', $id)
+      ->first(); 
+
+      $edad = Carbon::parse($consulta->fechanac)->age;
+      $edad1 = Carbon::parse($consulta->fechanach)->age;
+
+      $admision = Admision::where('consulta','=',$id)->first();
+
+      return view('consultas.evolucion',compact('consulta','edad','edad1', 'admision'));
+    }
+
 
 
    
@@ -259,11 +285,13 @@ class ConsultasController extends Controller
 
       $admision = Admision::where('consulta','=',$id)->first();
       $atencion = AdmisionAtencion::where('consulta','=',$id)->first();
+      $evoluciones  = Evolucion::where('id_paciente','=',$consulta->id_paciente_mujer)->get();
 
 
 
 
-      return view('consultas.ver',compact('consulta','edad','edad1', 'admision','atencion'));
+
+      return view('consultas.ver',compact('consulta','edad','edad1', 'admision','atencion','evoluciones'));
     }
 
     public function editar($id)
@@ -954,6 +982,32 @@ class ConsultasController extends Controller
       ->with('success','Atendido Exitosamente!');
 
     }
+
+
+    public function storeEvolucion(Request $request){
+
+
+      $at_fin = Consultas::where('id','=',$request->consulta)->first();
+      $at_fin->estatus = 2;
+      $at_fin->historia = 2;
+      $at_fin->save();
+
+
+      $consu = Consultas::where('id','=',$request->consulta)->first();
+
+
+      
+      $ad = new Evolucion();
+      $ad->consulta =  $request->consulta;
+      $ad->id_paciente =  $consu->id_paciente_mujer;
+      $ad->descripcion =  $request->detalle;
+      $ad->save();
+
+      return redirect()->action('ConsultasController@index')
+      ->with('success','Atendido Exitosamente!');
+
+    }
+
 
 
 

@@ -135,6 +135,45 @@
                     <td><span class="badge bg-info">{{$an->servicio}}</span></td>
 
                     <td>
+
+                      @if($an->tipo == 999)
+
+                        @if($an->estatus == 0)
+                          @if($an->id_paciente_hombre == 999999)
+                          <a class="btn btn-info btn-sm" href="consultas-admisionm-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Admisión
+                            </a>
+                            @else
+                            <a class="btn btn-info btn-sm" href="consultas-admision-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Admisión
+                            </a>
+                          @endif
+                          @endif
+
+
+                      <a class="btn btn-danger btn-sm" href="consultas-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                      </a>
+
+                      @if($an->estatus != 2)
+
+                      <a class="btn btn-primary btn-sm" href="consultas-evolucion-{{$an->id}}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Cargar Evolución
+                        </a>
+
+                        @endif
+
+
+
+                      @else
                    
                     
                          @if($an->estatus == 0)
@@ -197,6 +236,8 @@
                               </i>
                               Eliminar
                           </a>
+
+                        @endif
 
                 
 

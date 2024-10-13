@@ -477,6 +477,62 @@
                 
 <br>
 
+<div class="row">
+
+<div class="col-md-12">
+<!-- USERS LIST -->
+<div class="card">
+    <div class="card-header" style="background-color:pink;">
+    <h3 class="card-title" style="color: white;">Evolución mujer</h3>
+
+    <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+        <i class="fas fa-minus"></i>
+        </button>
+        
+    </div>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+    <br>
+
+    @foreach($evoluciones as $evo)
+
+    <div class="col-md-12">
+        <label for="exampleInputEmail1">Detalle</label>
+        <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="5"  name="detalle" placeholder="Escribir detalle de evolución" disabled>{{$evo->descripcion}}</textarea>
+
+        </div>
+
+    @endforeach
+
+
+        </div>
+
+        <br>
+
+    
+
+
+    
+    <!-- /.users-list -->
+    </div>
+
+    <!-- /.card-body -->
+    <div class="card-footer text-center">
+    </div>
+    <!-- /.card-footer -->
+</div>
+<!--/.card -->
+</div>
+
+
+<!-- /.col -->
+</div>
+
+
+<br>
+
 
 
        
@@ -622,6 +678,8 @@
 
 
 <br>
+
+
 
                  
 
