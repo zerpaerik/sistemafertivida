@@ -192,6 +192,31 @@ class ConsultasController extends Controller
       return view('consultas.atencion',compact('consulta','edad','edad1', 'admision'));
     }
 
+
+   
+
+    public function uro($id)
+
+    {
+
+      $consulta = DB::table('consultas as a')
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','c.nombres as nombresh','c.email as emailh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1','u.name','u.lastname','s.nombre as servicio','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->join('pacientes as c','c.id','a.id_paciente_hombre')
+      ->join('users as u','u.id','a.id_especialista')
+      ->join('servicios as s','s.id','a.tipo')
+      ->where('a.id', '=', $id)
+      ->first(); 
+
+
+      $edad1 = Carbon::parse($consulta->fechanach)->age;
+
+      $admision = Admision::where('consulta','=',$id)->first();
+
+
+
+      return view('consultas.urologia',compact('consulta','edad1', 'admision'));
+    }
+
     public function atencionm($id)
 
     {
@@ -268,15 +293,28 @@ class ConsultasController extends Controller
     public function update(Request $request)
     {
 
-      $p = Consultas::find($request->id);
-      $p->tipo =$request->servicio;
-      $p->id_especialista =$request->especialista;
-      $p->id_paciente_mujer =$request->pacientem;
-      $p->id_paciente_hombre =$request->pacienteh;
-      $res = $p->update();
+
+      $atencion = AdmisionAtencion::where('consulta','=',$request->consulta)->first();
+
+
+      $ad = AdmisionAtencion::find($atencion->id);
+      $ad->tirh = $request->tirh;
+      $ad->genh = $request->genh;
+      $ad->otrosh = $request->otrosh;
+      $ad->imph = $request->imph;
+      $ad->planh = $request->planh;
+      $ad->trath = $request->trath;
+      $ad->proch = $request->proch;
+      $ad->update();
+
+      $at_fin = Consultas::where('id','=',$request->consulta)->first();
+      $at_fin->estatus = 3;
+      $at_fin->historia = 3;
+      $at_fin->save();
+
       return redirect()->action('ConsultasController@index')
-      ->with('success','Modificado Exitosamente!');
-        //
+      ->with('success','Creado Exitosamente!');
+
     }
 
 
