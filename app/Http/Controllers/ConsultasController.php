@@ -284,6 +284,7 @@ class ConsultasController extends Controller
       $edad1 = Carbon::parse($consulta->fechanach)->age;
 
       $admision = Admision::where('consulta','=',$id)->first();
+
       $atencion = AdmisionAtencion::where('consulta','=',$id)->first();
       $evoluciones  = Evolucion::where('id_paciente','=',$consulta->id_paciente_mujer)->get();
 
