@@ -891,7 +891,7 @@
             <div class="card-body p-0">
             <br>
 
-            @foreach($evoluciones as @evo)
+            @foreach($evoluciones as $evo)
 
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Detalle</label>
@@ -899,9 +899,8 @@
 
                 </div>
 
-                </div>
+            @endforeach
 
-           @endforeach
                 <br>
 
             
