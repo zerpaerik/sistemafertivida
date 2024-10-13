@@ -154,6 +154,12 @@
                           @endif
                           @endif
 
+                          <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                        </a>
+
 
                       <a class="btn btn-danger btn-sm" href="consultas-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
                               <i class="fas fa-trash">

@@ -342,57 +342,34 @@
 
                 <br>
                 <div class="row" style="margin-left:5px;margin-right:5px;">
-                <div class="col-md-3">
-                        <label for="exampleInputEmail1">Gestas</label>
-                            <input type="text" class="form-control" id="nombre" name="g" >
+                <div class="col-md-2">
+                        <label for="exampleInputEmail1"></label>
+                        G<input type="text" class="form-control" id="nombre" name="g" >
                         </div>
                     
-                          <div class="col-md-3">
-                        <label for="exampleInputEmail1">Abortos</label>
-                            <input type="text" class="form-control" id="g1" name="g1"  placeholder="" >
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1"></label>
+                        P<input type="text" class="form-control" id="g1" name="g1"  placeholder="" >
                         </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Vaginales</label>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1"></label>
                             <input type="text" class="form-control" id="nombre" name="g2" >
                         </div>
                     
-                          <div class="col-md-3">
-                        <label for="exampleInputEmail1">Nac Vivos</label>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1"></label>
                             <input type="text" class="form-control" id="g1" name="g3"  placeholder="" >
                         </div>
-                      
-                    
-                </div>
-
-                <br>
-
-                <div class="row" style="margin-left:5px;margin-right:5px;">
-                <div class="col-md-3">
-                        <label for="exampleInputEmail1">Viven</label>
+                        <div class="col-md-2">
+                        <label for="exampleInputEmail1"></label>
                             <input type="text" class="form-control" id="g2" name="g4"   placeholder="" >
                         </div>
-
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Partos</label>
-                            <input type="text" class="form-control" id="nombre" name="g5" >
-                        </div>
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Cesarea</label>
-                            <input type="text" class="form-control" id="nombre" name="g6" >
-                        </div>
-
-                        <div class="col-md-3">
-                        <label for="exampleInputEmail1">Nac Muertos</label>
-                            <input type="text" class="form-control" id="nombre" name="g7" >
-                        </div>
-                    
-
-              
                       
                     
                 </div>
 
                 <br>
+
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-3">
                        <label for="exampleInputEmail1">Desp.1SEM</label>
