@@ -115,8 +115,8 @@
               
               </div>
               <!-- /.card-header -->
+               <p>CONSULTAS</p>
               <div class="card-body">
-                <p>CONSULTAS</p>
                 <table id="" class="table table-bordered table-striped">
                   <thead>
                   <tr>
@@ -141,13 +141,10 @@
                     <td><span class="badge bg-info">{{$an->servicio}}</span></td>
 
                     <td>
-                   
-                    <a class="btn btn-danger btn-sm" href="consultas-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
-                              <i class="fas fa-trash">
-                              </i>
-                              Eliminar
-                          </a>
-                      @if($an->estatus == 0)
+
+                      @if($an->tipo == 999)
+
+                        @if($an->estatus == 0)
                           @if($an->id_paciente_hombre == 999999)
                           <a class="btn btn-info btn-sm" href="consultas-admisionm-{{$an->id}}">
                                   <i class="fas fa-pencil-alt">
@@ -160,10 +157,70 @@
                                   </i>
                                   Admisión
                             </a>
-                            @endif
+                          @endif
+                          @endif
 
-                        @elseif($an->estatus == 2)
+                    
+
+
+                      <a class="btn btn-danger btn-sm" href="consultas-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                      </a>
+
+                      @if($an->estatus != 2)
+
+                      <a class="btn btn-primary btn-sm" href="consultas-evolucion-{{$an->id}}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Cargar Evolución
+                        </a>
+
+                        @else
+                        <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                        </a>
+
+                        @endif
+
+
+
+                      @else
+                   
+                    
+                         @if($an->estatus == 0)
+                          @if($an->id_paciente_hombre == 999999)
+                          <a class="btn btn-info btn-sm" href="consultas-admisionm-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Admisión
+                            </a>
+                            @else
+                            <a class="btn btn-info btn-sm" href="consultas-admision-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Admisión
+                            </a>
+                          @endif
+
+                         @elseif($an->estatus == 2)
                         <span class="badge bg-success">YA FUE ATENDIDO</span>
+                        <a class="btn btn-danger btn-sm" href="consultas-urologia-{{$an->id}}">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Urologia
+                        </a>
+                        <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                        </a>
+
+                        @elseif($an->estatus == 3)
+                        <span class="badge bg-success">CONSULTA ATENDIDA COMPLETA</span>
                         <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
                               <i class="fas fa-eye">
                               </i>
@@ -189,6 +246,13 @@
                         @endif
 
                         @endif
+                        <a class="btn btn-danger btn-sm" href="consultas-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+
+                        @endif
 
                 
 
@@ -210,6 +274,7 @@
                   </tfoot>
                 </table>
               </div>
+              
               <!-- /.card-body -->
               <p style="margin-left:20px;">RECETAS</p>
               <div class="card-body">

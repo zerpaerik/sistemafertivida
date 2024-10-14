@@ -228,16 +228,13 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-2">
                         <label for="exampleInputEmail1">Peso</label>
-                            <input type="text" class="form-control" id="peso" name="peso"  placeholder="" required>
+                            <input type="text" class="form-control" id="peso" name="peso" placeholder="" >
                         </div>
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">Talla</label>
-                            <input type="text" class="form-control" id="talla" name="talla"   placeholder="" require>
+                            <input type="text" class="form-control" id="talla" name="talla" placeholder="" >
                         </div>
-                        <div class="col-md-2">
-                        <label for="exampleInputEmail1">IMC</label>
-                            <input type="text" class="form-control" id="nombre" name="imc" require>
-                        </div>
+                     
                         <div class="col-md-2">
                         <label for="exampleInputEmail1">PA</label>
                             <input type="text" class="form-control" id="nombre" name="pa" require>
@@ -260,31 +257,29 @@
 <div class="row" style="margin-left:5px;margin-right:5px;">
 <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-        G<input type="text" class="form-control" id="nombre" value="{{$admision->g}}" disabled >
+        G<input type="text" class="form-control" id="g" value=""  >
         </div>
     
         <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-        P<input type="text" class="form-control" id="g1" value="{{$admision->g1}}" disabled>
+        P<input type="text" class="form-control" id="g1">
         </div>
         <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-            <input type="text" class="form-control" id="nombre" value="{{$admision->g2}}" disabled>
+            <input type="text" class="form-control" id="g2">
         </div>
     
         <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-            <input type="text" class="form-control" id="g1" value="{{$admision->g3}}" disabled>
+            <input type="text" class="form-control" id="g3">
         </div>
         <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-            <input type="text" class="form-control" id="g2" value="{{$admision->g4}}" disabled>
+            <input type="text" class="form-control" id="g4">
         </div>
       
     
 </div>
-              
-
                 <br>
                 <div class="row" style="margin-left:5px;margin-right:5px;">
                 <div class="col-md-3">

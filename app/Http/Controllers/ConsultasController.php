@@ -263,6 +263,7 @@ class ConsultasController extends Controller
 
 
 
+
       return view('consultas.atencionm',compact('consulta','edad','edad1', 'admision'));
     }
 
@@ -667,7 +668,7 @@ class ConsultasController extends Controller
       $con->pcefa = $request->pcefa;
       $con->pbra = $request->pbrazo;
       $con->ppier = $request->ppier;
-      $con->imc = $request->peso / $request->talla;
+      $con->imc = divnum($request->peso, $request->talla);
       $con->pa = $request->pa;
       $con->t = $request->t;
       $con->fc = $request->fc;
@@ -901,8 +902,8 @@ class ConsultasController extends Controller
       $ad->pap = $request->pap;
       $ad->ant_pap = $request->ant_pap;
       $ad->tallah = $request->tallah;
-      $ad->imc =($request->peso / $request->talla) / $request->talla;
-      $ad->imch = ($request->pesoh / $request->tallah) / $request->tallah ;
+      $ad->imc =((float)$request->peso / (float)$request->talla) / (float)$request->talla;
+      $ad->imch =((float)$request->pesoh / (float)$request->tallah) / (float)$request->tallah ;
       $ad->g = $request->g;
       $ad->g1 = $request->g1;
       $ad->g2 = $request->g2;
