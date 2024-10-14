@@ -163,7 +163,7 @@
                               Eliminar
                       </a>
 
-                      @if($an->estatus != 2)
+                      @if($an->estatus = 1)
 
                       <a class="btn btn-primary btn-sm" href="consultas-evolucion-{{$an->id}}">
                               <i class="fas fa-pencil-alt">

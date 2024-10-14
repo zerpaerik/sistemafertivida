@@ -269,9 +269,7 @@ class ConsultasController extends Controller
 
 
     public function ver($id)
-
     {
-
       $consulta = DB::table('consultas as a')
       ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.email','b.apellidos','b.apellidos1','c.nombres as nombresh','c.email as emailh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
       ->join('pacientes as b','b.id','a.id_paciente_mujer')
@@ -283,15 +281,9 @@ class ConsultasController extends Controller
 
       $edad = Carbon::parse($consulta->fechanac)->age;
       $edad1 = Carbon::parse($consulta->fechanach)->age;
-
       $admision = Admision::where('consulta','=',$id)->first();
-
       $atencion = AdmisionAtencion::where('consulta','=',$id)->first();
       $evoluciones  = Evolucion::where('id_paciente','=',$consulta->id_paciente_mujer)->get();
-
-
-
-
 
       return view('consultas.ver',compact('consulta','edad','edad1', 'admision','atencion','evoluciones'));
     }
