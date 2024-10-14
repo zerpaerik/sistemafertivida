@@ -152,6 +152,17 @@
                                   Admisión
                             </a>
                           @endif
+
+                          @elseif($an->estatus == 1)
+                          
+                          <a class="btn btn-primary btn-sm" href="consultas-evolucion-{{$an->id}}">
+                                  <i class="fas fa-pencil-alt">
+                                  </i>
+                                  Cargar Evolución
+                            </a>
+
+                          @else
+
                           @endif
 
                     
@@ -163,22 +174,7 @@
                               Eliminar
                       </a>
 
-                      @if($an->estatus = 1)
-
-                      <a class="btn btn-primary btn-sm" href="consultas-evolucion-{{$an->id}}">
-                              <i class="fas fa-pencil-alt">
-                              </i>
-                              Cargar Evolución
-                        </a>
-
-                        @else
-                        <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
-                              <i class="fas fa-eye">
-                              </i>
-                              Ver
-                        </a>
-
-                        @endif
+                     
 
 
 
