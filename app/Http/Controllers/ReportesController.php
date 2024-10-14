@@ -577,6 +577,10 @@ class ReportesController extends Controller
             }else{
             $pacientes =Pacientes::where("estatus", '=', 9)->orderby('nombres','asc')->get();
             }
+
+
+        $pacientes =Pacientes::where("estatus", '=', 1)->orderby('nombres','asc')->get();
+
       
         return view('reportes.historialp', compact('pacientes','proformas','recetas','consultas','evaluaciones','ordenes','resultados','resultadosl'));
 

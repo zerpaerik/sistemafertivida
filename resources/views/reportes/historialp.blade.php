@@ -30,6 +30,8 @@
 <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
+<link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -76,30 +78,14 @@
       <div class="container-fluid">
       <div class="card">
               <div class="card-header">
-              <form method="get" action="historial_pacientes">					
-                  <label for="exampleInputEmail1">Filtros de Busqueda</label>
-
-                    <div class="row">
-                    <form method="get" action="historial_pacientes">					
-                  <div class="col-md-3">
-                    <label for="exampleInputEmail1">Buscar por Apellidos</label>
-                    <input type="text" class="form-control"  name="filtro">
-                  </div>
-
-                  <div class="col-md-2" style="margin-top: 30px;">
-                  <button type="submit" class="btn btn-primary">Buscar</button>
-                  </div>
-                  </form>
-
-                  </div>
-
+             
 
                   <form method="get" action="historial_pacientes">					
                   <label for="exampleInputEmail1">Seleccione el Paciente</label>
 
                     <div class="row">
-                  <div class="col-md-3">
-                  <select class="form-control" name="id_paciente">
+                  <div class="col-md-5">
+                  <select class="form-control js-example-basic-single" name="id_paciente">
                     @foreach($pacientes as $role)
                       <option value="{{$role->id}}">{{$role->apellidos}},{{$role->nombres}}-{{$role->dni}}</option>
                     @endforeach
@@ -114,6 +100,7 @@
                   </form>
               
               </div>
+              <br>
               <!-- /.card-header -->
                <p>CONSULTAS</p>
               <div class="card-body">
@@ -727,7 +714,21 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
+
 <!-- page script -->
+
+<script>
+  $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+  });
+
+  $(document).ready(function() {
+    $('.js-example-basic-single1').select2();
+  });
+
+
+</script>
 <script>
   $(function () {
     $("#example1").DataTable({
