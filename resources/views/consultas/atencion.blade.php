@@ -472,38 +472,7 @@
     </div>
     </div>
     <!-- /.card-header -->
-    <div class="card-body p-0">
-    <br>
-
-    @foreach($evoluciones as $evo)
-
-    <div class="col-md-12">
-        <label for="exampleInputEmail1">Detalle</label>
-        <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="5"  name="detalle" placeholder="Escribir detalle de evolución" disabled>{{$evo->descripcion}}</textarea>
-
-        </div>
-
-    @endforeach
-
-
-        </div>
-
-        <br>
-
-    
-
-
-    
-    <!-- /.users-list -->
-    </div>
-
-    <!-- /.card-body -->
-    <div class="card-footer text-center">
-    </div>
-    <!-- /.card-footer -->
-</div>
-<!--/.card -->
-</div>
+  
 
 
 <!-- /.col -->
