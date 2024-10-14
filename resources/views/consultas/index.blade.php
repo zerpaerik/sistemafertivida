@@ -161,6 +161,14 @@
                                   Cargar Evolución
                             </a>
 
+                          @elseif($an->estatus == 2)
+                          <a class="btn btn-primary btn-sm" href="consultas-ver-{{$an->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                        </a>
+
+
                           @else
 
                           @endif
@@ -175,8 +183,6 @@
                       </a>
 
                      
-
-
 
                       @else
                    
