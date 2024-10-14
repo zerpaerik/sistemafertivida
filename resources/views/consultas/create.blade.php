@@ -89,7 +89,6 @@
                     <div class="col-md-3">
                       <label>Servicio</label>
                         <select class="form-control" name="servicio">
-                        <option value="999">EVOLUCIÓN</option>
                          @foreach($servicios as $s)
 						             <option value="{{$s->id}}">{{$s->nombre}}</option>
                          @endforeach
