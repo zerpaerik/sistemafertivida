@@ -74,6 +74,7 @@ class RecetasController extends Controller
         $medicamentos = DB::table('medicamentos as a')
         ->select('a.id','a.nombre','a.principio','a.estatus')
         ->where('a.estatus', '=', 1)
+        ->orderby('a.nombre','asc')
         ->get(); 
         
 
