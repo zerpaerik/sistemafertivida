@@ -299,7 +299,6 @@ class ConsultasController extends Controller
       ->where('a.tipo','=',2)
       ->get(); 
    
-
       $consulta = DB::table('consultas as a')
       ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.email','b.apellidos','b.apellidos1','c.nombres as nombresh','c.email as emailh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
       ->join('pacientes as b','b.id','a.id_paciente_mujer')
@@ -314,10 +313,7 @@ class ConsultasController extends Controller
 
     public function update(Request $request)
     {
-
-
       $atencion = AdmisionAtencion::where('consulta','=',$request->consulta)->first();
-
 
       $ad = AdmisionAtencion::find($atencion->id);
       $ad->tirh = $request->tirh;
@@ -336,7 +332,6 @@ class ConsultasController extends Controller
 
       return redirect()->action('ConsultasController@index')
       ->with('success','Creado Exitosamente!');
-
     }
 
 
@@ -345,15 +340,12 @@ class ConsultasController extends Controller
     public function historiap_crear($consulta)
 
     {
-
-
       $cie = Ciexes::all();
       $cie1 = Ciexes::all();
       $consulta = Consultas::where('id','=',$consulta)->first();
       $hist = HistoriaBaseP::where('id_paciente','=',$consulta->id_paciente)->where('estatus','=',0)->first();
      // $historias = Historia::where('id_paciente','=',$consulta->id_paciente)->get();
 
-      
       $historias = DB::table('historia_pediatrica as a')
       ->select('a.*','b.name','b.lastname')
       ->join('users as b','b.id','a.usuario')
@@ -895,7 +887,7 @@ class ConsultasController extends Controller
       $ad->ant_pap = $request->ant_pap;
       $ad->tallah = $request->tallah;
       $ad->imc =((float)$request->peso / (float)$request->talla) / (float)$request->talla;
-      $ad->imch =((float)$request->pesoh / (float)$request->tallah) / (float)$request->tallah ;
+      $ad->imch = $request->pesoh != null ? ((float)$request->pesoh / (float)$request->tallah) / (float)$request->tallah : '0';
       $ad->g = $request->g;
       $ad->g1 = $request->g1;
       $ad->g2 = $request->g2;
