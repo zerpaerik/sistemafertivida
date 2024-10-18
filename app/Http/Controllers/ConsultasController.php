@@ -995,6 +995,7 @@ class ConsultasController extends Controller
       $ad->pa = $request->pa;
       $ad->t = $request->t;
       $ad->fur = $request->fur;
+      $ad->desc_fur = $request->desc_fur;
       $ad->rc = $request->rc;
       $ad->menarquia = $request->menarquia;
       $ad->disme = $request->dismeno;

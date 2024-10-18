@@ -390,6 +390,9 @@
                         <label for="exampleInputEmail1">FUR</label>
                             <input type="date" class="form-control" id="g1" name="fur_ad"  placeholder="" value="{{$admision->fur}}"  >
                         </div>
+                        <label for="exampleInputEmail1">Descrip.FUR</label>
+                            <input type="date" class="form-control" id="g1" name="desc_fur"  placeholder="" value="{{$admision->desc_fur}}">
+                        </div>
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">RC</label>
                             <input type="text" class="form-control" id="g2" name="rc_ad"   placeholder="" value="{{$admision->rc}}"  >

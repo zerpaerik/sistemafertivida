@@ -309,6 +309,9 @@
                         <label for="exampleInputEmail1">FUR</label>
                             <input type="date" class="form-control" id="g1" name="fur"  placeholder="" value="{{$admision->fur}}" disabled >
                         </div>
+                        <label for="exampleInputEmail1">Descrip.FUR</label>
+                            <input type="date" class="form-control" id="g1" name="desc_fur"  placeholder="" value="{{$admision->desc_fur}}" disabled >
+                        </div>
                         <div class="col-md-3">
                         <label for="exampleInputEmail1">RC</label>
                             <input type="text" class="form-control" id="g2" name="rc"   placeholder="" value="{{$admision->rc}}" disabled >
