@@ -202,7 +202,7 @@
                     <option value="Soltero">Soltero</option>
                     <option value="Casado">Casado</option>
                     <option value="Divorciado">Divorciado</option>
-                    <option value="Concubinato">Concubinato</option>
+                    <option value="Conviviente">Conviviente</option>
                         </select>
                   </div>
 
