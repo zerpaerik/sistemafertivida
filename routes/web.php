@@ -372,6 +372,7 @@ Route::get('consultas-create', 'ConsultasController@create')->name('consultas.cr
 Route::get('consultas-admision-{id}', 'ConsultasController@admision')->name('consultas.admision')->middleware('auth');
 Route::get('consultas-admisionm-{id}', 'ConsultasController@admisionm')->name('consultas.admisionm')->middleware('auth');
 Route::get('consultas-ver-{id}', 'ConsultasController@ver')->name('consultas.ver')->middleware('auth');
+Route::get('consultas-editar-atencion-{id}', 'ConsultasController@editarAtencion')->name('consultas.editatencion')->middleware('auth');
 Route::get('consultas-atencion-{id}', 'ConsultasController@atencion')->name('consultas.atencion')->middleware('auth');
 Route::get('consultas-evolucion-{id}', 'ConsultasController@evolucion')->name('consultas.evolucion')->middleware('auth');
 Route::get('consultas-urologia-{id}', 'ConsultasController@uro')->name('consultas.uro')->middleware('auth');
@@ -381,6 +382,7 @@ Route::post('consultas/admision', 'ConsultasController@storeAdmision')->middlewa
 Route::post('consultas/atencion', 'ConsultasController@storeAtencion')->middleware('auth');
 Route::post('consultas/evolucion', 'ConsultasController@storeEvolucion')->middleware('auth');
 Route::post('consultas/update', 'ConsultasController@update')->middleware('auth');
+Route::post('consultas/updateAtencion', 'ConsultasController@updateAtencion')->middleware('auth');
 Route::get('consultas-delete-{id}', 'ConsultasController@delete')->middleware('auth');
 Route::get('cobrconsultasar-edit-{id}', 'ConsultasController@edit')->name('ingresos.edit');
 Route::post('consultas/edit', 'ConsultasController@update');

@@ -288,6 +288,28 @@ class ConsultasController extends Controller
       return view('consultas.ver',compact('consulta','edad','edad1', 'admision','atencion','evoluciones'));
     }
 
+    public function editarAtencion($id)
+    {
+      $consulta = DB::table('consultas as a')
+      ->select('a.id','a.id_paciente_mujer','a.id_paciente_hombre','a.id_especialista','a.historia','a.id_especialista','a.tipo','a.created_at','a.estatus','b.nombres','b.email','b.apellidos','b.apellidos1','c.nombres as nombresh','c.email as emailh','c.apellidos as apellidosh','c.apellidos1 as apellidosh1', 'u.name','u.lastname','s.nombre as servicio','b.dni','b.direccion','b.telefono','b.ocupacion','b.religion as religionm','b.fechanac','c.dni as dnih','c.direccion as direccionh','c.telefono as telefonoh','c.ocupacion as ocupacionh','c.fechanac as fechanach',)
+      ->join('pacientes as b','b.id','a.id_paciente_mujer')
+      ->join('pacientes as c','c.id','a.id_paciente_hombre')
+      ->join('users as u','u.id','a.id_especialista')
+      ->join('servicios as s','s.id','a.tipo')
+      ->where('a.id', '=', $id)
+      ->first(); 
+
+      $edad = Carbon::parse($consulta->fechanac)->age;
+      $edad1 = Carbon::parse($consulta->fechanach)->age;
+      $admision = Admision::where('consulta','=',$id)->first();
+      $atencion = AdmisionAtencion::where('consulta','=',$id)->first();
+      $evoluciones  = Evolucion::where('id_paciente','=',$consulta->id_paciente_mujer)->get();
+
+      return view('consultas.editar_atencion',compact('consulta','edad','edad1', 'admision','atencion','evoluciones'));
+    }
+
+    
+
     public function editar($id)
     {
       $servicios = Servicios::where('estatus','=',1)->get();
@@ -333,6 +355,77 @@ class ConsultasController extends Controller
       return redirect()->action('ConsultasController@index')
       ->with('success','Creado Exitosamente!');
     }
+
+
+    public function updateAtencion(Request $request)
+    {
+      $atencion = AdmisionAtencion::where('consulta','=',$request->consulta)->first();
+
+      $admi = Admision::find($request->admision);
+
+    
+      $adm = Admision::find($request->admision);
+      $adm->motivo =  $request->motivo_ad;
+      $adm->peso =  $request->peso;
+      $adm->pesoh = $request->pesoh;
+      $adm->talla = $request->talla;
+      $adm->pap = $request->pap_ad;
+      $adm->ant_pap = $request->ant_pap;
+      $adm->tallah = $request->tallah;
+      $adm->imc =((float)$request->peso / (float)$request->talla) / (float)$request->talla;
+      $adm->imch = $request->pesoh != null ? ((float)$request->pesoh / (float)$request->tallah) / (float)$request->tallah : '0';
+      $adm->g = $request->g_ad;
+      $adm->g1 = $request->g1_ad;
+      $adm->g2 = $request->g2_ad;
+      $adm->g3 = $request->g3_ad;
+      $adm->g4 = $request->g4_ad;
+      $adm->g5 = $request->g5;
+      $adm->g6 = $request->g6;
+      $adm->g7 = $request->g7;
+      $adm->g8 = $request->g8_ad;
+      $adm->obserg = $request->obserg_ad;
+      $adm->hijos = $request->hijos_ad;
+      $adm->pa = $request->pa_ad;
+      $adm->t = $request->t_ad;
+      $adm->fur = $request->fur_ad;
+      $adm->rc = $request->rc_ad;
+      $adm->menarquia = $request->menarquia_ad;
+      $adm->disme = $request->dismeno_ad;
+      $adm->fsex = $request->sexo_ad;
+      $adm->fum = $request->fumam_ad;
+      $adm->alc = $request->alcoholm_ad;
+      $adm->cir = $request->cirm_ad;
+      $adm->enf = $request->enfm_ad;
+      $adm->med = $request->medm_ad;
+      $adm->alerg = $request->alergm_ad;
+      $adm->parejas = $request->parejas;
+      $adm->anti = $request->anticonceptivos_ad;
+      $adm->trat = $request->fert;
+      $adm->usuario = Auth::user()->id;
+      $adm->drogm = $request->drogm_ad;
+      $adm->disparemia = $request->dispa_ad;
+      $adm->update();
+
+      $ad = AdmisionAtencion::find($request->atencion);
+      $ad->motivo =  $request->motivo_at;
+      $ad->tirm =  $request->tir_at;
+      $ad->mamas =  $request->mamas_at;
+      $ad->genm = $request->genm_at;
+      $ad->eco = $request->eco_at;
+      $ad->otrosm = $request->otrosm_at;
+      $ad->impm = $request->impm_at;
+      $ad->planm = $request->planm_at;
+      $ad->tratm	 = $request->tratm_at;
+      $ad->procm = $request->procm_at;
+      $ad->usuario = Auth::user()->id;
+      $ad->update();
+
+      return redirect()->action('ConsultasController@index')
+      ->with('success','Actualizado Exitosamente!');
+
+    }
+
+    
 
 
 

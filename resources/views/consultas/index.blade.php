@@ -166,7 +166,13 @@
                               <i class="fas fa-eye">
                               </i>
                               Ver
-                        </a>
+                          </a>
+
+                          <a class="btn btn-primary btn-sm" href="consultas-editar-atencion-{{$an->id}}">
+                              <i class="fas fa-edit">
+                              </i>
+                              Editar
+                          </a>
 
 
                           @else
@@ -214,6 +220,12 @@
                               </i>
                               Ver
                         </a>
+                        
+                        <a class="btn btn-primary btn-sm" href="consultas-editar-atencion-{{$an->id}}">
+                              <i class="fas fa-edit">
+                              </i>
+                              Editar
+                          </a>
 
                         @elseif($an->estatus == 3)
                         <span class="badge bg-success">CONSULTA ATENDIDA COMPLETA</span>
@@ -222,6 +234,12 @@
                               </i>
                               Ver
                         </a>
+                        
+                        <a class="btn btn-primary btn-sm" href="consultas-editar-atencion-{{$an->id}}">
+                              <i class="fas fa-edit">
+                              </i>
+                              Editar
+                          </a>
 
                         @else
                         <span class="badge bg-success">ADMISIÓN REGISTRADA</span>
