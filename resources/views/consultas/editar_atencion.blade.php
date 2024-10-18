@@ -98,14 +98,12 @@
                         <label for="exampleInputEmail1">FICHA DE IDENTIFICACIÓN - MUJER</label>
 
                         </div>
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">FICHA DE IDENTIFICACIÓN - HOMBRE</label>
-                        </div>
+                        
                    </div>
 
                    <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                             <!-- USERS LIST -->
                             <div class="card">
                                 <div class="card-header">
