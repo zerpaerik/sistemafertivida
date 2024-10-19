@@ -279,6 +279,7 @@ class PacientesController extends Controller
       $pacientes->direccion =$request->direccion;
       $pacientes->edocivil =$request->edocivil;
       $pacientes->ocupacion =$request->ocupacion;
+      $pacientes->sexo =$request->sexo;
       $pacientes->fechanac =$request->fechanac;
       $res = $pacientes->save();
       return redirect()->action('PacientesController@index');

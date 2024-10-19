@@ -207,6 +207,17 @@
                   </div>
 
                   <div class="col-md-3">
+                    <label>Sexo</label>
+                    <select class="form-control" name="sexo">
+                    <option value="F">Femenino</option>
+                    <option value="M">Masculino</option>
+                    <option value="L">LGBTI</option>
+                    <option value="0">Otro</option>
+
+                        </select>
+                  </div>
+
+                  <div class="col-md-3">
                     <label for="exampleInputEmail1">Email</label>
                     <input type="text" class="form-control" id="nombre" name="email" value="{{$pacientes->email}}" placeholder="Email">
                   </div>
