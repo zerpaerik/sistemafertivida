@@ -158,9 +158,10 @@
                     <option value="Soltero">Soltero</option>
                     <option value="Casado">Casado</option>
                     <option value="Divorciado">Divorciado</option>
-                    <option value="Concubinato">Concubinato</option>
-                        </select>
+                    <option value="Conviviente">Conviviente</option>
+                      </select>
                   </div>
+                  
 
                   <div class="col-md-3">
                     <label>Sexo</label>
