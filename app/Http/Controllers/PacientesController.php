@@ -99,7 +99,7 @@ class PacientesController extends Controller
           } else {
 
 
-            if($request->tipo_doc == 'DNI' && strlen($request->dni) != 8 ){
+          /* if($request->tipo_doc == 'DNI' && strlen($request->dni) != 8 ){
               $request->session()->flash('error', 'El dni debe contener 8 caracteres.');
               return redirect()->action('PacientesController@create', ['errors' => $validator->errors()]);
 
@@ -113,7 +113,8 @@ class PacientesController extends Controller
               
             } else {
 
-            }
+            }*/
+
 
               $pacientes = new Pacientes();
               $pacientes->nombres =$request->nombres;
@@ -141,7 +142,7 @@ class PacientesController extends Controller
           $pacientes->nombres =$request->nombres;
           $pacientes->apellidos =$request->apellidos;
           $pacientes->tipo_doc =$request->tipo_doc;
-          $pacientes->dni =$pac->id + 1;
+          $pacientes->dni =$request->dni != null ? $request->dni : '927947';
           $pacientes->telefono =$request->telefono;
           $pacientes->email =$request->email;
           $pacientes->direccion =$request->direccion;

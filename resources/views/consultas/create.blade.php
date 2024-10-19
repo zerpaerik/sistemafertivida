@@ -126,6 +126,7 @@
 						             <option value="CAJAMARCA">CAJAMARCA</option>
                          <option value="CALLAO">CALLAO</option>
 						             <option value="CUSCO">CUSCO</option>
+                         <option value="EXTRANJERO">EXTRANJERO</option>
 						             <option value="HUANCAVELICA">HUANCAVELICA</option>
 						             <option value="HUANUCO">HUANUCO</option>
 						             <option value="ICA">ICA</option>
