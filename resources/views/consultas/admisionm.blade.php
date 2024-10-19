@@ -159,10 +159,17 @@
                                     </div>
                                     <div class="row" style="margin-left:5px;margin-right:5px;">
                                         
-                                        <div class="col-md-12">
+                       
+                                    <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Nacimiento</label>
+                                    <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->fechanac}}" placeholder="Nacimiento" disabled>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
                                         <label for="exampleInputEmail1">Email</label>
                                             <input type="text" class="form-control" id="nombre" name="responsable" value="{{$consulta->email}}" placeholder="Email" disabled>
                                         </div>
+                                        
                                         
                                         
                                     </div>
