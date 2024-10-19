@@ -149,9 +149,9 @@
                   <div class="col-md-4">
                     <label for="exampleInputEmail1">Edo Civil</label>
                     <select class="form-control" name="edocivil">
-                    <option value="Soltero">Soltero</option>
-                    <option value="Casado">Casado</option>
-                    <option value="Divorciado">Divorciado</option>
+                    <option value="Soltero(a)">Soltero(a)</option>
+                    <option value="Casado(a)">Casado(a)</option>
+                    <option value="Divorciado(a)">Divorciado(a)</option>
                     <option value="Conviviente">Conviviente</option>
                         </select>
                   </div>
