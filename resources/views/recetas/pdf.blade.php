@@ -90,19 +90,19 @@
 		INDICACIONES
 </div>
 @if($items)
-<div style="margin-top:10px; background: #eaeaea;">
+<div style="margin-top:10px; background: #eaeaea; align:left;">
 	<table style="">
 		<tr>
-			<th style="padding: 0;width: 5%;text-overflow: ellipsis;">Medicamento</th>
-            <th style="padding: 0;width: 5%;text-overflow: ellipsis;">Principio Activo</th>
-            <th style="padding: 0;width: 5%;text-overflow: ellipsis;">Indicación</th>
+			<th style="padding: 0;width: 5%;text-align:left;">Medicamento</th>
+            <th style="padding: 0;width: 5%;text-align:left;">Principio Activo</th>
+            <th style="padding: 0;width: 5%;text-align:left;">Indicación</th>
 
 		</tr>
 		@foreach ($items as $s)
 			<tr>
-				<td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $s->producto }}</td>
-                <td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $s->principio }}</td>
-                <td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $s->descripcion }}</td>
+				<td style="padding: 0;width: 5%;text-align:left;">{{ $s->producto }}</td>
+                <td style="padding: 0;width: 5%;text-align:left;">{{ $s->principio }}</td>
+                <td style="padding: 0;width: 5%;text-align:left;">{{ $s->descripcion }}</td>
 			</tr>
 		@endforeach
 	

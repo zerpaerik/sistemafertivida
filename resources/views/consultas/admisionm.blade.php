@@ -264,25 +264,25 @@
 <div class="row" style="margin-left:5px;margin-right:5px;">
 <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-        G<input type="text" class="form-control" id="g" value=""  >
+        G<input type="text" class="form-control" name="g" value=""  >
         </div>
     
         <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-        P<input type="text" class="form-control" id="g1">
+        P<input type="text" class="form-control" name="g1">
         </div>
         <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-            <input type="text" class="form-control" id="g2">
+            <input type="text" class="form-control" name="g2">
         </div>
     
         <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-            <input type="text" class="form-control" id="g3">
+            <input type="text" class="form-control" name="g3">
         </div>
         <div class="col-md-2">
         <label for="exampleInputEmail1"></label>
-            <input type="text" class="form-control" id="g4">
+            <input type="text" class="form-control" name="g4">
         </div>
       
     

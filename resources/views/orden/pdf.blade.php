@@ -93,12 +93,12 @@
 <div style="margin-top:10px; background: #eaeaea;">
 	<table style="">
 		<tr>
-			<th style="padding: 0;width: 5%;text-overflow: ellipsis;">Servicio</th>
+			<th style="padding: 0;width: 5%;text-align:left;">Servicio</th>
 
 		</tr>
 		@foreach ($items as $s)
 			<tr>
-				<td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $s->servicio }}</td>
+				<td style="padding: 0;width: 5%;text-align:left;">{{ $s->servicio }}</td>
 			</tr>
 		@endforeach
 	
@@ -110,12 +110,12 @@
 <div style="margin-top:10px; background: #eaeaea;">
 	<table style="">
 		<tr>
-			<th style="padding: 0;width: 5%;text-overflow: ellipsis;">Analisis</th>
+			<th style="padding: 0;width: 5%;text-align:left;">Analisis</th>
 
 		</tr>
 		@foreach ($iteml as $l)
 			<tr>
-				<td style="padding: 0;width: 5%;text-overflow: ellipsis;">{{ $l->analisis }}</td>
+				<td style="padding: 0;width: 5%;text-align:left;">{{ $l->analisis }}</td>
 			</tr>
 		@endforeach
 	
