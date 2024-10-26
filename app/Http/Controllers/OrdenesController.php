@@ -174,7 +174,7 @@ class OrdenesController extends Controller
     {
 
       $orden = DB::table('orden as a')
-      ->select('a.id','a.id_paciente','a.created_at')
+      ->select('a.id','a.id_paciente','a.created_at','a.usuario')
       ->where('a.id', '=', $id)
       ->first(); 
 

@@ -122,13 +122,16 @@
 <br><br><br><br>
 
 <center>
-<img src="/var/www/html/sistemafertivida/public/firma.png"  style="width: 20%;"/>
+@if($receta->usuario == 547)
+<img src="/var/www/html/sistemafertivida/public/547.png"  style="width: 20%;"/>
+@elseif($receta->usuario == 535)
+<img src="/var/www/html/sistemafertivida/public/535.png"  style="width: 20%;"/>
+@else
+@endif
 
 
-<p>ENRIQUE JESUS VILLAJULCA QUIÑONES</p>
-<p>CMP: 037256 RNE: 030473</p>
-<p>MEDICO CIRUJANO</p>
-<p>ESPECIALISTA EN GINECOLOGIA OBSTETRICA Y FERTILIDAD</p>
+
+
 
 </center>
 

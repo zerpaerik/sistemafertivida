@@ -177,7 +177,7 @@ class RecetasController extends Controller
     {
 
       $receta = DB::table('receta as a')
-      ->select('a.id','a.id_paciente','a.created_at','a.descanso','a.desc_descanso')
+      ->select('a.id','a.id_paciente','a.created_at','a.descanso','a.desc_descanso','a.usuario')
       ->where('a.id', '=', $id)
       ->first(); 
 
