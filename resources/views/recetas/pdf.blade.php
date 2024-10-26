@@ -123,16 +123,11 @@
 
 <center>
 @if($receta->usuario == 547)
-<img src="/var/www/html/sistemafertivida/public/547.png"  style="width: 20%;"/>
-@elseif($receta->usuario == 535)
-<img src="/var/www/html/sistemafertivida/public/535.png"  style="width: 20%;"/>
-@else
+	<img src="/var/www/html/sistemafertivida/public/547.jpg"  style="width: 20%;"/>
+	@elseif($receta->usuario == 535)
+	<img src="/var/www/html/sistemafertivida/public/535.jpg"  style="width: 20%;"/>
+	@else
 @endif
-
-
-
-
-
 </center>
 
 
