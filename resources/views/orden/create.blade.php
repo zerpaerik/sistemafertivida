@@ -408,7 +408,7 @@ var phonesForm = $("#laboratorios").sheepIt({
     allowRemoveLast: true,
 
     // Limits
-    maxFormsCount: 10,
+    maxFormsCount: 100,
     minFormsCount: 1,
     iniFormsCount: 0,
 
@@ -429,7 +429,7 @@ var phonesForm = $("#servicios").sheepIt({
     allowRemoveLast: true,
 
     // Limits
-    maxFormsCount: 10,
+    maxFormsCount: 100,
     minFormsCount: 1,
     iniFormsCount: 0,
 
