@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>FertiVida | Admin</title>
+  <title>Fertivida | Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -24,9 +24,6 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-    <!-- Select2 -->
-  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <!-- DataTables -->
@@ -57,12 +54,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Prueba de Cateter</h1>
+            <h1 class="m-0 text-dark">Evaluaciones</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Crear</li>
+              <li class="breadcrumb-item active">Evaluaciones</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -83,35 +80,18 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="post" action="evaluaciones/create">					
-              {{ csrf_field() }}                
+              <form role="form" method="post" action="eva/create">
+					{{ csrf_field() }}                
                     <div class="card-body">
-                <div class="row" style="margin-left:10px;margin-right:10px;">
-                  <div class="col-md-6">
-                  <label>Seleccione el paciente</label>
-                        <select class="js-example-basic-single" name="paciente">
-                         @foreach($pacientes as $pm)
-						 <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
-                         @endforeach
-                        </select>
-                  </div>
-                  <div class="col-md-4">
-                        <label for="exampleInputEmail1">Tipo de Utero</label>
-                        <select class="form-control" name="tipo" id="el2">
-                        <option value="0">Seleccione</option>
-                        <option value="1">Anteverso</option>
-                        <option value="2">Retroverso</option>
-                    </select>
-                </div>
-                </div>
-                   
-                <br>
 
-                <div id="sesion" class="sesion">
-
-                <br>
-               
-                 
+                                 
+                <div class="col-md-12">
+                <label for="exampleInputEmail1">Descripción</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="10"  name="texto" placeholder="Escriba la evaluación..."></textarea>
+                </div>
+                    
+                  <br>
+   
 
         
                  
@@ -196,46 +176,11 @@
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../plugins/select2/js/select2.full.min.js"></script>
-
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
-
-<script type="text/javascript">
-      $(document).ready(function(){
-        $('#el2').on('change',function(){
-          var link;
-          if ($(this).val() == 1) {
-            link = '/crear/utero1/';
-          } else {
-		    link = '/crear/utero2/';
-		  }
-
-          $.ajax({
-                 type: "get",
-                 url:  link,
-                 success: function(a) {
-                    $('#sesion').html(a);
-                 }
-          });
-
-        });
-        
-
-      });
-       
-</script>
-
-<script>
-
-$(document).ready(function() {
-    $('.js-example-basic-single').select2();
-});
-
-</script>
 
 </body>
 </html>

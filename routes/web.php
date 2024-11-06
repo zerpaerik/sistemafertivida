@@ -633,6 +633,16 @@ Route::get('evaluaciones-edit-{id}', 'EvaluacionesController@edit')->name('evalu
 Route::post('evaluaciones/edit', 'EvaluacionesController@update');
 Route::get('evaluaciones-ver-{id}', 'EvaluacionesController@ver');
 
+
+
+Route::get('eva', 'EvaController@index')->name('eva.index');
+Route::get('eva-create', 'EvaController@create')->name('eva.create')->middleware('auth');
+Route::post('eva/create', 'EvaController@store')->middleware('auth');
+Route::get('eva-delete-{id}', 'EvaController@delete')->middleware('auth');
+Route::get('eva-edit-{id}', 'EvaController@edit')->name('eva.edit');
+Route::post('eva/edit', 'EvaController@update');
+Route::get('eva-ver-{id}', 'EvaController@ver');
+
 Route::get('crear/utero1','EvaluacionesController@utero1');
 Route::get('crear/utero2','EvaluacionesController@utero2');
 

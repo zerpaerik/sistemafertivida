@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>FertiVida | Admin</title>
+  <title>Fertivida | Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -24,14 +24,13 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
-    <!-- Select2 -->
-  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
-  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 <!-- DataTables -->
 <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -52,17 +51,18 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Prueba de Cateter</h1>
+            <h1 class="m-0 text-dark">Evaluaciones</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Crear</li>
+              <li class="breadcrumb-item active">Evaluaciones</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -72,79 +72,79 @@
 
     <!-- Main content -->
     <section class="content">
+    @include('flash-message')
       <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
+      <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Agregar</h3>
+                <a class="btn btn-primary btn-sm" href="{{route('eva.create')}}">
+                              <i class="fas fa-folder">
+                              </i>
+                              Agregar
+                          </a>
               </div>
               <!-- /.card-header -->
-              <!-- form start -->
-              <form method="post" action="evaluaciones/create">					
-              {{ csrf_field() }}                
-                    <div class="card-body">
-                <div class="row" style="margin-left:10px;margin-right:10px;">
-                  <div class="col-md-6">
-                  <label>Seleccione el paciente</label>
-                        <select class="js-example-basic-single" name="paciente">
-                         @foreach($pacientes as $pm)
-						 <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
-                         @endforeach
-                        </select>
-                  </div>
-                  <div class="col-md-4">
-                        <label for="exampleInputEmail1">Tipo de Utero</label>
-                        <select class="form-control" name="tipo" id="el2">
-                        <option value="0">Seleccione</option>
-                        <option value="1">Anteverso</option>
-                        <option value="2">Retroverso</option>
-                    </select>
-                </div>
-                </div>
-                   
-                <br>
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>RP</th>
+                    <th>Texto</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
 
-                <div id="sesion" class="sesion">
+                  @foreach($eva as $an)
+                  <tr>
+                    <td>{{$an->created_at}}</td>
+                    <td>{{$an->lastname}} {{$an->name}}</td>
+                    <td>{{$an->texto}}</td>
+               
+                    <td>
+                    @if(Auth::user()->rol == 1)
 
-                <br>
+                    
+                          <a class="btn btn-danger btn-sm" href="eva-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+
+                        
+                          @endif</td>
+                  </tr>
+                  @endforeach
+                 
+                 
                
                  
-
-        
                  
-                </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-                </div>
-              </form>
-            </div>
-            <!-- /.card -->
-
-         
-            <!-- /.card -->
-
-           
-           
-               
-
-
-           
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Fecha</th>
+                    <th>RP</th>
+                    <th>Texto</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </tfoot>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
-          <!--/.col (right) -->
+          <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.container-fluid -->
     </section>
-    
+    <!-- /.content -->
+  </div>
+  </div>
+  </section>
 
   <!-- /.content-wrapper -->
   
@@ -191,51 +191,36 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+
 <!-- DataTables -->
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../plugins/select2/js/select2.full.min.js"></script>
-
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
-
-<script type="text/javascript">
-      $(document).ready(function(){
-        $('#el2').on('change',function(){
-          var link;
-          if ($(this).val() == 1) {
-            link = '/crear/utero1/';
-          } else {
-		    link = '/crear/utero2/';
-		  }
-
-          $.ajax({
-                 type: "get",
-                 url:  link,
-                 success: function(a) {
-                    $('#sesion').html(a);
-                 }
-          });
-
-        });
-        
-
-      });
-       
-</script>
-
 <script>
-
-$(document).ready(function() {
-    $('.js-example-basic-single').select2();
-});
-
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true,
+      "autoWidth": false,
+    });
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
 </script>
-
 </body>
 </html>
