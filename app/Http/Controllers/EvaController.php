@@ -5,6 +5,7 @@ use App\Equipos;
 use App\Clientes;
 use App\User;
 use App\Eva;
+use App\Pacientes;
 use Auth;
 use Illuminate\Http\Request;
 use DB;
@@ -20,8 +21,9 @@ class EvaController extends Controller
     {
 
         $eva = DB::table('eva as a')
-        ->select('a.id','a.texto','a.usuario','a.created_at','b.name as name','b.lastname as lastname')
+        ->select('a.id','a.texto','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos')
         ->join('users as b','b.id','a.usuario')
+        ->join('pacientes as p','p.id','a.paciente')
         ->get(); 
 
         return view('eva.index', compact('eva'));
@@ -36,7 +38,9 @@ class EvaController extends Controller
     public function create()
     {
 
-        return view('eva.create');
+        $pacientes = Pacientes::where('estatus','=',1)->get();
+
+        return view('eva.create', compact('pacientes'));
 
         //
     }
@@ -53,6 +57,7 @@ class EvaController extends Controller
 
         $equipos = new Eva();
         $equipos->texto =$request->texto;
+        $equipos->paciente =$request->paciente;
         $equipos->usuario =Auth::user()->id;
         $equipos->save();
 

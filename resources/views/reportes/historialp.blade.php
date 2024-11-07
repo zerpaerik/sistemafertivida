@@ -380,7 +380,7 @@
                 </table>
               </div>
 
-              <p style="margin-left:20px;">EVALUACIONES</p>
+              <p style="margin-left:20px;">PRUEBA DE CATETER</p>
 
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
@@ -432,6 +432,63 @@
                   </tfoot>
                 </table>
               </div>
+              
+              <p style="margin-left:20px;">EVALUACIONES</p>
+
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Paciente</th>
+                    <th>RP</th>
+                    <th>Texto</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($eva as $an)
+                  <tr>
+                    <td>{{$an->created_at}}</td>
+                    <td>{{$an->apellidos}} {{$an->nombres}}</td>
+                    <td>{{$an->lastname}} {{$an->name}}</td>
+                    <td>{{$an->texto}}</td>
+               
+                    <td>
+                    @if(Auth::user()->rol == 1)
+
+                    
+                          <a class="btn btn-danger btn-sm" href="eva-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
+                              <i class="fas fa-trash">
+                              </i>
+                              Eliminar
+                          </a>
+
+                        
+                          @endif</td>
+                  </tr>
+                  @endforeach
+                 
+                 
+               
+                 
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Fecha</th>
+                    <th>Paciente</th>
+                    <th>RP</th>
+                    <th>Texto</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+
+
+
               <p style="margin-left:20px;">PROFORMAS</p>
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">

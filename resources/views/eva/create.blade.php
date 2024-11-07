@@ -29,6 +29,10 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+  <!-- Select2 -->
+  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -83,6 +87,18 @@
               <form role="form" method="post" action="eva/create">
 					{{ csrf_field() }}                
                     <div class="card-body">
+
+                    <div class="row" style="margin-left:2px;">
+                    <div class="col-md-10">
+                      <label>Seleccione el paciente</label>
+                        <select class="js-example-basic-single" name="paciente">
+                         @foreach($pacientes as $pm)
+						             <option value="{{$pm->id}}">{{$pm->dni}} - {{$pm->apellidos}},{{$pm->apellidos1}} {{$pm->nombres}}</option>
+                         @endforeach
+                        </select>
+                    </div> 
+              </div>
+              <br>
 
                                  
                 <div class="col-md-12">
@@ -180,7 +196,17 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
+
 <!-- page script -->
+
+<script>
+
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+
+</script>
 
 </body>
 </html>

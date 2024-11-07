@@ -88,6 +88,7 @@
                   <thead>
                   <tr>
                     <th>Fecha</th>
+                    <th>Paciente</th>
                     <th>RP</th>
                     <th>Texto</th>
                     <th>Acciones</th>
@@ -98,6 +99,7 @@
                   @foreach($eva as $an)
                   <tr>
                     <td>{{$an->created_at}}</td>
+                    <td>{{$an->apellidos}} {{$an->nombres}}</td>
                     <td>{{$an->lastname}} {{$an->name}}</td>
                     <td>{{$an->texto}}</td>
                
@@ -124,6 +126,7 @@
                   <tfoot>
                   <tr>
                   <th>Fecha</th>
+                    <th>Paciente</th>
                     <th>RP</th>
                     <th>Texto</th>
                     <th>Acciones</th>

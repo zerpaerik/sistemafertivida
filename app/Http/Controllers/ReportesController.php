@@ -482,6 +482,13 @@ class ReportesController extends Controller
         ->where('a.id_paciente', '=', $request->id_paciente)
         ->get(); 
 
+        $eva = DB::table('eva as a')
+        ->select('a.id','a.texto','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos')
+        ->join('users as b','b.id','a.usuario')
+        ->join('pacientes as p','p.id','a.paciente')
+        ->where('a.paciente', '=', $request->id_paciente)
+        ->get(); 
+
         
         $proformas = DB::table('proformas as a')
         ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.proforma','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
@@ -542,7 +549,13 @@ class ReportesController extends Controller
         ->where('a.id_paciente', '=', 5454554545454)
         ->get(); 
 
-        
+        $eva = DB::table('eva as a')
+        ->select('a.id','a.texto','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos')
+        ->join('users as b','b.id','a.usuario')
+        ->join('pacientes as p','p.id','a.paciente')
+        ->where('a.paciente', '=', 345354353453445)
+        ->get(); 
+
         $proformas = DB::table('proformas as a')
         ->select('a.id','a.id_paciente','a.modelo','a.proforma','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
         ->join('pacientes as b','b.id','a.id_paciente')
@@ -582,7 +595,7 @@ class ReportesController extends Controller
         $pacientes =Pacientes::where("estatus", '=', 1)->orderby('nombres','asc')->get();
 
       
-        return view('reportes.historialp', compact('pacientes','proformas','recetas','consultas','evaluaciones','ordenes','resultados','resultadosl'));
+        return view('reportes.historialp', compact('pacientes','proformas','recetas','consultas','evaluaciones','ordenes','resultados','resultadosl', 'eva'));
 
     }
 
