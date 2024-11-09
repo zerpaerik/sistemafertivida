@@ -130,5 +130,26 @@ class EvaController extends Controller
 
         //
     }
+
+
+    public function ver($id)
+    {
+
+    
+
+      $eva = DB::table('eva as a')
+      ->select('a.id','a.texto','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos')
+      ->join('users as b','b.id','a.usuario')
+      ->join('pacientes as p','p.id','a.paciente')
+      ->where('a.id', '=', $id)
+      ->first(); 
+
+      return view('eva.ver', compact('eva'));
+    }	  
+
+
+
+
+
 }
 

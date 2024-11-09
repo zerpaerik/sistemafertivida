@@ -642,6 +642,8 @@ Route::get('eva-delete-{id}', 'EvaController@delete')->middleware('auth');
 Route::get('eva-edit-{id}', 'EvaController@edit')->name('eva.edit');
 Route::post('eva/edit', 'EvaController@update');
 Route::get('eva-ver-{id}', 'EvaController@ver');
+Route::get('eva/ver/{id}', 'EvaController@ver');
+
 
 Route::get('crear/utero1','EvaluacionesController@utero1');
 Route::get('crear/utero2','EvaluacionesController@utero2');

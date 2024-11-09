@@ -432,7 +432,7 @@
                   </tfoot>
                 </table>
               </div>
-              
+
               <p style="margin-left:20px;">EVALUACIONES</p>
 
               <div class="card-body">
@@ -442,7 +442,6 @@
                     <th>Fecha</th>
                     <th>Paciente</th>
                     <th>RP</th>
-                    <th>Texto</th>
                     <th>Acciones</th>
                   </tr>
                   </thead>
@@ -453,34 +452,27 @@
                     <td>{{$an->created_at}}</td>
                     <td>{{$an->apellidos}} {{$an->nombres}}</td>
                     <td>{{$an->lastname}} {{$an->name}}</td>
-                    <td>{{$an->texto}}</td>
-               
                     <td>
+                    <a class="btn btn-primary btn-sm" id="{{$an->id}}" onclick="viewh(this)">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver
+                          </a>
                     @if(Auth::user()->rol == 1)
-
-                    
                           <a class="btn btn-danger btn-sm" href="eva-delete-{{$an->id}}" onclick="return confirm('¿Desea Eliminar este registro?')">
                               <i class="fas fa-trash">
                               </i>
                               Eliminar
                           </a>
-
-                        
                           @endif</td>
                   </tr>
                   @endforeach
-                 
-                 
-               
-                 
-                 
                   </tbody>
                   <tfoot>
                   <tr>
-                  <th>Fecha</th>
+                    <th>Fecha</th>
                     <th>Paciente</th>
                     <th>RP</th>
-                    <th>Texto</th>
                     <th>Acciones</th>
                   </tr>
                   </tfoot>
