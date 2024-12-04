@@ -81,6 +81,27 @@
                               </i>
                               Agregar
                           </a>
+                          <form method="get" action="eva">					
+                            <label for="exampleInputEmail1">Filtros de Busqueda</label>
+
+                                <div class="row">
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Fecha Inicio</label>
+                                <input type="date" class="form-control" value="{{$f1}}" name="inicio">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Fecha Fin</label>
+                                <input type="date" class="form-control" value="{{$f2}}" name="fin">
+                            </div>
+                            
+                            
+                            
+                            <div class="col-md-2" style="margin-top: 30px;">
+                            <button type="submit" class="btn btn-primary">Buscar</button>
+
+                            </div>
+                            </form>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

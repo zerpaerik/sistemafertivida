@@ -17,16 +17,39 @@ class EvaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
+        if($request->inicio){
+            $f1 = $request->inicio;
+            $f2 = $request->fin;
+
+
         $eva = DB::table('eva as a')
-        ->select('a.id','a.texto','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos', 'p.apellidos1')
+        ->select('a.id','a.texto','a.created_at','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos', 'p.apellidos1')
         ->join('users as b','b.id','a.usuario')
         ->join('pacientes as p','p.id','a.paciente')
+        ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
         ->get(); 
 
-        return view('eva.index', compact('eva'));
+    } else {
+        $f1 =date('Y-m-d');
+        $f2 = date('Y-m-d');
+
+        $eva = DB::table('eva as a')
+        ->select('a.id','a.created_at','a.texto','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos', 'p.apellidos1')
+        ->join('users as b','b.id','a.usuario')
+        ->join('pacientes as p','p.id','a.paciente')
+        ->whereDate('a.created_at', date('Y-m-d 00:00:00', strtotime($f1)))
+        ->get(); 
+
+    
+
+    }
+
+
+
+        return view('eva.index', compact('eva', 'f1', 'f2'));
         //
     }
 
