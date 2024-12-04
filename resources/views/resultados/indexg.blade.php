@@ -130,7 +130,7 @@
                   @foreach($resultados as $an)
                   <tr>
                     <td>{{$an->created_at}}</td>
-                    <td>{{$an->apellidos}} {{$an->nombres}}</td>
+                    <td>{{$an->apellidos}}, {{$an->apellidos1}} {{$an->nombres}}</td>
                     <td>{{$an->servicio}}</td>
                     <td>
                     <a href="resultados-imagenes-{{$an->id}}" class="btn btn-warning">Ver Imagenes</a>

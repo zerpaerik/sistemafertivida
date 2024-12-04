@@ -98,7 +98,7 @@
                   @foreach($eva as $an)
                   <tr>
                     <td>{{$an->created_at}}</td>
-                    <td>{{$an->apellidos}} {{$an->nombres}}</td>
+                    <td>{{$an->apellidos}}, {{$an->apellidos1}} {{$an->nombres}}</td>
                     <td>{{$an->lastname}} {{$an->name}}</td>
                
                     <td>

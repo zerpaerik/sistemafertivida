@@ -130,7 +130,7 @@
                   @foreach($resultados as $an)
                   <tr>
                    <td>{{$an->created_at}}</td>
-                    <td>{{$an->apellidos}} {{$an->nombres}}</td>
+                    <td>{{$an->apellidos}}, {{$an->apellidos1}} {{$an->nombres}}</td>
                     <td>{{$an->laboratorio}}</td>
                     <td>
                     @if(Auth::user()->rol == 1 || Auth::user()->rol == 2)
