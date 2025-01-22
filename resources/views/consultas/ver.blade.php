@@ -482,6 +482,20 @@
                     </div>
                     <br>
 
+                    <div class="row" style="margin-left:5px;margin-right:5px;">
+
+                                
+                    <div class="col-md-8">
+                    <label for="exampleInputEmail1">Alergias</label>
+                        <input type="text" class="form-control" id="alergm" name="alergm" value="{{$admision->alerg}}" disabled>
+                    </div>
+                    <div class="col-md-4">
+                    <label for="exampleInputEmail1">Parejas Sexuales</label>
+                        <input type="text" class="form-control" id="g1" name="parejas"  placeholder="" value="{{$admision->parejas}}" disabled>
+                    </div>
+
+                    </div>
+
 
 
 
