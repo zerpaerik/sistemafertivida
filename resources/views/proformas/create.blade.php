@@ -113,13 +113,18 @@
                     <div class="col-md-12">
                       <label>Seleccione el tipo de proforma</label>
                         <select class="form-control" name="modelo">
+                            <option value="AMEU.docx">AMEU</option>
                             <option value="BIOPSIA TESTICULAR.docx">BIOPSIA TESTICULAR</option>
                             <option value="CRIO DE OVOCITOS.docx">CRIO DE OVOCITOS</option>
+                            <option value="CRIO DE OVOCITOS-trimestral.docx">CRIO DE OVOCITOS TRIMESTRAL</option>
+                            <option value="FIV-EMBRION DE BANCO.docx">FIV-EMBRION DE BANCO</option>
                             <option value="FIV-1+NGS.docx">FIV-1+NGS</option>
                             <option value="FIV-2+NGS.docx">FIV-2+NGS</option>
                             <option value="FIV-MIXTO+NGS.docx">FIV-MIXTO+NGS</option>
                             <option value="HISTEROSCOPIA QUIRURGICA.docx">HISTEROSCOPIA QUIRURGICA </option>
-                            <option value="PPTO-IIU">PPTO-IIU</option>
+                            <option value="PPTO-IIU.docx">PPTO-IIU</option>
+                            <option value="TED.docx">TED</option>
+
                         </select>
                     </div> 
               </div>
