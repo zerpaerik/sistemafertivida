@@ -644,6 +644,15 @@ Route::post('eva/edit', 'EvaController@update');
 Route::get('eva-ver-{id}', 'EvaController@ver');
 Route::get('eva/ver/{id}', 'EvaController@ver');
 
+Route::get('documentos', 'DocumentosController@index')->name('documentos.index');
+Route::get('documentos-create', 'DocumentosController@create')->name('documentos.create')->middleware('auth');
+Route::post('documentos/create', 'DocumentosController@store')->middleware('auth');
+Route::get('documentos-delete-{id}', 'DocumentosController@delete')->middleware('auth');
+Route::get('documentos-edit-{id}', 'DocumentosController@edit')->name('documentos.edit');
+Route::post('documentos/edit', 'DocumentosController@update');
+Route::get('documentos-ver-{id}', 'DocumentosController@ver');
+Route::get('documentos/ver/{id}', 'DocumentosController@ver');
+
 
 Route::get('crear/utero1','EvaluacionesController@utero1');
 Route::get('crear/utero2','EvaluacionesController@utero2');
