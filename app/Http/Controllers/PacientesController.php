@@ -272,6 +272,7 @@ class PacientesController extends Controller
       $pacientes = Pacientes::where('id','=',$request->id)->first();
       $pacientes->nombres =$request->nombres;
       $pacientes->apellidos =$request->apellidos;
+      $pacientes->apellidos1 =$request->apellidos1;
       $pacientes->tipo_doc =$request->tipo_doc;
       $pacientes->dni =$request->dni;
       $pacientes->telefono =$request->telefono;
