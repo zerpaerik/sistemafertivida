@@ -453,12 +453,11 @@
                 <br>
                 <label for="exampleInputEmail1" style="margin-left:12px;">Antecedentes Quirurgicos</label>
                 <br>               <br>
-                <div class="row" style="margin-left:5px;margin-right:5px;">
-               <div class="col-md-12">
-                    <label for="exampleInputEmail1">Cirugias previas</label>
-                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="cirm" placeholder="Cirugias previas" value="{{$admision->cir}}" disabled >{{$admision->cir}}</textarea>
-                   </div>
-                    </div>
+                <div class="col-md-12">
+                <label for="exampleInputEmail1">Cirugias previas</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="motivo_at" >{{$admision->cir}}</textarea>
+            </div>
+               
                     <br>
 
             
@@ -510,18 +509,20 @@
                 <div class="row" style="margin-left:5px;margin-right:5px;">
 
                 
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                         <label for="exampleInputEmail1">Anticonceptivos</label>
                             <input type="text" class="form-control" id="g2" name="anticonceptivos"   placeholder="" value="{{$admision->anti}}" disabled >
                         </div>
-                        <div class="col-md-6">
-                        <label for="exampleInputEmail1">Tratamientos previos de fertilidad</label>
-                            <input type="text" class="form-control" id="alergm" name="ferti" value="{{$admision->trat}}" disabled>
-                        </div>
+                      
 
                   
 
                 </div>
+
+                <div class="col-md-12">
+                <label for="exampleInputEmail1">Tratamientos previos de fertilidad</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="motivo_at" >{{$admision->trat}}</textarea>
+            </div>
             
             <!-- /.users-list -->
             </div>
@@ -574,18 +575,17 @@
             </div>
             <br>
 
-            <div class="row" style="margin-left:5px;margin-right:5px;">
-            
-                     <div class="col-md-12
-                        <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="nombre" name="cirugias" value="{{$admision->cirh}}" disabled>
-                        </div>
-                        <div class="col-md-12
-                        <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="nombre" name="enf" value="{{$admision->enfh}}" disabled>
-                        </div>
-                     
-        </div>
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Cirugias previas</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="motivo_at" >{{$admision->cirh}}</textarea>
+            </div>
+
+            <div class="col-md-12">
+                <label for="exampleInputEmail1">Enfermedades previas</label>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="motivo_at" >{{$admision->enfh}}</textarea>
+            </div>
+
+           
         <br>
 
         <div class="row" style="margin-left:5px;margin-right:5px;">
