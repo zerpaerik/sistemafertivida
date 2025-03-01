@@ -237,38 +237,16 @@
             
                      <div class="col-md-12
                         <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="nombre" name="cirugias" value="{{$admision->cir}}" disabled>
+                            <input type="text" class="form-control" id="nombre" name="cirugias" value="{{$admision->cirh}}" disabled>
                         </div>
-                        <div class="col-md-12
+                        <div class="col-md-">
                         <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="nombre" name="enf" value="{{$admision->enf}}" disabled>
+                            <input type="text" class="form-control" id="nombre" name="enf" value="{{$admision->enfh}}" disabled>
                         </div>
                      
         </div>
                 <br>
-                <div class="row" style="margin-left:5px;margin-right:5px;">
-                    
-                    <div class="col-md-12">
-                    <label for="exampleInputEmail1">Cirugias previas</label>
-                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="cirugias" placeholder="Cirugias previas" disabled>{{$admision->cir}}</textarea>
-
-                    </div>
-                    
-                    
-        </div>
-        <br>
-
-        <div class="row" style="margin-left:5px;margin-right:5px;">
-
-            
-                    <div class="col-md-12">
-                    <label for="exampleInputEmail1">Enfermedades previas</label>
-                    <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="enf" placeholder="Enfermadades previas" disabled> {{$admision->enf}}</textarea>
-
-                    </div>
-                
-        </div>
-        <br>
+              
 
         <div class="row" style="margin-left:5px;margin-right:5px;">
 

@@ -578,11 +578,11 @@
             
                      <div class="col-md-12
                         <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="nombre" name="cirugias" value="{{$admision->cir}}" disabled>
+                            <input type="text" class="form-control" id="nombre" name="cirugias" value="{{$admision->cirh}}" disabled>
                         </div>
                         <div class="col-md-12
                         <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="nombre" name="enf" value="{{$admision->enf}}" disabled>
+                            <input type="text" class="form-control" id="nombre" name="enf" value="{{$admision->enfh}}" disabled>
                         </div>
                      
         </div>

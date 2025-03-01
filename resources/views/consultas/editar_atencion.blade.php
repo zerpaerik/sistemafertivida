@@ -557,13 +557,13 @@
 
             <div class="row" style="margin-left:5px;margin-right:5px;">
             
-                     <div class="col-md-6">
+                     <div class="col-md-12
                         <label for="exampleInputEmail1">Cirugias previas</label>
-                            <input type="text" class="form-control" id="nombre" name="cirugias" value="{{$admision->cir}}" >
+                            <input type="text" class="form-control" id="nombre" name="cirugias" value="{{$admision->cirh}}" >
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12
                         <label for="exampleInputEmail1">Enfermedades previas</label>
-                            <input type="text" class="form-control" id="nombre" name="enf" value="{{$admision->enf}}" >
+                            <input type="text" class="form-control" id="nombre" name="enf" value="{{$admision->enfh}}" >
                         </div>
                      
         </div>
