@@ -122,13 +122,13 @@
 <br><br><br><br>
 
 <center>
-@if($orden->usuario == 547)
+@if($receta->usuario == 547)
 	<img src="/var/www/html/sistemafertivida/public/547.jpg"  style="width: 20%;"/>
-	@elseif($orden->usuario == 535)
+	@elseif($receta->usuario == 535)
 	<img src="/var/www/html/sistemafertivida/public/535.jpg"  style="width: 20%;"/>
-	@elseif($orden->usuario == 536)
+	@elseif($receta->usuario == 536)
 	<img src="/var/www/html/sistemafertivida/public/firma_eric.jpeg" style="width: 20%;"/>
-	@elseif($orden->usuario == 552)
+	@elseif($receta->usuario == 552)
 	<img src="/var/www/html/sistemafertivida/public/firma_deivid.jpeg" style="width: 20%;"/>
 	@else
 
