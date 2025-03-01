@@ -265,7 +265,7 @@
            
                <div class="col-md-12">
                <label for="exampleInputEmail1">Alergias</label>
-                   <input type="text" class="form-control" id="nombre" name="alergh" value="{{$admision->alerg}}" disabled>
+                   <input type="text" class="form-control" id="nombre" name="alergh" value="{{$admision->alergh}}" disabled>
                </div>
             
 </div>

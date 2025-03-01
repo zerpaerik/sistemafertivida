@@ -571,13 +571,13 @@
 
         <div class="row" style="margin-left:5px;margin-right:5px;">
             
-            <div class="col-md-6">
+            <div class="col-md-12">
                <label for="exampleInputEmail1">Uso de medicamentos</label>
                    <input type="text" class="form-control" id="nombre" name="medh" value="{{$admision->medh}}" >
                </div>
-               <div class="col-md-6">
+               <div class="col-md-12">
                <label for="exampleInputEmail1">Alergias</label>
-                   <input type="text" class="form-control" id="nombre" name="alergh" value="{{$admision->alerg}}" >
+                   <input type="text" class="form-control" id="nombre" name="alergh" value="{{$admision->alergh}}" >
                </div>
             
 </div>
