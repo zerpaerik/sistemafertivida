@@ -20,36 +20,30 @@ class EvaController extends Controller
     public function index(Request $request)
     {
 
-        if($request->inicio){
-            $f1 = $request->inicio;
-            $f2 = $request->fin;
+        if($request->has('id_paciente') && $request->id_paciente != ''){
 
+            $eva = DB::table('eva as a')
+            ->select('a.id','a.texto','a.created_at','a.usuario','a.paciente','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos', 'p.apellidos1')
+            ->join('users as b','b.id','a.usuario')
+            ->join('pacientes as p','p.id','a.paciente')
+            ->where('a.paciente', '=', $request->id_paciente)
+            ->orderBy('a.created_at','DESC')
+            ->get(); 
 
-        $eva = DB::table('eva as a')
-        ->select('a.id','a.texto','a.created_at','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos', 'p.apellidos1')
-        ->join('users as b','b.id','a.usuario')
-        ->join('pacientes as p','p.id','a.paciente')
-        ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
-        ->get(); 
+        } else {
 
-    } else {
-        $f1 =date('Y-m-d');
-        $f2 = date('Y-m-d');
+            $eva = DB::table('eva as a')
+            ->select('a.id','a.created_at','a.texto','a.usuario','a.paciente','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos', 'p.apellidos1')
+            ->join('users as b','b.id','a.usuario')
+            ->join('pacientes as p','p.id','a.paciente')
+            ->orderBy('a.created_at','DESC')
+            ->get(); 
 
-        $eva = DB::table('eva as a')
-        ->select('a.id','a.created_at','a.texto','a.usuario','a.paciente','a.created_at','b.name as name','b.lastname as lastname','p.nombres', 'p.apellidos', 'p.apellidos1')
-        ->join('users as b','b.id','a.usuario')
-        ->join('pacientes as p','p.id','a.paciente')
-        ->whereDate('a.created_at', date('Y-m-d 00:00:00', strtotime($f1)))
-        ->get(); 
+        }
 
-    
+        $pacientes = Pacientes::where('estatus','=', 1)->orderby('apellidos','asc')->get();
 
-    }
-
-
-
-        return view('eva.index', compact('eva', 'f1', 'f2'));
+        return view('eva.index', compact('eva', 'pacientes'));
         //
     }
 
