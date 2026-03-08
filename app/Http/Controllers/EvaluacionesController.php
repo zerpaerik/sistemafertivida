@@ -33,33 +33,30 @@ class EvaluacionesController extends Controller
     {
 
         
-        if($request->inicio){
-            $f1 = $request->inicio;
-            $f2 = $request->fin;
-
-
-        $evaluaciones = DB::table('evaluaciones as a')
-        ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
-        ->join('pacientes as b','b.id','a.id_paciente')
-        ->where('a.estatus', '=', 1)
-        ->whereBetween('a.created_at', [date('Y-m-d 00:00:00', strtotime($f1)), date('Y-m-d 23:59:59', strtotime($f2))])
-        ->get(); 
-
-        } else {
-            $f1 =date('Y-m-d');
-            $f2 = date('Y-m-d');
+        if($request->id_paciente){
 
             $evaluaciones = DB::table('evaluaciones as a')
             ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
             ->join('pacientes as b','b.id','a.id_paciente')
             ->where('a.estatus', '=', 1)
-            ->whereDate('a.created_at', date('Y-m-d 00:00:00', strtotime($f1)))
+            ->where('a.id_paciente', '=', $request->id_paciente)
+            ->orderBy('a.created_at','DESC')
+            ->get(); 
+
+        } else {
+
+            $evaluaciones = DB::table('evaluaciones as a')
+            ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
+            ->join('pacientes as b','b.id','a.id_paciente')
+            ->where('a.estatus', '=', 1)
+            ->orderBy('a.created_at','DESC')
             ->get(); 
 
         }
        
+        $pacientes = Pacientes::where('estatus','=', 1)->orderby('apellidos','asc')->get();
 
-        return view('evaluaciones.index', compact('evaluaciones','f1','f2'));
+        return view('evaluaciones.index', compact('evaluaciones','pacientes'));
         //
     }
 

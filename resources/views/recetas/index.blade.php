@@ -81,17 +81,15 @@
                             <label for="exampleInputEmail1">Filtros de Busqueda</label>
 
                                 <div class="row">
-                            <div class="col-md-3">
-                                <label for="exampleInputEmail1">Fecha Inicio</label>
-                                <input type="date" class="form-control" value="{{$f1}}" name="inicio">
+                            <div class="col-md-5">
+                                <label for="exampleInputEmail1">Seleccione el Paciente</label>
+                                <select class="form-control js-example-basic-single" name="id_paciente">
+                                  <option value="">Todos los pacientes</option>
+                                  @foreach($pacientes as $pac)
+                                    <option value="{{$pac->id}}" {{ request('id_paciente') == $pac->id ? 'selected' : '' }}>{{$pac->apellidos}}, {{$pac->apellidos1}} {{$pac->nombres}} - {{$pac->dni}}</option>
+                                  @endforeach
+                                </select>
                             </div>
-
-                            <div class="col-md-3">
-                                <label for="exampleInputEmail1">Fecha Fin</label>
-                                <input type="date" class="form-control" value="{{$f2}}" name="fin">
-                            </div>
-                            
-                            
                             
                             <div class="col-md-2" style="margin-top: 30px;">
                             <button type="submit" class="btn btn-primary">Buscar</button>

@@ -671,7 +671,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Tiroides</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="tirm" disabled>{{$atencion->tirm}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="tirm" disabled>{{$atencion->tirm}}</textarea>
             </div>
             </div>
                   
@@ -679,7 +679,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Mamas</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="mamas" disabled>{{$atencion->mamas}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="mamas" disabled>{{$atencion->mamas}}</textarea>
             </div>
             </div>
                   
@@ -687,7 +687,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Aparato genital</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="genm" disabled>{{$atencion->genm}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="genm" disabled>{{$atencion->genm}}</textarea>
             </div>
             </div>
                   
@@ -695,7 +695,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Eco TV</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="eco" disabled>{{$atencion->eco}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="eco" disabled>{{$atencion->eco}}</textarea>
             </div>
             </div>
                   
@@ -703,7 +703,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Otros</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="otrosm" disabled>{{$atencion->otrosm}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="otrosm" disabled>{{$atencion->otrosm}}</textarea>
             </div>
             </div>
                   
@@ -715,7 +715,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Descripción</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="impm" disabled>{{$atencion->impm}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="impm" disabled>{{$atencion->impm}}</textarea>
             </div>
             </div>
                 
@@ -727,7 +727,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Descripción</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="planm" disabled>{{$atencion->planm}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="planm" disabled>{{$atencion->planm}}</textarea>
             </div>
             </div>
                 
@@ -739,7 +739,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Descripción</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="tratm" disabled>{{$atencion->tratm}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="tratm" disabled>{{$atencion->tratm}}</textarea>
             </div>
             </div>
                 
@@ -751,7 +751,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Descripción</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="procm" disabled>{{$atencion->procm}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="procm" disabled>{{$atencion->procm}}</textarea>
             </div>
             </div>
                 
@@ -795,7 +795,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Tiroides</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="tirh" disabled>{{$atencion->tirh}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="tirh" disabled>{{$atencion->tirh}}</textarea>
             </div>
             </div>
                 
@@ -804,7 +804,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Aparato genital</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="genh" disabled>{{$atencion->genh}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="genh" disabled>{{$atencion->genh}}</textarea>
             </div>
             </div>
                 
@@ -813,7 +813,7 @@
             <div class="row" style="margin-left:5px;margin-right:5px;">
             <div class="col-md-12">
                 <label for="exampleInputEmail1">Otros</label>
-                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" rows="3"  name="otrosh" disabled>{{$atencion->otrosh}}</textarea>
+                <textarea class="form-control" onkeyup="javascript:this.value=this.value.toUpperCase();" style="min-height: 80px; height: auto; overflow-y: hidden;" name="otrosh" disabled>{{$atencion->otrosh}}</textarea>
             </div>
             </div>
                 
@@ -982,6 +982,30 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- page script -->
+
+<script>
+// Auto-resize textareas to fit content
+document.addEventListener('DOMContentLoaded', function() {
+    const textareas = document.querySelectorAll('textarea');
+    
+    textareas.forEach(function(textarea) {
+        // Function to adjust height
+        function adjustHeight() {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight + 2) + 'px';
+        }
+        
+        // Adjust on load
+        setTimeout(adjustHeight, 100);
+        
+        // Adjust on input
+        textarea.addEventListener('input', adjustHeight);
+        
+        // Adjust on window resize
+        window.addEventListener('resize', adjustHeight);
+    });
+});
+</script>
 
 </body>
 </html>
