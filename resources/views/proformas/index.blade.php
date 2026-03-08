@@ -29,6 +29,8 @@
 <!-- DataTables -->
 <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -77,21 +79,19 @@
                               </i>
                               Agregar
                           </a>
-                          <form method="get" action="ordenes">					
+                          <form method="get" action="proformas">					
                             <label for="exampleInputEmail1">Filtros de Busqueda</label>
 
                                 <div class="row">
-                            <div class="col-md-3">
-                                <label for="exampleInputEmail1">Fecha Inicio</label>
-                                <input type="date" class="form-control" value="{{$f1}}" name="inicio">
+                            <div class="col-md-5">
+                                <label for="exampleInputEmail1">Seleccione el Paciente</label>
+                                <select class="form-control js-example-basic-single" name="id_paciente">
+                                  <option value="">Todos los pacientes</option>
+                                  @foreach($pacientes as $pac)
+                                    <option value="{{$pac->id}}" {{ request('id_paciente') == $pac->id ? 'selected' : '' }}>{{$pac->apellidos}}, {{$pac->apellidos1}} {{$pac->nombres}} - {{$pac->dni}}</option>
+                                  @endforeach
+                                </select>
                             </div>
-
-                            <div class="col-md-3">
-                                <label for="exampleInputEmail1">Fecha Fin</label>
-                                <input type="date" class="form-control" value="{{$f2}}" name="fin">
-                            </div>
-                            
-                            
                             
                             <div class="col-md-2" style="margin-top: 30px;">
                             <button type="submit" class="btn btn-primary">Buscar</button>
@@ -297,8 +297,11 @@
 
 <!-- page script -->
 <script>
-
 $(document).ready(function() {
+    // Initialize Select2 for patient selector
+    $('.js-example-basic-single').select2();
+    
+    // Initialize DataTable
     $('#example').DataTable( {
         dom: 'Bfrtip',
         buttons: [
