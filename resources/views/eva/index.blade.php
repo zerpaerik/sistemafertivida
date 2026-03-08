@@ -276,19 +276,14 @@
     // Initialize Select2 for patient selector
     $('.js-example-basic-single').select2();
     
-    // Initialize DataTable
+    // Initialize DataTable with search enabled
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
-    });
-    $('#example2').DataTable({
+      "searching": true,
       "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
       "info": true,
-      "autoWidth": false,
-      "responsive": true,
+      "ordering": true
     });
   });
 </script>
