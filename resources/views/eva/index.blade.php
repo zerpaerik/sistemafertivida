@@ -250,6 +250,10 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<!-- Select2 -->
+<script src="../../plugins/select2/js/select2.full.min.js"></script>
+
 <!-- page script -->
 
 <script type="text/javascript">
@@ -276,14 +280,14 @@
     // Initialize Select2 for patient selector
     $('.js-example-basic-single').select2();
     
-    // Initialize DataTable with search enabled
+    // Initialize DataTable with search and export buttons
     $("#example1").DataTable({
       "responsive": true,
       "autoWidth": false,
-      "searching": true,
-      "paging": true,
-      "info": true,
-      "ordering": true
+      dom: 'Bfrtip',
+      buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
     });
   });
 </script>
