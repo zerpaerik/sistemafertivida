@@ -41,7 +41,7 @@ class ProformasController extends Controller
     {
 
         
-        if($request->id_paciente){
+        if($request->has('id_paciente') && $request->id_paciente != ''){
 
             $proformas = DB::table('proformas as a')
             ->select('a.id','a.id_paciente','a.modelo','a.estatus','a.proforma','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')

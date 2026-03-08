@@ -42,7 +42,7 @@ class DocumentosController extends Controller
     {
 
         
-        if($request->id_paciente){
+        if($request->has('id_paciente') && $request->id_paciente != ''){
 
             $docs = DB::table('documentos as a')
             ->select('a.id','a.paciente','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')

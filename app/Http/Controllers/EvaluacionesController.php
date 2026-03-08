@@ -33,7 +33,7 @@ class EvaluacionesController extends Controller
     {
 
         
-        if($request->id_paciente){
+        if($request->has('id_paciente') && $request->id_paciente != ''){
 
             $evaluaciones = DB::table('evaluaciones as a')
             ->select('a.id','a.id_paciente','a.estatus','a.created_at','b.nombres', 'b.apellidos','b.apellidos1')
