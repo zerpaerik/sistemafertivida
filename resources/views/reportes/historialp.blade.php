@@ -679,6 +679,87 @@
                 </table>
               </div>
 
+              <p style="margin-left:20px;">DOCUMENTOS</p>
+
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Paciente</th>
+                    <th>Acciones</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  @foreach($documentos as $doc)
+                  <tr>
+                    <td>{{date('d-M-y H:i', strtotime($doc->created_at))}}</td>
+                    <td>{{$doc->apellidos}} {{$doc->apellidos1}}, {{$doc->nombres}}</td>
+                    <td>
+                    <a class="btn btn-info btn-sm" href="documentos-ver-{{$doc->id}}">
+                              <i class="fas fa-eye">
+                              </i>
+                              Ver Documentos
+                          </a>
+                    
+                    @if($doc->documento != null)
+                    <a class="btn btn-primary btn-sm" href="{{route('descargar2',$doc->documento)}}" target="_blank">
+                              <i class="fas fa-download">
+                              </i>
+                              Descargar 1
+                          </a>
+                    @endif
+
+                    @if($doc->documento1 != null)
+                    <a class="btn btn-primary btn-sm" href="{{route('descargar2',$doc->documento1)}}" target="_blank">
+                              <i class="fas fa-download">
+                              </i>
+                              Descargar 2
+                          </a>
+                    @endif
+
+                    @if($doc->documento2 != null)
+                    <a class="btn btn-primary btn-sm" href="{{route('descargar2',$doc->documento2)}}" target="_blank">
+                              <i class="fas fa-download">
+                              </i>
+                              Descargar 3
+                          </a>
+                    @endif
+
+                    @if($doc->documento3 != null)
+                    <a class="btn btn-primary btn-sm" href="{{route('descargar2',$doc->documento3)}}" target="_blank">
+                              <i class="fas fa-download">
+                              </i>
+                              Descargar 4
+                          </a>
+                    @endif
+
+                    @if($doc->documento4 != null)
+                    <a class="btn btn-primary btn-sm" href="{{route('descargar2',$doc->documento4)}}" target="_blank">
+                              <i class="fas fa-download">
+                              </i>
+                              Descargar 5
+                          </a>
+                    @endif
+
+                    </td>
+                  </tr>
+                  @endforeach
+                 
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Paciente</th>
+                    <th>Acciones</th>
+                  </tr>
+                 
+                  </tfoot>
+
+                </table>
+              </div>
+
 
 
 

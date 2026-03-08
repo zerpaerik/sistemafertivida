@@ -514,6 +514,13 @@ class ReportesController extends Controller
         ->where('b.id_paciente', '=', $request->id_paciente)
         ->get();
 
+        $documentos = DB::table('documentos as a')
+        ->select('a.id','a.paciente','a.created_at','a.documento','a.documento1','a.documento2','a.documento3','a.documento4','b.nombres', 'b.apellidos','b.apellidos1')
+        ->join('pacientes as b','b.id','a.paciente')
+        ->where('a.paciente', '=', $request->id_paciente)
+        ->orderBy('a.created_at','DESC')
+        ->get();
+
 
     } else {
 
@@ -580,6 +587,13 @@ class ReportesController extends Controller
         ->where('b.id_paciente', '=', 4545454545454)
         ->get();
 
+        $documentos = DB::table('documentos as a')
+        ->select('a.id','a.paciente','a.created_at','a.documento','a.documento1','a.documento2','a.documento3','a.documento4','b.nombres', 'b.apellidos','b.apellidos1')
+        ->join('pacientes as b','b.id','a.paciente')
+        ->where('a.paciente', '=', 4545454545454)
+        ->orderBy('a.created_at','DESC')
+        ->get();
+
 
 
     }
@@ -595,7 +609,7 @@ class ReportesController extends Controller
         $pacientes =Pacientes::where("estatus", '=', 1)->orderby('nombres','asc')->get();
 
       
-        return view('reportes.historialp', compact('pacientes','proformas','recetas','consultas','evaluaciones','ordenes','resultados','resultadosl', 'eva'));
+        return view('reportes.historialp', compact('pacientes','proformas','recetas','consultas','evaluaciones','ordenes','resultados','resultadosl', 'eva','documentos'));
 
     }
 

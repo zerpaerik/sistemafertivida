@@ -77,7 +77,7 @@
                               </i>
                               Agregar
                           </a>
-                          <form method="get" action="ordenes">					
+                          <form method="get" action="documentos">					
                             <label for="exampleInputEmail1">Filtros de Busqueda</label>
 
                                 <div class="row">
